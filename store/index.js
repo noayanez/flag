@@ -4,6 +4,7 @@ export const state = () => ({
   fromForm: false,
   generalinformation: {},
   dataView:{},
+  dataService:'',
   language:'es'
 })
 
@@ -16,6 +17,10 @@ export const mutations = {
   },
   SET_DATA_VIEW(state,data){
     state.dataView = data
+  },
+  SET_DATA_SERVICES(state, data){
+    state.dataService = data
+    // console.log(state.dataService)
   }
   
 }
@@ -29,6 +34,9 @@ export const getters = {
           : state.dataView[i].langs[1]
       }
     }
+  },
+  getIntoService(state){
+    return state.dataService
   }
 }
   
