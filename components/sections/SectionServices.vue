@@ -2,7 +2,7 @@
   <div 
     style="background-image: url(/tramas.png);background-size:cover;background-position:50% 50%; width:100%; heigth:100%; background-color:#303e48;"
     class="uk-height-viewport uk-height-1-1">
-    <div v-if="intoService == ''">
+    <div v-if="content == ''">
       <div
         class="uk-padding titleServices" 
         style="text-align:center;">
@@ -78,7 +78,8 @@ export default {
                 {
                   singleServiceName: el.singleService.singleServiceName,
                   serviceIntoImage: el.singleService.serviceIntoImage,
-                  singleServiceItems: el.singleService.singleServiceItems
+                  singleServiceItems: el.singleService.singleServiceItems,
+                  singleServiceButton: el.singleService.singleServiceButton
                 }
               );
 
@@ -86,7 +87,7 @@ export default {
             }
         });
         this.intoService = this.content
-        //  console.log(this.$store.state.dataService)
+       //  console.log(this.$store.state.dataService)
       }
     }
 }

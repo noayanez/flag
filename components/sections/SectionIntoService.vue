@@ -1,11 +1,18 @@
 <template>
   <div class="uk-flex uk-flex-wrap">
-    <div class="uk-width-1-2@m uk-width-1-1">
+    <div class="uk-width-1-2@m uk-width-1-1 uk-padding container2">
+      <a 
+        style="padding-left: 60px"
+        @click="remove">
+        <img 
+          src="boton-flecha.png" 
+          alt="...">
+      </a>
       <div class="uk-flex uk-flex-column uk-padding-large">
         <div>
           <h2 
             style="color:white;font-weight: bold;"
-            class="title-into-service">{{ service.singleServiceName }}</h2>
+            class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h2>
         </div>
         <div>
           <ul 
@@ -13,6 +20,13 @@
             :key="key"> 
             <li class="color"><span>{{ el.singleServiceItem }}</span></li>
           </ul>
+        </div>
+        <div
+          style="padding-top: 30px;">
+          <a
+            class="button-service uk-text-uppercase" 
+            style="text-decoration: none;color:#303e48"
+          >{{ service.singleServiceButton }}</a>
         </div>
       </div>
     </div>
@@ -42,6 +56,12 @@ export default {
       //console.log(this.content)
       this.service = this.content
     },
+    methods:{
+      remove(){
+        this.$router.app.$store.commit('SET_DATA_SERVICES','')
+        console.log(this.content)
+      }
+    }
 }
 function wait(n) {
    return new Promise(function(resolve, reject) {
@@ -59,11 +79,11 @@ function wait(n) {
     background-size:cover; 
     background-position:50% 50%; 
     height:65vh;
-    width: 50%;
+    width: 60%;
     border-radius: 30px;
 }
 .title-into-service{
-    width: 50%;
+    width: 40%;
 }
 .color{
     color: #faeb05;
@@ -72,5 +92,16 @@ function wait(n) {
 }
 .color > span{
     color: white;
+}
+.button-service{
+  background: url('/boton-1.png') no-repeat;
+  background-size: cover;
+  padding: 30px 50px 20px 50px;
+  text-decoration: none;
+  color: #303e48;
+  font-weight: bold;
+}
+.container2{
+  width: 40%;
 }
 </style>
