@@ -5,10 +5,10 @@
   "author": "team",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development HOST=0.0.0.0 PORT=7011 nuxt",
-    "build": "cross-env NODE_ENV=production PORT=7011 nuxt build",
-    "start": "cross-env NODE_ENV=production PORT=7011 nuxt start",
-    "generate": "cross-env NODE_ENV=production PORT=7011 nuxt generate",
+    "dev": "cross-env NODE_ENV=development HOST=0.0.0.0 PORT=4401 nuxt",
+    "build": "cross-env NODE_ENV=production PORT=4401 nuxt build",
+    "start": "cross-env NODE_ENV=production PORT=4401 nuxt start",
+    "generate": "cross-env NODE_ENV=production PORT=4401 nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
     "precommit": "npm run lint"
   },
