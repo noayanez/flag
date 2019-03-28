@@ -11,13 +11,15 @@
     <SectionServices
       :services="services"
     />
+    <SectionPilars
+      :pilars="pilars"/>
     <SectionContact
       :contact-form="contactForm"
       :contact="contact"
-    />-->
-    <Footer
+    />
+    <!-- <Footer
       :footer="footer"
-    /> 
+    />  -->
   </div>
 </template>
 
@@ -35,6 +37,7 @@ import SectionPortrait from '~/components/sections/SectionPortrait.vue'
 import SectionEvents from '~/components/sections/SectionEvents.vue'
 import SectionContact from '~/components/sections/SectionContact.vue'
 import SectionServices from '~/components/sections/SectionServices.vue'
+import SectionPilars from '~/components/sections/SectionPilars.vue'
 import Footer from '~/components/general/Footer.vue'
 
 // VALIDATOR FOR THE INPUTS IN THE FORM COMPONENT
@@ -58,6 +61,7 @@ export default {
     SectionEvents,
     SectionContact,
     SectionServices,
+    SectionPilars,
     Footer
   },
   data() {
@@ -66,6 +70,7 @@ export default {
       events:{},
       footer: {},
       services:{},
+      pilars:{},
       contact:{},
       contactForm: [
         {
@@ -75,14 +80,7 @@ export default {
               vmodel: '',
               type: 'input',
               format: 'text',
-              placeholder: 'Nombre Completo'
-            },
-            {
-              name: 'Email',
-              vmodel: '',
-              type: 'input',
-              format: 'email',
-              placeholder: 'Correo'
+              placeholder: 'Nombre'
             },
             {
               name: 'Phone',
@@ -90,30 +88,24 @@ export default {
               type: 'input',
               format: 'number',
               placeholder: 'Celular'
+            },
+            {
+              name: 'Email',
+              vmodel: '',
+              type: 'input',
+              format: 'email',
+              placeholder: 'Correo'
             }
           ]
         },
         {
           items: [
             {
-              name: 'Need',
-              vmodel: '',
-              type: 'select',
-              placeholder: '¿Qué servicio requieres?',
-              options: [
-                { value: 'Servicio1', text: 'Servicio 1' },
-                { value: 'Servicio2', text: 'Servicio 2' },
-                { value: 'Servicio3', text: 'Servicio 3' },
-                { value: 'Servicio4', text: 'Servicio 4' },
-                { value: 'Servicio5', text: 'Servicio 5' },
-              ]
-            },
-            {
               name: 'Message',
               vmodel: '',
               type: 'text-area',
               format: 'text',
-              placeholder: 'Cuéntanos sobre ti...',
+              placeholder: 'Mensaje',
             }
           ]
         }
@@ -130,7 +122,8 @@ export default {
      this.portrait = this.content.content.portrait
      this.events = this.content.content.eventsSection
      this.services = this.content.content.services
-    console.log( this.services )
+     this.pilars =  this.content.content.pilars
+    console.log( this.pilars )
     
   },
   methods: {

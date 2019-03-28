@@ -39,15 +39,15 @@
       style="width:60%">
       
       <div 
-        class="title"
-        style="padding-top: 20px">
+        class="title uk-padding"
+        style="padding-top: 200px; font-wei">
         <h2 
           v-if="events.events"
-          style="color:white;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+          style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
       </div>
 
-      <div class="">
-        <div style="">
+      <div class="uk-padding-small">
+        <div >
           <div 
             v-if="events.events"
             uk-slider>
@@ -130,7 +130,7 @@ export default {
   padding: 25px 25px 25px 25px; 
 }
 .imgBorder{
-  border: yellow 3px solid;
+  border: #faeb05 4px solid;
 }
 
 </style>

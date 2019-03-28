@@ -1,8 +1,8 @@
 <template>
   <div
     id="Footer"
-    class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-width-1-1"
-    style="background: black; min-height: 20vh;">
+    class="uk-flex uk-width-1-2"
+    style="background: transparent; min-height: 80vh;">
     <div
       v-if="loaded"
       class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-padding uk-width-1-1">

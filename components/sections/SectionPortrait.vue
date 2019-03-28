@@ -1,5 +1,7 @@
 <template>
-  <div id="Portrait">
+  <div 
+    id="Portrait"
+    class="uk-position-relative">
     <div>
       <div
         class="uk-position-relative uk-visible-toggle "
@@ -23,50 +25,37 @@
                 Your browser does not support the video tag.
               </video>
             </div>
-            <!-- <div
-                  :style="'background-image: url(' + portrait.img +');'"
-              style="background-size:cover;  background-position:50% 50%; width:100%; heigth:100%;"
-              class="uk-height-viewport uk-height-1-1"/> -->
             <div
-              style="background-image: url(fondo-negro.jpg);background-size:cover;background-position:50% 50%; width:100%; heigth:100%;"
+              :style="`background-image: url(${portrait.img};`"
+              style="background-size:cover;background-position:50% 50%; width:100%; height:100%;"
               class="uk-height-viewport uk-height-1-1 uk-hidden@s"/> 
             <div
               class="uk-position-center-left uk-text-left uk-padding-large"
               style="color:#d5ecec">
               <h1
                 uk-slideshow-parallax="x: 100,-100"
+                class="title-center uk-text-uppercase"
                 style="color:white; font-weight: bold;">
                 {{ portrait.title }}
               </h1>
               <div 
                 v-if="portrait.buttons"
-                style="padding-top: 45px; display: flex;">
-                <div>
-                  <a 
-                    class="button-portrait">
+                class="uk-height-1-1 buttons-conatiner"
+                style="padding-top: 45px; display: flex; flex-wrap:wrap;">
+                <a style="text-decoration:none; color:#314049;">
+                  <div class="button-portrait uk-text-uppercase">
                     {{ portrait.buttons[0].btnText }}
-                  </a>
-                </div>
-                <div>
-                  <a
-                    class="button-portrait">
+                  </div>
+                </a>
+                <a style="text-decoration:none; color:#314049;">
+                  <div class="button-portrait uk-text-uppercase">
                     {{ portrait.buttons[1].btnText }}
-                  </a>
-                </div>
+                  </div>
+                </a>
               </div>
             </div>
           </li>
         </ul>
-        <!-- <div v-if="false">
-          <a
-            class="uk-position-center-left uk-position-small uk-hidden-hover"
-            uk-slidenav-previous
-            uk-slideshow-item="previous"/>
-          <a
-            class="uk-position-center-right uk-position-small uk-hidden-hover"
-            uk-slidenav-next
-            uk-slideshow-item="next"/>
-        </div> -->
       </div>
       <div
         v-if="false"
@@ -129,27 +118,31 @@ export default {
 .container-devices {
   height: 100vh
 }
+.button-portrait{
+  background: url('/boton-1.png') no-repeat;
+  background-size: cover;
+  padding: 35px 70px 30px 70px;
+  text-decoration: none;
+  color: #303e48;
+  font-weight: bold;
+}
 @media (max-width: 960px) {
   .container-devices {
     height: 690px !important
   }
 }
-.button-portrait{
-  background: url('/boton-1.png') no-repeat;
-  background-size: cover;
-  padding: 35px 55px;
-  text-decoration: none;
-  color: #303e48;
-  font-weight: bold;
-}
 @media (max-width: 420px){
   .button-portrait{
-    background: url('/boton-1.png') no-repeat;
-    background-size: cover;
-    padding: 25px 30px;
-    text-decoration: none;
-    color: #303e48;
-    font-weight: bold;
+    margin-top: 10px;
+}
+.button-portrait{
+    padding: 40px 65px;
+}
+.buttons-conatiner{
+  justify-content: center;
+}
+.title-center{
+      text-align: center;
 }
 }
 </style>

@@ -2,7 +2,9 @@
   <div class="uk-width-1-1 uk-padding-small">
     <div v-if="!submitted">
       <!-- HERE STARTS THE FORM -->
-      <div class="uk-flex uk-flex-wrap uk-width-1-1">
+      <div 
+        class="uk-flex uk-flex-wrap uk-width-1-1"
+        style="">
         <div
           v-for="(column, key) in formContent"
           :key="key"
@@ -94,25 +96,15 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.formContent)
-    // var j = parseInt(this.formContent[1].items.length)
-    // var i = 0
-    // for (var x = 0; x < this.formContent[0].items.length; x++) {
-    //   console.log(this.formContent[0].items[x].type)
-    // }
     var i = parseInt(this.formContent[0].items.length)
     var j = 0
     for (var x = 0; x < this.formContent[1].items.length; x++) {
-      // console.log(this.formContent[1].items[x].type)
       if (this.formContent[1].items[x].type === 'text-area') {
         break;
       }
       j++
     }
-    // console.log(i)
-    // console.log(j)
     this.hTextArea = ((i-j)*(this.hInputs))-16
-    // console.log(this.hTextArea)
   },
   methods: {
     async submitForm () {

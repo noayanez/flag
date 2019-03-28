@@ -1,7 +1,8 @@
 <template>
   <div 
+    id="Events"
     style="background-image: url(/tramas.png);background-size:cover;background-position:50% 50%; width:100%; heigth:100%; background-color:#303e48;"
-    class="uk-height-viewport uk-height-1-1">
+    class=" uk-height-1-1">
     <div v-if="content == ''">
       <div
         class="uk-padding titleServices" 
@@ -14,17 +15,44 @@
         <div
           v-for="(ele, key) in services.service"
           :key="key"
-          class="uk-width-1-2@m uk-width-1-1 uk-padding-small uk-height-1-1"
+          class="uk-width-1-2@m uk-width-1-1 uk-padding-small uk-height-1-1 uk-visible@s"
           style="text-align:center; padding-bottom: 40px;">
           <div
             :style="`background-image: url(${ele.singleService.singleServiceImage};`"
             class="uk-height-1-1 uk-padding uk-align-center containerImage"/>
+          <a
+            style="text-decoration: none;color:#303e48"
+            @click="getContent(ele.singleService.singleServiceName)">
+            <div 
+              class="button-portrait"
+              style="">
+              {{ ele.singleService.singleServiceName }} </div></a>
+        </div>
+      </div>
+      <div class="uk-hidden@s">
+        <div uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000; min-height: 490; max-height: 600">
           <div 
-            class="button-portrait"
-            style="">
-            <a
-              style="text-decoration: none;color:#303e48"
-              @click="getContent(ele.singleService.singleServiceName)">{{ ele.singleService.singleServiceName }}</a>
+            class="uk-position-relative uk-visible-toggle">
+            <ul class="uk-slideshow-items">
+              <li 
+                v-for="(ele, key) in services.service"
+                :key="key">
+                <div 
+                  :style="`background-image: url(${ele.singleService.singleServiceImage});`"
+                  style=""
+                  class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
+                <a
+                  style="text-decoration: none;color:#303e48"
+                  @click="getContent(ele.singleService.singleServiceName)">
+                  <div 
+                    class="button-slider"
+                    style="">
+                    {{ ele.singleService.singleServiceName }} </div></a>
+              </li>
+            </ul>
+            <ul 
+              class="uk-slideshow-nav uk-dotnav uk-flex-center"
+              style="padding-bottom: 40px;"/>
           </div>
         </div>
       </div>
@@ -106,12 +134,22 @@ function wait(n) {
 }
 .title-services{
     font-weight: bold;
-    color: black;
+    color: white;
 }
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 25px 30px 10px 30px;
+  padding: 25px 33px 10px 33px;
+  text-decoration: none;
+  color: #303e48;
+  font-weight: bold;
+  width:20%; 
+  margin:auto
+}
+.button-slider{
+  background: url('/boton-1.png') no-repeat;
+  background-size: cover;
+  padding: 28px 78px 28px 78px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
@@ -126,14 +164,28 @@ function wait(n) {
     width: 50%;
     border-radius: 30px;
 }
+.container-slider{
+    background-size:cover; 
+    background-position:50% 50%; 
+    height: 45vh;
+    width: 70%;
+    border-radius: 30px;
+}
 .container-services{
     width: 60%; 
     margin:auto;
 }
 @media (max-width: 1024px){
   .containerImage{
-    min-width: 320px;
+    min-width: 350px;
     height:35vh;
+}
+.container-services{
+    width: 90%; 
+    margin:auto;
+}
+.button-portrait{
+  padding: 25px 45px 10px 45px;
 }
 }
 @media (max-width: 420px){
@@ -156,5 +208,12 @@ function wait(n) {
  .titleServices{
      padding-bottom: 10px !important;
  }
+ .uk-dotnav > * > * {
+    width: 15px;
+    height: 15px;
+}
+.uk-dotnav > .uk-active > * {
+  background-color: #faeb00;
+  }
 }
 </style>
