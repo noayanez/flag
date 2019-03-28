@@ -123,7 +123,7 @@ export default {
      this.events = this.content.content.eventsSection
      this.services = this.content.content.services
      this.pilars =  this.content.content.pilars
-    console.log( this.pilars )
+    console.log( this.events )
     
   },
   methods: {

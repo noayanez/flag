@@ -185,7 +185,7 @@ function wait(n) {
     margin:auto;
 }
 .button-portrait{
-  padding: 25px 45px 10px 45px;
+  padding: 25px 45px 18px 45px;
 }
 }
 @media (max-width: 420px){
