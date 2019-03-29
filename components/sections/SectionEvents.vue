@@ -3,80 +3,76 @@
     id="Services"
   >
     <div 
-      class="uk-animation-toggle" 
-      tabindex="0">
+      :style="{'background-image':'url(' +imgSelected +')'}"
+      class="uk-background-cover uk-flex uk-height-viewport uk-visible@s padding-events">
       <div 
-        :style="{'background-image':'url(' +imgSelected +')'}"
-        class="uk-background-cover uk-flex uk-height-viewport uk-visible@s padding-events uk-animation-fade">
+        class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
+        style="">
         <div 
-          class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
-          style="">
-          <div 
-            class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
-            <div class="container-into-col-1">
+          class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
+          <div class="container-into-col-1">
 
-              <p 
-                class="text-style description"
+            <p 
+              class="text-style description"
+              style="">
+              {{ events.mainDescription }}
+            </p>
+            <div 
+              v-if="events.events">
+              <ul 
+                class="uk-nav"
                 style="">
-                {{ events.mainDescription }}
-              </p>
-              <div 
-                v-if="events.events">
-                <ul 
-                  class="uk-nav"
-                  style="">
-                  <li 
-                    v-for="(ele, key) in events.events"
-                    :key="key"
-                    style="padding: 20px 0px;">
-                    <a
-                      class="text-style"
-                      style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
-                      @click="getContent(key)">
-                      <div 
-                        :class="[selected==key? 'titleSelected':'']"
-                        class="width-events"
-                        style="">{{ ele.single.eventTitle }}
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <li 
+                  v-for="(ele, key) in events.events"
+                  :key="key"
+                  style="padding: 20px 0px;">
+                  <a
+                    class="text-style"
+                    style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
+                    @click="getContent(key)">
+                    <div 
+                      :class="[selected==key? 'titleSelected':'']"
+                      class="width-events"
+                      style="">{{ ele.single.eventTitle }}
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
+      </div>
+      <div 
+        class="uk-flex uk-flex-column uk-flex-between width-col-2"
+        style="">
+      
         <div 
-          class="uk-flex uk-flex-column uk-flex-between width-col-2"
+          class="title uk-padding-large"
           style="">
-        
-          <div 
-            class="title uk-padding-large"
-            style="">
-            <h2 
-              v-if="events.events"
-              style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
-          </div>
+          <h2 
+            v-if="events.events"
+            style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+        </div>
 
-          <div class="uk-width-1-1 uk-padding-small uk-padding-remove-left">
-            <div >
-              <div 
-                v-if="events.events"
-                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
-                <ul 
-                  class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
-                  <li 
-                    v-for="(ele, key) in events.events[selected].single.eventImages"
-                    :key="key"
-                    class="padding">
-                    <img 
-                      :src="ele.singleEvent.singleEventImage"
-                      :class="[selected2==key? 'imgBorder':'']"
-                      style="border-radius: 20px; width: 250px;" 
-                      alt="..."
-                      @click="getImg(key,ele)">
-                  </li>
-                </ul>
-              </div>
+        <div class="uk-width-1-1 uk-padding-small uk-padding-remove-left">
+          <div >
+            <div 
+              v-if="events.events"
+              uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
+              <ul 
+                class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
+                <li 
+                  v-for="(ele, key) in events.events[selected].single.eventImages"
+                  :key="key"
+                  class="padding">
+                  <img 
+                    :src="ele.singleEvent.singleEventImage"
+                    :class="[selected2==key? 'imgBorder':'']"
+                    style="border-radius: 20px; width: 250px;" 
+                    alt="..."
+                    @click="getImg(key,ele)">
+                </li>
+              </ul>
             </div>
           </div>
         </div>
