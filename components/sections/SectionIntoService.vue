@@ -1,16 +1,20 @@
 <template>
   <div>
-    <img 
-      src="boton-flecha.png" 
-      alt="..."
-      class="uk-hidden@s"
-      style="position: relative;top: 0px;">
     <div 
-      class="uk-flex uk-flex-wrap"
-      style="padding-top: 30px;">
+      class="uk-flex uk-flex-wrap uk-padding-large@s uk-pading-remove-right uk-pading-remove-left uk-pading-remove-bottom"
+      style="">
+      <a
+        class="uk-hidden@s"
+        style="position: relative;top: 0px;width:15%;"
+        @click="remove">
+        <img 
+          src="boton-flecha.png" 
+          alt="..."
+          class="uk-hidden@s button-back">
+      </a>
       <h2 
         class="uk-hidden@s uk-padding-small"
-        style="color:white;width: 50%;margin: auto;font-weight: bold;">{{ service.singleServiceName }}</h2>
+        style="color:white;width: 50%;margin: auto;font-weight: bold;padding-top:20px;">{{ service.singleServiceName }}</h2>
       <div class="uk-width-1-2@m uk-width-1-1 uk-padding-large container2">
         <a 
           class="uk-visible@s"
@@ -39,8 +43,9 @@
           <div
             style="padding-top: 30px;">
             <a
-              class="button-service uk-text-uppercase" 
-              style="text-decoration: none;color:#303e48"
+              class="button-service uk-text-uppercase"
+              style="text-decoration: none;color:#303e48" 
+              @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)"
             >{{ service.singleServiceButton }}</a>
           </div>
         </div>
@@ -59,7 +64,9 @@
               </ul>
             </div>
           </div>
-          <a style="text-decoration:none; color:#314049;">
+          <a
+            style="text-decoration:none; color:#314049;"
+            @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
             <div class="button-service">
               {{ service.singleServiceButton }}
             </div>
@@ -76,6 +83,11 @@
 <script>
 import { mapGetters} from 'vuex'
 
+var UIkit
+
+if (process.browser) {
+  UIkit = require('uikit')
+}
 
 export default {
     data(){
@@ -97,8 +109,14 @@ export default {
       remove(){
         this.$router.app.$store.commit('SET_DATA_SERVICES','')
         console.log(this.content)
-      }
+      },
+    goTo (section, label) {
+      UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
+        //Validate screeen size
+        UIkit.scroll({offset: 80}).scrollTo(section)
+      })
     }
+  }
 }
 function wait(n) {
    return new Promise(function(resolve, reject) {
@@ -133,7 +151,7 @@ function wait(n) {
 .button-service{
  background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 35px 48px 44px 60px;
+  padding: 35px 93px 22px 65px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;

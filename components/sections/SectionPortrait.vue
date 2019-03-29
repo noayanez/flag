@@ -2,14 +2,13 @@
   <div 
     id="Portrait"
     class="uk-position-relative">
-    <div>
+    <div class="uk-height-1-1">
       <div
-        class="uk-position-relative uk-visible-toggle "
-        style=""
-      >
+        class="uk-position-relative uk-visible-toggle uk-visible@s"
+        style="">
         <ul
           class="uk-width-1-1"
-          style="width:100%; heigth:100%;padding-left: 0px !important; margin-bottom:0px; ">
+          style="width:100%; heigth:100%;padding-left: 0px !important; margin-bottom:0px;">
           <li 
             class="uk-height-1-1">
             <div class="uk-visible@s uk-height-1-1">
@@ -20,21 +19,18 @@
                 style="width:100%; heigth:100% background-size:cover;  background-position:50% 50%;"
                 class="video uk-height-1-1 uk-width-1-1 uk-height-1-1">
                 <source 
-                  src="/video1.mp4" 
+                  :src="portrait.video" 
                   type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
             <div
-              :style="`background-image: url(${portrait.img};`"
-              style="background-size:cover;background-position:50% 50%; width:100%; height:100%;"
-              class="uk-height-viewport uk-height-1-1 uk-hidden@s"/> 
-            <div
               class="uk-position-center-left uk-text-left uk-padding-large"
               style="color:#d5ecec">
+              
               <h1
                 uk-slideshow-parallax="x: 100,-100"
-                class="title-center uk-text-uppercase"
+                class="title-center uk-text-uppercase title-portrait"
                 style="color:white; font-weight: bold;">
                 {{ portrait.title }}
               </h1>
@@ -57,10 +53,43 @@
           </li>
         </ul>
       </div>
-      <div
-        v-if="false"
-        class="uk-position-bottom-center uk-position-small">
-        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"/>
+      <!-- View mobile -->
+      <div class="uk-position-relative uk-visible-toggle uk-hidden@s">
+        <div
+          :style="`background-image: url(${portrait.img};`"
+          style="background-size:cover;background-position:50% 50%; width:100%;"
+          class="uk-height-viewport uk-height-1-1 uk-hidden@s"/> 
+        <img 
+          src="/logo-principal.png"
+          width="50%" 
+          alt="..."
+          class="logo-style uk-hidden@s">
+        <div
+          class="uk-position-center-left uk-text-left uk-padding-large"
+          style="color:#d5ecec">
+              
+          <h1
+            uk-slideshow-parallax="x: 100,-100"
+            class="title-center uk-text-uppercase title-portrait"
+            style="color:white; font-weight: bold;">
+            {{ portrait.title }}
+          </h1>
+          <div 
+            v-if="portrait.buttons"
+            class="uk-height-1-1 buttons-conatiner"
+            style="padding-top: 45px; display: flex; flex-wrap:wrap;">
+            <a style="text-decoration:none; color:#314049;">
+              <div class="button-portrait uk-text-uppercase">
+                {{ portrait.buttons[0].btnText }}
+              </div>
+            </a>
+            <a style="text-decoration:none; color:#314049;">
+              <div class="button-portrait uk-text-uppercase">
+                {{ portrait.buttons[1].btnText }}
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -121,14 +150,31 @@ export default {
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 35px 70px 30px 70px;
+  padding: 38px 70px 44px 65px;
   text-decoration: none;
   color: #303e48;
+  font-weight: bold;
+}
+.button-portrait:hover{
+  background: url('/boton-2.png') no-repeat;
+  background-size: cover;
+  padding: 38px 70px 44px 65px;
+  text-decoration: none;
+  color: #faeb05;
   font-weight: bold;
 }
 @media (max-width: 960px) {
   .container-devices {
     height: 690px !important
+  }
+  .title-portrait{
+    margin-bottom: 0px;
+    font-size: 2rem;
+  }
+  .logo-style{
+    position: absolute;
+    top: 0;
+    left: 76px;
   }
 }
 @media (max-width: 420px){

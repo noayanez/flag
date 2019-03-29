@@ -8,16 +8,6 @@
         class=" uk-navbar-container uk-position-absolute uk-width-1-1  uk-navbar-center navStyle"
         style="z-index: 1000; height:120px"
         uk-navbar>
-        <!-- <div
-          class="uk-navbar-left">
-          <a
-            class="uk-navbar-item uk-logo"
-            @click="goTo('#Portrait')">
-            <img
-              :src="logo"
-              style="height:50px; width: 80px;"
-              alt="Logo"></a>
-        </div> -->
         <div class="uk-navbar-center uk-visible@l">
           <div 
             v-for="(section, key) in sections"
@@ -39,7 +29,11 @@
               v-else
               class="uk-navbar-item navItemStyle">
               <a
+                :class="[active == key ? 'subrayado':'leave']"
                 class="textElementsNav"
+                style="text-decoration:none"
+                @mouseover="overMouse(key)"
+                @mouseleave="leaveMouse()"
                 @click="goTo(`${section.url}`, `${section.name}`)">{{ section.name }}</a>
             </div>
 
@@ -105,23 +99,14 @@ export default {
   data(){
     return{
       sections:[
-        {name:'EXPERIENCIAS MEMORABLES', url:'#Portrait'},
-        {name:'MARKETING Y EVENTOS', url:'#SectioEvents'},
+        {name:'EXPERIENCIAS MEMORABLES', url:'#Events'},
+        {name:'MARKETING Y EVENTOS', url:'#Services'},
         {name:"logo", src:"/logo-principal.png"},
-        {name:'¿POR QUÉ ELEGIRNOS?', url:'#SectionProducts'},
-        {name:'CONTÁCTANOS', url:'#Services'}
-        // {name:'Clientes', url:'#SectionOpinions'}
-        // {name:'Section 8', url:'#Section8'}
+        {name:'¿POR QUÉ ELEGIRNOS?', url:'#Pilars'},
+        {name:'CONTÁCTANOS', url:'#Contact'}
       ],
-      // sections2:[
-      //   // {name:'EXPERIENCIAS MEMORABLES', url:'#Portrait'},
-      //   // {name:'MARKETING Y EVENTOS', url:'#SectionUs'},
-      //   {name:'¿POR QUÉ ELEGIRNOS?', url:'#SectionProducts'},
-      //   {name:'CONTÁCTANOS', url:'#Services'}
-      //   // {name:'Clientes', url:'#SectionOpinions'}
-      //   // {name:'Section 8', url:'#Section8'}
-      // ],
-      logo:'logo-principal.png'
+      logo:'logo-principal.png',
+      active:''
     }
   },
   methods: {
@@ -145,7 +130,15 @@ export default {
       //   })
       // }
 
-    }
+    },
+    overMouse(key){
+        this.active = key
+      },
+      leaveMouse(){
+        this.active = null
+        console.log(this.active);
+        
+      }
   }
 }
 </script>
@@ -155,6 +148,18 @@ export default {
     /* background: rgba(0,0,0,0.5) !important; */
     background-color: transparent !important;
   }
+   /* .subrayado{
+     position: absolute;
+     z-index: -1;
+     transform: translateX(-60px);
+     border-bottom: 2px solid black;
+} */
+  /* a.textElementsNav{
+    transition: all .35s ease-in-out;
+  } */
+  .leave{
+    border:none
+  }
 
   .navItemStyle {
     margin-right: 1em;
@@ -162,7 +167,7 @@ export default {
 
   .textElementsNav {
     font-weight: bolder;
-    color: darkcyan !important;
+    color: white !important;
     font-size: 17.5px;
   }
   .navOffCanvasElementStyle {

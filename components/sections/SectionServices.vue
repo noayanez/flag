@@ -1,8 +1,8 @@
 <template>
   <div 
     id="Events"
-    style="background-image: url(/tramas.png);background-size:cover;background-position:50% 50%; width:100%; heigth:100%; background-color:#303e48;"
-    class=" uk-height-1-1">
+    style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; heigth:100%; background-color:#303e48;background-blend-mode: overlay;"
+    class="uk-height-1-1">
     <div v-if="content == ''">
       <div
         class="uk-padding titleServices" 
@@ -24,7 +24,7 @@
             style="text-decoration: none;color:#303e48"
             @click="getContent(ele.singleService.singleServiceName)">
             <div 
-              class="button-portrait"
+              class="button-services"
               style="">
               {{ ele.singleService.singleServiceName }} </div></a>
         </div>
@@ -107,7 +107,8 @@ export default {
                   singleServiceName: el.singleService.singleServiceName,
                   serviceIntoImage: el.singleService.serviceIntoImage,
                   singleServiceItems: el.singleService.singleServiceItems,
-                  singleServiceButton: el.singleService.singleServiceButton
+                  singleServiceButton: el.singleService.singleServiceButton,
+                  singleServiceRedirect: el.singleService.singleServiceRedirect
                 }
               );
 
@@ -128,7 +129,8 @@ function wait(n) {
 }
 </script>
 
-<style scope>
+<style>
+
 .img-services{
     border-radius: 20px;
 }
@@ -136,10 +138,10 @@ function wait(n) {
     font-weight: bold;
     color: white;
 }
-.button-portrait{
+.button-services{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 25px 33px 10px 33px;
+  padding: 35px 71px 22px 54px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
@@ -184,21 +186,8 @@ function wait(n) {
     width: 90%; 
     margin:auto;
 }
-.button-portrait{
-  padding: 25px 45px 18px 45px;
-}
 }
 @media (max-width: 420px){
-  .button-portrait{
-    background: url('/boton-1.png') no-repeat;
-    background-size: cover;
-    padding: 25px 30px;
-    text-decoration: none;
-    color: #303e48;
-    font-weight: bold;
-    width:50%;
-    margin:auto
-}
   .containerImage{
     min-width: 250px;
  }
@@ -211,9 +200,15 @@ function wait(n) {
  .uk-dotnav > * > * {
     width: 15px;
     height: 15px;
+ }
+
 }
 .uk-dotnav > .uk-active > * {
-  background-color: #faeb00;
+  background-color: #faeb00 !important;
   }
-}
+  .uk-dotnav > * > *{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #faeb00 ;
+  }
 </style>

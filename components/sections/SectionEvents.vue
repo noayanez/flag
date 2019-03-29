@@ -1,73 +1,82 @@
 <template>
-  <div id="Services">
+  <div 
+    id="Services"
+  >
     <div 
-      :style="{'background-image':'url(' +imgSelected +')'}"
-      class="uk-background-cover uk-flex uk-height-viewport uk-visible@s">
+      class="uk-animation-toggle" 
+      tabindex="0">
       <div 
-        class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom "
-        style="width: 40%">
+        :style="{'background-image':'url(' +imgSelected +')'}"
+        class="uk-background-cover uk-flex uk-height-viewport uk-visible@s padding-events uk-animation-fade">
         <div 
-          class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
-          <div style="border-right: 3px solid #faeb05; width:60%;">
+          class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
+          style="">
+          <div 
+            class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
+            <div class="container-into-col-1">
 
-            <p 
-              class="text-style description"
-              style="">
-              {{ events.mainDescription }}
-            </p>
-            <div 
-              v-if="events.events">
-              <ul class="uk-nav">
-                <li 
-                  v-for="(ele, key) in events.events"
-                  :key="key"
-                  style="padding: 30px 0">
-                  <a 
-                    :class="[selected==key? 'title-color':'']"
-                    class="text-style"
-                    style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
-                    @click="getContent(key)">
-                    <div 
-                      :class="[selected==key? 'titleSelected':'']"
-                      style="width:50%;">{{ ele.single.eventTitle }}
-                    </div>
-                  </a>
-                </li>
-              </ul>
+              <p 
+                class="text-style description"
+                style="">
+                {{ events.mainDescription }}
+              </p>
+              <div 
+                v-if="events.events">
+                <ul 
+                  class="uk-nav"
+                  style="">
+                  <li 
+                    v-for="(ele, key) in events.events"
+                    :key="key"
+                    style="padding: 20px 0px;">
+                    <a
+                      class="text-style"
+                      style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
+                      @click="getContent(key)">
+                      <div 
+                        :class="[selected==key? 'titleSelected':'']"
+                        class="width-events"
+                        style="">{{ ele.single.eventTitle }}
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div 
-        class="uk-flex uk-flex-column uk-flex-between"
-        style="width:60%">
-      
         <div 
-          class="title uk-padding-large"
+          class="uk-flex uk-flex-column uk-flex-between width-col-2"
           style="">
-          <h2 
-            v-if="events.events"
-            style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
-        </div>
-
-        <div class="uk-width-1-1 uk-padding-small uk-padding-remove-left">
-          <div >
-            <div 
+        
+          <div 
+            class="title uk-padding-large"
+            style="">
+            <h2 
               v-if="events.events"
-              uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
-              <ul 
-                class="uk-slider-items uk-child-width-1-3@s ">
-                <li 
-                  v-for="(ele, key) in events.events[selected].single.eventImages"
-                  :key="key">
-                  <img 
-                    :src="ele.singleEvent.singleEventImage"
-                    :class="[selected2==key? 'imgBorder':'']"
-                    style="border-radius: 20px; width: 250px;" 
-                    alt="..."
-                    @click="getImg(key,ele)">
-                </li>
-              </ul>
+              style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+          </div>
+
+          <div class="uk-width-1-1 uk-padding-small uk-padding-remove-left">
+            <div >
+              <div 
+                v-if="events.events"
+                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
+                <ul 
+                  class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
+                  <li 
+                    v-for="(ele, key) in events.events[selected].single.eventImages"
+                    :key="key"
+                    class="padding">
+                    <img 
+                      :src="ele.singleEvent.singleEventImage"
+                      :class="[selected2==key? 'imgBorder':'']"
+                      style="border-radius: 20px; width: 250px;" 
+                      alt="..."
+                      @click="getImg(key,ele)">
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -75,7 +84,9 @@
     </div>
 
     <!-- View mobile -->
-    <div class="uk-hidden@s">
+    <div 
+      class="uk-hidden@s"
+      style="">
       <div 
         class="uk-padding"
         style="background-color:#101010">
@@ -99,7 +110,7 @@
       </div>
       <div 
         v-if="events.events"
-        uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000; min-height: 300; max-height: 600">
+        uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 300; max-height: 600">
         <div 
           class="uk-position-relative uk-visible-toggle uk-light" 
           tabindex="-1">
@@ -114,22 +125,46 @@
             </li>
           </ul>
           <a 
-            class="uk-position-center-left uk-position-small uk-hidden-hover" 
+            class="uk-position-center-left uk-position-small"
+            style="padding-left:4%"
             href="#" 
-            uk-slidenav-previous 
-            uk-slideshow-item="previous"/>
+            uk-slideshow-item="previous">
+            <svg 
+              width="35px" 
+              height="35px" 
+              viewBox="0 0 25 40" 
+              xmlns="http://www.w3.org/2000/svg">
+              <polyline 
+                fill="none" 
+                stroke="#faeb05" 
+                stroke-width="2" 
+                points="20.527,1.5 2,20.024 20.525,38.547 "/>
+            </svg>
+          </a>
           <a 
-            class="uk-position-center-right uk-position-small uk-hidden-hover" 
+            class="uk-position-center-right uk-position-small" 
+            style="padding-right:4%"
             href="#" 
-            uk-slidenav-next 
-            uk-slideshow-item="next"/>
+            uk-slideshow-item="next">
+            <svg 
+              width="35px" 
+              height="35px" 
+              viewBox="0 0 25 40" 
+              xmlns="http://www.w3.org/2000/svg">
+              <polyline 
+                fill="none" 
+                stroke="#faeb05" 
+                stroke-width="2" 
+                points="4.002,38.547 22.527,20.024 4,1.5 "/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script scoped>
 
 export default {
   props: {
@@ -176,7 +211,17 @@ export default {
 
 <style scoped>
   .text-style{
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .container-into-col-1{
+    border-right: 3px solid #faeb05;
+    width:60%;
+  }
+  .width-events{
+    width:50%;
+  }
+  .padding-events{
+    padding-bottom:40px;
   }
 .titleSelected{
   background: url('/boton-1.png') no-repeat;
@@ -184,8 +229,6 @@ export default {
   background-size:cover;
   text-align: center;
   padding: 26px 5px 30px 2px;
-}
-.title-color{
   font-weight: bold;
   color: #303e48 !important;
 }
@@ -201,28 +244,63 @@ export default {
     background-size:cover; 
     background-position:50% 50%;
 }
+.width-col-1{
+  width: 40%;
+}
+.width-col-2{
+  width: 60%;
+}
 
 
 
-
-@media (min-width: 768px) and (max-width: 1025px){
-  .description{ 
+@media (min-width: 769px) and (max-width: 1025px){
+  .titleSelected{
+    padding: 25px 0px 32px 0px;
+}
+  .width-col-1{
+    width: 30%;
+}
+  .width-col-2{
+    width: 70%;
+}
+.container-into-col-1{
+    width:100%;
+  }
+  .padding{
+    padding: 10px;
+  }
+  .width-events{
+    width:75%;
+  }
+  
+}
+@media (min-width: 469px) and (max-width: 768px){
+    .description{ 
     width: 100%;
 }
-.titleSelected{
-        padding: 23px 21px 20px 23px;
-}
+  .width-events{
+    width:95%;
+  }
+  .container-into-col-1{
+    width:75%;
+  }
 }
 @media (max-width: 468px){
   .select-style{
     display: block;
     font-size: 18px;
     padding: 1.5em 2em 1.5em 2.5em;
-    background-color: yellow !important;
+    background-color: #faeb05 !important;
     border-radius: 6px;
     color: black;
     font-weight: bold;
     text-align-last: center;
+}
+
+}
+@media (max-width: 320px){
+  .select-style{
+       padding: 1.5em 0em 1.5em 1.5em;
 }
 
 }

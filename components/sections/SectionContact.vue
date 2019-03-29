@@ -51,10 +51,11 @@
                     placeholder="Mensaje:"/>
                 </div> 
                 <div style="padding-top: 10px;padding-bottom: 20px;">
-                  <input 
-                    type="checkbox" 
-                    name="prot" 
-                    value="protect"
+                  <input
+                    v-model="form.proteccion"  
+                    type="checkbox"
+                    name="proteccion" 
+                    value="proteccion"
                     style="border:2px solid #faeb05"><span style="color:#faeb05">Protección de datos personales</span>
                 </div>
               </div>
@@ -153,6 +154,15 @@
             <span style="color:#faeb05">THE FLAGS GROUP</span>
           </div>
         </div>
+        <div
+          class="uk-padding-large copy-right" 
+          style="">
+          <h5
+            style="color:#a09d9c">Powered by <a 
+              href="https://prodequa.com/" 
+              target="_blank"
+              style="text-decoration:none;color:white !important;"> Prodequa &reg;</a> </h5>
+        </div>
       </div>
     </div>
   </div>
@@ -181,6 +191,13 @@ export default {
 </script>
 
  <style lang="scss" scoped>
+.copy-right{
+    text-align: center;
+    color:white;
+    padding-top: 30px;
+   position:relative;
+   top:100px;
+}
 
 .container-footer-contact{
   padding-left:50px;
@@ -270,7 +287,7 @@ export default {
   }
   @media(max-width: 780px){
     .container-footer-contact{
-      width: 100%;
+      width: 90%;
     
     }
   }
@@ -278,6 +295,9 @@ export default {
   @media (max-width: 640px) {
     .title-style {
       font-size: 18px;
+    }
+    .copy-right{
+      top:20px;
     }
 
     .container-subtitle{
