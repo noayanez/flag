@@ -1,6 +1,7 @@
 <template>
   <div 
-    id="Services"
+    id="Events"
+    class=""
   >
     <div 
       :style="{'background-image':'url(' +imgSelected +')'}"
@@ -11,7 +12,6 @@
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
           <div class="container-into-col-1">
-
             <p 
               class="text-style description"
               style="">
@@ -81,79 +81,83 @@
 
     <!-- View mobile -->
     <div 
-      class="uk-hidden@s"
+      class=" uk-hidden@s"
       style="">
       <div 
-        class="uk-padding"
-        style="background-color:#101010">
+        class="uk-height-1-1"
+        style="">
         <div 
-          v-if="events.events" 
-          style="text-align:center">
-          <select
-            v-model="selected"
-            class="select-style">
-            <option 
-              v-for="(ele, key) in events.events"
-              :key="key"
-              :value="key">{{ ele.single.eventTitle }}</option>
-          </select>
+          class="uk-padding"
+          style="background-color:#101010">
+          <div 
+            v-if="events.events" 
+            style="text-align:center">
+            <select
+              v-model="selected"
+              class="select-style">
+              <option 
+                v-for="(ele, key) in events.events"
+                :key="key"
+                :value="key">{{ ele.single.eventTitle }}</option>
+            </select>
+          </div>
+          <p 
+            class=""
+            style="color:white; text-align:center;">
+            {{ events.mainDescription }}
+          </p>
         </div>
-        <p 
-          class=""
-          style="color:white; text-align:center;">
-          {{ events.mainDescription }}
-        </p>
-      </div>
-      <div 
-        v-if="events.events"
-        uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 300; max-height: 600">
         <div 
-          class="uk-position-relative uk-visible-toggle uk-light" 
-          tabindex="-1">
-          <ul class="uk-slideshow-items">
-            <li 
-              v-for="(ele, key) in events.events[selected].single.eventImages"
-              :key="key">
-              <div 
-                :style="`background-image: url(${ele.singleEvent.singleEventImage});`"
-                style=""
-                class="uk-height-1-1 uk-padding uk-align-center container-slider-events"/>
-            </li>
-          </ul>
-          <a 
-            class="uk-position-center-left uk-position-small"
-            style="padding-left:4%"
-            href="#" 
-            uk-slideshow-item="previous">
-            <svg 
-              width="35px" 
-              height="35px" 
-              viewBox="0 0 25 40" 
-              xmlns="http://www.w3.org/2000/svg">
-              <polyline 
-                fill="none" 
-                stroke="#faeb05" 
-                stroke-width="2" 
-                points="20.527,1.5 2,20.024 20.525,38.547 "/>
-            </svg>
-          </a>
-          <a 
-            class="uk-position-center-right uk-position-small" 
-            style="padding-right:4%"
-            href="#" 
-            uk-slideshow-item="next">
-            <svg 
-              width="35px" 
-              height="35px" 
-              viewBox="0 0 25 40" 
-              xmlns="http://www.w3.org/2000/svg">
-              <polyline 
-                fill="none" 
-                stroke="#faeb05" 
-                stroke-width="2" 
-                points="4.002,38.547 22.527,20.024 4,1.5 "/>
-            </svg>
-          </a>
+          v-if="events.events"
+          uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 300; max-height: 600">
+          <div 
+            class="uk-position-relative uk-visible-toggle uk-light" 
+            tabindex="-1">
+            <ul class="uk-slideshow-items">
+              <li 
+                v-for="(ele, key) in events.events[selected].single.eventImages"
+                :key="key">
+                <div 
+                  :style="`background-image: url(${ele.singleEvent.singleEventImage});`"
+                  style="background-size:cover; background-position: 50% 50%"
+                  class="uk-height-1-1 uk-padding uk-align-center container-slider-events "/>
+              </li>
+            </ul>
+            <a 
+              class="uk-position-center-left uk-position-small"
+              style="padding-left:4%"
+              href="#" 
+              uk-slideshow-item="previous">
+              <svg 
+                width="35px" 
+                height="35px" 
+                viewBox="0 0 25 40" 
+                xmlns="http://www.w3.org/2000/svg">
+                <polyline 
+                  fill="none" 
+                  stroke="#faeb05" 
+                  stroke-width="2" 
+                  points="20.527,1.5 2,20.024 20.525,38.547 "/>
+              </svg>
+            </a>
+            <a 
+              class="uk-position-center-right uk-position-small" 
+              style="padding-right:4%"
+              href="#" 
+              uk-slideshow-item="next">
+              <svg 
+                width="35px" 
+                height="35px" 
+                viewBox="0 0 25 40" 
+                xmlns="http://www.w3.org/2000/svg">
+                <polyline 
+                  fill="none" 
+                  stroke="#faeb05" 
+                  stroke-width="2" 
+                  points="4.002,38.547 22.527,20.024 4,1.5 "/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -285,7 +289,7 @@ export default {
   .select-style{
     display: block;
     font-size: 18px;
-    padding: 1.5em 2em 1.5em 2.5em;
+    padding: 1.5em 2em 1.5em 1.5em;
     background-color: #faeb05 !important;
     border-radius: 6px;
     color: black;

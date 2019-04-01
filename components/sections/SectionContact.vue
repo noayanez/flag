@@ -1,7 +1,7 @@
 <template>
   <div 
     id="Contact"
-    class="uk-flex uk-flex-wrap"
+    class="uk-flex uk-flex-wrap uk-height-viewport"
     style="background-image: url(/manchas.png);background-color: black;opacity:0.9;">
     <div
       class="uk-flex uk-flex uk-width-1-2@s uk-width-1-1 container-section-contact"
@@ -60,6 +60,7 @@
                 </div>
               </div>
               <a
+                class="uk-padding-remove-left"
                 style="text-decoration: none;color:#303e48; margin:auto">
                 <div 
                   class="button-portrait uk-text-uppercase"

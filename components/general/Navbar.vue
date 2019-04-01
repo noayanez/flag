@@ -27,14 +27,11 @@
             </div>
             <div
               v-else
-              class="uk-navbar-item navItemStyle">
+              class="uk-navbar-item navItemStyle ">
               <a
-                :class="[active == key ? 'subrayado':'leave']"
-                class="textElementsNav"
+                class="textElementsNav navBarStyle uk-position-relative"
                 style="text-decoration:none"
-                @mouseover="overMouse(key)"
-                @mouseleave="leaveMouse()"
-                @click="goTo(`${section.url}`, `${section.name}`)">{{ section.name }}</a>
+                @click="goTo(`${section.url}`, `${section.name}`)"><span>{{ section.name }}</span></a>
             </div>
 
           </div>
@@ -105,10 +102,9 @@ export default {
         {name:'¿POR QUÉ ELEGIRNOS?', url:'#Pilars'},
         {name:'CONTÁCTANOS', url:'#Contact'}
       ],
-      logo:'logo-principal.png',
-      active:''
+      logo:'logo-principal.png'
     }
-  },
+  }, 
   methods: {
     goTo (section, label) {
 
@@ -130,15 +126,7 @@ export default {
       //   })
       // }
 
-    },
-    overMouse(key){
-        this.active = key
-      },
-      leaveMouse(){
-        this.active = null
-        console.log(this.active);
-        
-      }
+    }
   }
 }
 </script>
@@ -148,19 +136,20 @@ export default {
     /* background: rgba(0,0,0,0.5) !important; */
     background-color: transparent !important;
   }
-   /* .subrayado{
-     position: absolute;
-     z-index: -1;
-     transform: translateX(-60px);
-     border-bottom: 2px solid black;
-} */
-  /* a.textElementsNav{
-    transition: all .35s ease-in-out;
-  } */
-  .leave{
-    border:none
-  }
 
+  .navBarStyle > span::after {
+    transition: width 0.4s;
+    position: absolute;
+    height: 2px;
+    width: 0%;
+    left: 0;
+    top: 110%;
+    content: '';
+    background-color: #faeb05;
+  }
+  .navBarStyle:hover > span::after {
+    width: 100%;
+}
   .navItemStyle {
     margin-right: 1em;
   }

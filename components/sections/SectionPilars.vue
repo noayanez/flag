@@ -28,12 +28,15 @@
         <div
           class="uk-padding-small"
           style="border-radius: 20px; color: black;">
-          <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s">
+          <div 
+            :data-aos-duration="parseInt(`${(key)*2000}`)"
+            data-aos="fade-down"
+            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s duration">
             <div
               :style="`background-image: url(${section.singlePilar.singlePilarImage};`"
               style="background-size:cover; background-position: 50% 50%;"
-              class="uk-height-1-1 uk-padding uk-align-center container-image"/>
-            <div 
+              class="uk-height-1-1 uk-padding uk-align-center container-image"/>  
+            <div   
               class="uk-width-4-5 uk-text-center">
               <div style="color:white">
                 {{ section.singlePilar.singlePilarTitle }}
@@ -85,7 +88,9 @@
 </template>
 
 <script>
-
+// library for animate
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export default {
   props:{
      pilars:{
@@ -96,13 +101,54 @@ export default {
     }
   },
   data(){
-    return{
+    return{ 
+      effect: false
     }
-  }
+  },
+  async mounted() {
+    // Use it just when you want the effect depends on the first section after the portrait (100vh)
+    const html = document.querySelector('html')
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (html.scrollTop >= 2.2 * window.innerHeight) {
+          console.log('entro');
+          if (this.effect) return
+          this.effect = true
+        } else {
+          this.effect = false
+        }
+      },
+      false
+    )
+    AOS.init();
+  },
 }
 </script>
 
 <style scoped>
+  .duration[data-v-e55b8b24]{
+    transition-duration: 4500ms;
+  }
+  /* .normal {
+    opacity: 0;
+  }
+  
+  .effect{
+    opacity: 1;
+    animation-name: showImg;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 3s;
+  }
+  @keyframes showImg {
+    0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+  } */
   .imageContainer{
     background-position:50% 50%;
     height: 160px;
@@ -127,7 +173,7 @@ export default {
   .container-slider{
     background-size:cover; 
     background-position:50% 50%; 
-    height: 45vh;
+    height: 48vh;
     width: 70%;
     border-radius: 30px;
 }

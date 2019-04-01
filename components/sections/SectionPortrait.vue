@@ -19,7 +19,7 @@
                 style="width:100%; heigth:100% background-size:cover;  background-position:50% 50%;"
                 class="video uk-height-1-1 uk-width-1-1 uk-height-1-1">
                 <source 
-                  :src="portrait.video" 
+                  src="/video1.mp4" 
                   type="video/mp4">
                 Your browser does not support the video tag.
               </video>
