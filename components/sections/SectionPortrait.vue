@@ -190,5 +190,9 @@ export default {
 .title-center{
       text-align: center;
 }
+.title-portrait{
+    padding-top: 60px;
+  }
+
 }
 </style>

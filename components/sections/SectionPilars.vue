@@ -29,9 +29,9 @@
           class="uk-padding-small"
           style="border-radius: 20px; color: black;">
           <div 
-            :data-aos-duration="parseInt(`${(key)*2000}`)"
+            :class="key==0?'duration1':key==1?'duration2':'duration3'"
             data-aos="fade-down"
-            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s duration">
+            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s opacity-in">
             <div
               :style="`background-image: url(${section.singlePilar.singlePilarImage};`"
               style="background-size:cover; background-position: 50% 50%;"
@@ -127,28 +127,38 @@ export default {
 </script>
 
 <style scoped>
-  .duration[data-v-e55b8b24]{
-    transition-duration: 4500ms;
+  .duration1[data-v-e55b8b24]{
+    transition-duration: 1200ms;
   }
-  /* .normal {
-    opacity: 0;
+  .duration2[data-v-e55b8b24]{
+    transition-duration: 3200ms;
   }
-  
-  .effect{
+  .duration3[data-v-e55b8b24]{
+    transition-duration: 4200ms;
+  }
+  .opacity-in {
     opacity: 1;
-    animation-name: showImg;
+    animation-name: fadeInOpacity;
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
-    animation-duration: 3s;
+    animation-duration: 4.2s;
   }
-  @keyframes showImg {
-    0% {
+
+@keyframes fadeInOpacity {
+	0% {
 		opacity: 0;
 	}
+  50%{
+    opacity: 0.5;
+  }
+  75%{
+    opacity: 0.75;
+  }
 	100% {
 		opacity: 1;
 	}
-  } */
+}
+
   .imageContainer{
     background-position:50% 50%;
     height: 160px;
@@ -166,8 +176,6 @@ export default {
     background-position:50% 50%;
     height: 160px;
     width: 160px;
-    /* border:4px solid #e41c43;
-    background-color:#e41c43; */
     background-size:75%;
   }
   .container-slider{

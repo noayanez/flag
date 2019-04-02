@@ -5,7 +5,7 @@
   >
     <div 
       :style="{'background-image':'url(' +imgSelected +')'}"
-      class="uk-background-cover uk-flex uk-height-viewport uk-visible@s padding-events">
+      class="uk-background-cover uk-flex uk-visible@m padding-events uk-height-viewport">
       <div 
         class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
         style="">
@@ -81,7 +81,7 @@
 
     <!-- View mobile -->
     <div 
-      class=" uk-hidden@s"
+      class=" uk-hidden@m"
       style="">
       <div 
         class="uk-height-1-1"
@@ -272,6 +272,9 @@ export default {
   .width-events{
     width:75%;
   }
+  .description{
+    width: 90%;
+}
   
 }
 @media (min-width: 469px) and (max-width: 768px){

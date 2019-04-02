@@ -1,7 +1,7 @@
 <template>
   <div 
     id="Contact"
-    class="uk-flex uk-flex-wrap uk-height-viewport"
+    class="uk-flex uk-flex-wrap uk-height-1-1"
     style="background-image: url(/manchas.png);background-color: black;opacity:0.9;">
     <div
       class="uk-flex uk-flex uk-width-1-2@s uk-width-1-1 container-section-contact"
@@ -10,10 +10,12 @@
         class="background-contact"
         style="padding-top:30px;padding-bottom: 40px;">
         <h2
-          class="uk-text-uppercase"
-          style="text-align:center; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
+          class="uk-text-uppercase title-contact-style"
+          style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
 
-        <h4 style="text-align:left;color:white; width: 80%;margin:auto">Completa el formulario y comencemos a crear nuevas experiencias</h4>
+        <h4 
+          class="description-contact" 
+          style="text-align:left;color:white;">Completa el formulario y comencemos a crear nuevas experiencias</h4>
         <div class="uk-width-1-1">
           <div class="uk-width-1-1">
             <form 
@@ -29,14 +31,6 @@
                     placeholder="Nombres">
                 </div>
                 <div class="container-input">
-                  <input
-                    v-model="form.email"
-                    class="uk-input input-style" 
-                    type="text"
-                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
-                    placeholder="Correo:">
-                </div>
-                <div class="container-input">
                   <input 
                     v-model="form.phone"
                     class="uk-input input-style" 
@@ -45,12 +39,25 @@
                     placeholder="Celular:">
                 </div>
                 <div class="container-input">
+                  <input
+                    v-model="form.email"
+                    class="uk-input input-style" 
+                    type="text"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+                    placeholder="Correo:">
+                </div>
+                <div class="container-input">
                   <textarea
                     v-model="form.message"
                     class="uk-textarea text-area-style"
                     placeholder="Mensaje:"/>
+                  <textarea
+                    v-model="form.message2"
+                    class="uk-textarea text-area-style"/>
                 </div> 
-                <div style="padding-top: 10px;padding-bottom: 20px;">
+                <div 
+                  class="width-container"
+                  style="padding-top: 10px;padding-bottom: 48px;">
                   <input
                     v-model="form.proteccion"  
                     type="checkbox"
@@ -72,29 +79,36 @@
       </div>
     </div>
     <div
-      style="background-image: url(foto-footer.png);background-position: 50% 50%;background-size: cover;display: flex; justify-content: center; align-items:center;"
-      class="uk-width-1-2@m uk-height-1-1 uk-padding  containerImgeContact">
+      style="background-image: url(foto-footer.png);"
+      class="uk-width-1-2@s uk-height-1-1 uk-padding  containerImgeContact">
       <div 
         class="uk-width-1-1"
         style="">
         <div
           class="container-footer-contact" 
           style="padding-bottom: 60px;">
-          <h2 
-            class="uk-text-uppercase"
-            style="color: white;">CONTÁCTANOS</h2>
-          <div class="padding-bottom">
-            <a 
-              href=""
-              class="padding-right">
-              <img 
-                width="10%"
-                src="/ubicación.png" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05">Alcanfores 495 of 608 Miraflores</span>
+          <div 
+            class="padding-bottom">
+            <h2 
+              data-aos="fade-down"
+              class="uk-text-uppercase"
+              style="color: white;">CONTÁCTANOS</h2>
+            <div 
+              data-aos="fade-down">
+              <a 
+                href=""
+                class="padding-right">
+                <img 
+                  width="10%"
+                  src="/ubicación.png" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05">Alcanfores 495 of 608 Miraflores</span>
+            </div>
           </div>
-          <div class="padding-bottom">
+          <div 
+            data-aos="fade-down"
+            class="padding-bottom">
             <a 
               href=""
               class="padding-right">
@@ -105,7 +119,9 @@
             </a>
             <span style="color:#faeb05">marketing@flagsgroup.net</span>
           </div>
-          <div class="padding-bottom">
+          <div 
+            data-aos="fade-down"
+            class="padding-bottom">
             <a 
               href=""
               class="padding-right">
@@ -118,10 +134,13 @@
           </div>
         </div>
         <div
+          data-aos="fade-down"
           class="container-footer-contact" 
           style="">
           <h2 style="color:white">SÍGUENOS</h2>
-          <div class="padding-bottom">
+          <div 
+            data-aos="fade-down"
+            class="padding-bottom">
             <a 
               href=""
               class="padding-right" >
@@ -132,7 +151,9 @@
             </a>
             <span style="color:#faeb05"> THE FLAGS GROUP</span>
           </div>
-          <div class="padding-bottom">
+          <div 
+            data-aos="fade-down"
+            class="padding-bottom">
             <a 
               href=""
               class="padding-right" >
@@ -143,7 +164,9 @@
             </a>
             <span style="color:#faeb05"> THE FLAGS GROUP</span>
           </div>
-          <div class="padding-bottom">
+          <div 
+            data-aos="fade-down"
+            class="padding-bottom">
             <a 
               href=""
               class="padding-right">
@@ -156,6 +179,7 @@
           </div>
         </div>
         <div
+          data-aos="fade-down"
           class="uk-padding-large copy-right" 
           style="">
           <h5
@@ -184,7 +208,13 @@ export default {
   data() {
     return {
       title: '¡CONTÁCTANOS!',
-      footer:{},
+      footer:[
+        {
+          imgUrl:"",
+          src:"",
+          title:""
+        }
+      ],
       form:{}
     }
   }
@@ -192,12 +222,25 @@ export default {
 </script>
 
  <style lang="scss" scoped>
+.description-contact{
+   width: 78%;
+   margin:auto;
+   padding-bottom:20px;
+}
+textarea{
+  resize: none;
+}
 .copy-right{
-    text-align: center;
-    color:white;
-    padding-top: 30px;
-   position:relative;
-   top:100px;
+  text-align: center;
+  color:white;
+  padding-top: 30px;
+  position: asolute;
+  top:100px;
+}
+.title-contact-style{
+  width: 80%;
+  margin: auto;
+  padding-bottom: 35px;
 }
 
 .container-footer-contact{
@@ -208,8 +251,8 @@ export default {
 .container-section-contact{
   padding-left:100px;
   padding-top: 65px;
-  padding-bottom: 65px;  
-  min-height: 80vh;
+  padding-bottom: 65px; 
+  height: 100%;
 }
 .background-contact{
     background-color: #414141;
@@ -225,12 +268,15 @@ export default {
   padding-bottom: 10px;
 }
 .containerImgeContact{
-    padding-top: 60px;
+    padding-top: 118px;
     min-width: 300px;
     background-size:cover; 
     background-position:50% 50%; 
-    height:90vh;
+    height:100vh;
     width: 50%;
+    display: flex; 
+    justify-content: center; 
+    align-items:center;
 }
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
@@ -255,9 +301,9 @@ export default {
   .input-style {
     font-size: 18px;
     color: white !important;
-    padding-left: 3%;
-    padding-right: 3%;
-    border-bottom: 3px solid white;
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+    border-bottom: 1.5px solid white;
     border-top: none;
     border-right: none;
     border-left: none;
@@ -267,12 +313,13 @@ export default {
   .text-area-style {
     padding-left: 3%;
     padding-right: 3%;
-    height: 50px !important;
-    border-bottom: 3px solid white;
+    height: 65px !important;
+    border-bottom: 1.5px solid white;
     border-top: none;
     border-right: none;
     border-left: none;
     background-color: transparent;
+    color:white;
   }
 
   .btn-more-information {
@@ -286,19 +333,28 @@ export default {
   .container-input {
     padding-top: 15px !important;
   }
-  @media(max-width: 780px){
-    .container-footer-contact{
-      width: 90%;
-    
-    }
+  @media(max-width:320px){
+    .containerImgeContact{
+      padding-top: 10px;
   }
-
+    .copy-right{
+      top:220px;
+  }
+  }
   @media (max-width: 640px) {
     .title-style {
       font-size: 18px;
     }
     .copy-right{
       top:20px;
+    }
+    .title-contact-style{
+      width: 100%;
+      padding-left: 13px;
+    }
+    .description-contact{
+      width: 90%;
+      padding-left: 13px;
     }
 
     .container-subtitle{
@@ -344,6 +400,12 @@ export default {
     }  
     .containerImgeContact{
       width: 100%;
+    }
+  }
+   @media(max-width: 780px){
+    .container-footer-contact{
+      width: 90%;
+    
     }
   }
 
@@ -396,12 +458,24 @@ export default {
   }
   @media (min-width: 960px) and (max-width: 1025px){
     .background-contact{
-      width: 100%;
+      width: 93%;
     }
     .container-section-contact{
       padding-left:30px; 
       padding-right: 20px;
     }
+    .container-input{
+      width: 85%;
+      margin:auto;
+    }
+    .width-container{
+      width: 85%;
+      margin: auto;
+    }
+    .containerImgeContact {
+        padding-top: 200px;
+        align-items: start;
+}
   }
   @media (min-width: 1025px) {
 
@@ -445,7 +519,7 @@ export default {
     }
 
     .text-area-style {
-      height: 60px !important;
+      height: 84px !important;
       font-size: 18px;
     }
     .container-section-contact{

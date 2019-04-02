@@ -3,10 +3,10 @@
     id="Services"
     class="uk-height-1-1 bkg-animate container-height"
     style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e48;background-blend-mode: overlay;">
-    <div>
+    <div class="padding-top">
       <div v-if="content == ''">
         <div
-          class="uk-padding titleServices" 
+          class="uk-padding@s titleServices" 
           style="text-align:center;">
           <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
         </div>
@@ -16,7 +16,7 @@
           <div
             v-for="(ele, key) in services.service"
             :key="key"
-            class="uk-width-1-2@m uk-width-1-1 uk-padding-small uk-height-1-1 uk-visible@s"
+            class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
             style="text-align:center; padding-bottom: 40px;">
             <div
               :style="`background-image: url(${ele.singleService.singleServiceImage};`"
@@ -31,10 +31,13 @@
           </div>
         </div>
         <div class="uk-hidden@s uk-height-viewport">
-          <div uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000; min-height: 490; max-height: 600">
+          <div 
+            uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
+            class="height">
             <div 
               class="uk-position-relative uk-visible-toggle">
-              <ul class="uk-slideshow-items">
+              <ul 
+                class="uk-slideshow-items slideshow-height">
                 <li 
                   v-for="(ele, key) in services.service"
                   :key="key">
@@ -137,6 +140,7 @@ function wait(n) {
    max-height:100vh;
    min-height:50vh;
 }
+
 .img-services{
     border-radius: 20px;
 }
@@ -144,10 +148,13 @@ function wait(n) {
     font-weight: bold;
     color: white;
 }
+.padding-top{
+  padding-top:170px;
+}
 .button-services{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 29px 64px 20px 65px;
+  padding: 36px 68px 20px 65px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
@@ -207,10 +214,23 @@ function wait(n) {
 .container-height{
    height:80vh;
 }
+.button-services{
+  padding: 25px 67px 16px 59px;
+}
 }
 @media (max-width: 769px){
    .container-height{
         height:100vh;
+    }
+    .padding-top{
+        padding-top: 171px;
+    }
+    .containerImage {
+      min-width: 327px;
+      height: 41vh;
+    }
+    .button-services{
+      padding: 25px 67px 16px 59px;
     }
 }
 @media (max-width: 420px){
@@ -227,8 +247,37 @@ function wait(n) {
     width: 15px;
     height: 15px;
  }
+ .uk-dotnav{
+   padding-top: 31px;
+ }
+ .slideshow-height{
+    min-height: 450px !important;
+}
+.padding-top{
+  padding-top:20px;
+}
 
 }
+@media (max-width: 360px){
+  .title-services{
+    padding: 14px
+  }
+  .slideshow-height{
+      min-height:417px !important;
+}
+}
+@media (max-width:320px){
+  .slideshow-height{
+      min-height:380px !important;
+}
+.title-services{
+    padding:0px !important;
+  }
+}
+
+
+
+
 .uk-dotnav > .uk-active > * {
   background-color: #faeb00 !important;
   }
