@@ -107,20 +107,20 @@ export default {
   },
   async mounted() {
     // Use it just when you want the effect depends on the first section after the portrait (100vh)
-    const html = document.querySelector('html')
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (html.scrollTop >= 2.2 * window.innerHeight) {
-          console.log('entro');
-          if (this.effect) return
-          this.effect = true
-        } else {
-          this.effect = false
-        }
-      },
-      false
-    )
+    // const html = document.querySelector('html')
+    // window.addEventListener(
+    //   'scroll',
+    //   () => {
+    //     if (html.scrollTop >= 2.2 * window.innerHeight) {
+    //       console.log('entro');
+    //       if (this.effect) return
+    //       this.effect = true
+    //     } else {
+    //       this.effect = false
+    //     }
+    //   },
+    //   false
+    // )
     AOS.init();
   },
 }

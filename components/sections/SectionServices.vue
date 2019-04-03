@@ -2,7 +2,7 @@
   <div 
     id="Services"
     class="uk-height-1-1 bkg-animate container-height"
-    style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e48;background-blend-mode: overlay;">
+    style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
     <div class="padding-top">
       <div v-if="content == ''">
         <div
@@ -257,6 +257,33 @@ function wait(n) {
   padding-top:20px;
 }
 
+}
+@media(min-width: 376px) and (max-width: 414px){
+  .slideshow-height{
+    min-height: 466px !important;
+}
+.titleServices{
+     padding-bottom: 15px !important;
+     padding-top: 20px !important;
+     padding-left: 20px;
+     padding-right: 20px;
+ }
+}
+
+@media(min-width: 361px) and (max-width: 375px){
+  .slideshow-height{
+    min-height: 470px !important;
+  }
+  .container-slider{
+    height: 50vh;
+    width: 84%;
+  }
+  .titleServices{
+     padding-bottom: 15px !important;
+     padding-bottom: 20px !important;
+      padding-left: 20px;
+     padding-right: 20px;
+ }
 }
 @media (max-width: 360px){
   .title-services{

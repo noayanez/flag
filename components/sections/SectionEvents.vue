@@ -1,10 +1,11 @@
 <template>
   <div 
     id="Events"
-    class=""
+    class="uk-animation-toggle"
   >
     <div 
       :style="{'background-image':'url(' +imgSelected +')'}"
+      style="transition: opacity 5s ease-in;"
       class="uk-background-cover uk-flex uk-visible@m padding-events uk-height-viewport">
       <div 
         class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
@@ -79,18 +80,18 @@
       </div>
     </div>
 
-    <!-- View mobile -->
     <div 
-      class=" uk-hidden@m"
-      style="">
+      class="uk-hidden@m uk-height-viewport"
+      style="display:flex; flex-direction:column">
       <div 
         class="uk-height-1-1"
         style="">
         <div 
-          class="uk-padding"
+          class="uk-padding height-component"
           style="background-color:#101010">
           <div 
-            v-if="events.events" 
+            v-if="events.events"
+            class="padding-select-left" 
             style="text-align:center">
             <select
               v-model="selected"
@@ -102,25 +103,29 @@
             </select>
           </div>
           <p 
-            class=""
-            style="color:white; text-align:center;">
+            class="description-style"
+            style="">
             {{ events.mainDescription }}
           </p>
         </div>
         <div 
           v-if="events.events"
-          uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 300; max-height: 600">
+          class="uk-height-1-1"
+          uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 350; max-height: 600">
           <div 
             class="uk-position-relative uk-visible-toggle uk-light" 
             tabindex="-1">
-            <ul class="uk-slideshow-items">
+            <ul class="uk-slideshow-items uk-height-1-1 ul-height">
               <li 
                 v-for="(ele, key) in events.events[selected].single.eventImages"
-                :key="key">
+                :key="key"
+                style="uk-height-1-1">
                 <div 
                   :style="`background-image: url(${ele.singleEvent.singleEventImage});`"
                   style="background-size:cover; background-position: 50% 50%"
-                  class="uk-height-1-1 uk-padding uk-align-center container-slider-events "/>
+                  class="uk-height-1-1 uk-padding uk-align-center container-slider-events ">
+                  <div style="text-align:center"><h3>{{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }}</h3></div>
+                </div>
               </li>
             </ul>
             <a 
@@ -182,6 +187,7 @@ export default {
       selected2:0,
       selected3:'',
       imgSelected:'foto1.png',
+      select:''
     }
   },
   mouted(){
@@ -204,12 +210,56 @@ export default {
     loading(){
       this.imgSelected = this.events.events[0].single.eventImages[0].singleEvent.singleEventImage
       this.selected3 = this.events.events[0].single.eventTitle
+      console.log(this.imgSelected)
     }
   }
 }
 </script>
 
 <style scoped>
+  @-webkit-keyframes fadeBackground { 
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+@keyframes fadeBackground { 
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+  .background-effect{
+     display: block;
+    -webkit-animation-name: fadeBackground;
+    -webkit-animation-duration: 3s;
+    animation-name: fadeIn;
+    animation-duration: 3s;
+  }
+
+
+ .select-style{
+    display: block;
+    font-size: 18px;
+    padding: 1.5em 2em 1.5em 1.5em;
+    background-color: #faeb05 !important;
+    border-radius: 6px;
+    color: black;
+    font-weight: bold;
+    text-align-last: center;
+}
+.description-style{
+  color:white; 
+  text-align:center;
+  font-size:20px;
+}
+
+
   .text-style{
     font-size: 16px;
   }
@@ -278,7 +328,7 @@ export default {
   
 }
 @media (min-width: 469px) and (max-width: 768px){
-    .description{ 
+  .description{ 
     width: 100%;
 }
   .width-events{
@@ -286,6 +336,18 @@ export default {
   }
   .container-into-col-1{
     width:75%;
+  }
+  .ul-height{
+    min-height: 659px !important;
+  }
+  .height-component{
+    padding-top: 110px;
+  }
+  .description-style{
+    font-size:24px;
+  }
+  .select-style{
+    margin: auto;
   }
 }
 @media (max-width: 468px){
@@ -300,6 +362,22 @@ export default {
     text-align-last: center;
 }
 
+}
+@media(min-width: 376px) and (max-width:417px){
+  .padding-select-left{
+    padding-left: 40px;
+  }
+  .ul-height{
+    min-height: 440px !important;
+  }
+}
+@media(min-width: 321px) and (width: 375px){
+  .padding-select-left{
+    padding-left: 26px;
+  }
+  .ul-height{
+    min-height: 530px !important;
+  }
 }
 @media (max-width: 320px){
   .select-style{
