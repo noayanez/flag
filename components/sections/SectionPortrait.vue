@@ -57,8 +57,9 @@
       <div class="uk-position-relative uk-visible-toggle uk-hidden@s">
         <div
           :style="`background-image: url(${portrait.img};`"
+          :class="device ? 'container-devices' : 'uk-height-viewport'"
           style="background-size:cover;background-position:50% 50%; width:100%;"
-          class="uk-height-viewport uk-height-1-1 uk-hidden@s"/> 
+          class="uk-height-1-1 uk-hidden@s"/> 
         <img 
           src="/logo-principal.png"
           width="50%" 
@@ -130,13 +131,13 @@ export default {
   },
   data(){
     return{
-      // portrait:{
-      //   videoUrl:'https://youtu.be/VoGwvVoaoCw',
-      //   title:'CREAMOS HISTORIAS DE ÉXITO',
-      //   btn1:'EXPERIENCIA',
-      //   btn2:'PRODUCTOS'
-
-      // }
+      device:''
+    }
+  },
+   mounted(){
+     var userAgent = navigator.userAgent || navigator.vendor || window.opera
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      this.device = true
     }
   }
 }
@@ -145,7 +146,7 @@ export default {
 <style scoped>
 
 .container-devices {
-  height: 100vh
+  height: 737px;
 }
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
@@ -164,9 +165,6 @@ export default {
   font-weight: bold;
 }
 @media (max-width: 960px) {
-  .container-devices {
-    height: 690px !important
-  }
   .title-portrait{
     margin-bottom: 0px;
     font-size: 2rem;

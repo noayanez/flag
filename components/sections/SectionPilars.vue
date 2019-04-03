@@ -19,6 +19,8 @@
 
     <div
       style="background-color:transparent;"
+      uk-flex
+      uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 450; repeat: true"
       class="uk-flex uk-flex-wrap uk-flex-center uk-margin-remove uk-visible@s">
       <!-- 80px = navbar size -->
       <div
@@ -29,9 +31,7 @@
           class="uk-padding-small"
           style="border-radius: 20px; color: black;">
           <div 
-            :class="key==0?'duration1':key==1?'duration2':'duration3'"
-            data-aos="fade-down"
-            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s opacity-in">
+            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-child-width-1-2 uk-child-width-1-1@s ">
             <div
               :style="`background-image: url(${section.singlePilar.singlePilarImage};`"
               style="background-size:cover; background-position: 50% 50%;"
@@ -51,6 +51,7 @@
     </div>
     <!-- View responsive -->
     <div 
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
       class="uk-hidden@s"
       style="">
       <div uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000; min-height: 450; max-height: 600">
@@ -88,9 +89,6 @@
 </template>
 
 <script>
-// library for animate
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 export default {
   props:{
      pilars:{
@@ -102,63 +100,24 @@ export default {
   },
   data(){
     return{ 
-      effect: false
+      effect: false,
+      device:''
     }
   },
-  async mounted() {
-    // Use it just when you want the effect depends on the first section after the portrait (100vh)
-    // const html = document.querySelector('html')
-    // window.addEventListener(
-    //   'scroll',
-    //   () => {
-    //     if (html.scrollTop >= 2.2 * window.innerHeight) {
-    //       console.log('entro');
-    //       if (this.effect) return
-    //       this.effect = true
-    //     } else {
-    //       this.effect = false
-    //     }
-    //   },
-    //   false
-    // )
-    AOS.init();
-  },
+  mounted(){
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        this.device = true
+      }
+  }
 }
 </script>
 
 <style scoped>
-  .duration1[data-v-e55b8b24]{
-    transition-duration: 1200ms;
-  }
-  .duration2[data-v-e55b8b24]{
-    transition-duration: 3200ms;
-  }
-  .duration3[data-v-e55b8b24]{
-    transition-duration: 4200ms;
-  }
-  .opacity-in {
-    opacity: 1;
-    animation-name: fadeInOpacity;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in;
-    animation-duration: 4.2s;
-  }
 
-@keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-  50%{
-    opacity: 0.5;
+  .container-devices {
+    height: 737px;
   }
-  75%{
-    opacity: 0.75;
-  }
-	100% {
-		opacity: 1;
-	}
-}
-
   .imageContainer{
     background-position:50% 50%;
     height: 160px;
@@ -179,9 +138,9 @@ export default {
     background-size:75%;
   }
   .container-slider{
-    background-size:cover; 
+    background-size:contain; 
+    background-repeat: no-repeat;
     background-position:50% 50%; 
-    height: 48vh;
     width: 70%;
     border-radius: 30px;
 }

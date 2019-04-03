@@ -1,7 +1,7 @@
 <template>
   <div 
     id="Services"
-    class="uk-height-1-1 bkg-animate container-height"
+    class="uk-height-1-1 bkg-animate container-height uk-position-relative"
     style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
     <div class="padding-top">
       <div v-if="content == ''">

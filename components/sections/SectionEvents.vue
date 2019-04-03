@@ -1,79 +1,85 @@
 <template>
   <div 
     id="Events"
-    class="uk-animation-toggle"
-  >
+    class="uk-position-relative uk-height-viewport">
     <div 
-      :style="{'background-image':'url(' +imgSelected +')'}"
-      style="transition: opacity 5s ease-in;"
-      class="uk-background-cover uk-flex uk-visible@m padding-events uk-height-viewport">
+      v-if="events.events">
       <div 
-        class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
-        style="">
+        v-for="(ele, key) in events.events[selected].single.eventImages"
+        :key="key + key"
+        :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
+        :class="(key)===selected2?'opacity-1':'opacity-0'"
+        class="uk-background-cover uk-flex uk-visible@m padding-events uk-height-viewport transition-images">
         <div 
-          class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
-          <div class="container-into-col-1">
-            <p 
-              class="text-style description"
-              style="">
-              {{ events.mainDescription }}
-            </p>
-            <div 
-              v-if="events.events">
-              <ul 
-                class="uk-nav"
+          class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
+          style="">
+          <div 
+            class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
+            <div class="container-into-col-1">
+              <p 
+                class="text-style description"
                 style="">
-                <li 
-                  v-for="(ele, key) in events.events"
-                  :key="key"
-                  style="padding: 20px 0px;">
-                  <a
-                    class="text-style"
-                    style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
-                    @click="getContent(key)">
-                    <div 
-                      :class="[selected==key? 'titleSelected':'']"
-                      class="width-events"
-                      style="">{{ ele.single.eventTitle }}
-                    </div>
-                  </a>
-                </li>
-              </ul>
+                {{ events.mainDescription }}
+              </p>
+              <div 
+                v-if="events.events">
+                <ul 
+                  class="uk-nav"
+                  style="">
+                  <li 
+                    v-for="(ele, key) in events.events"
+                    :key="key"
+                    style="padding: 20px 0px;">
+                    <a
+                      class="text-style"
+                      style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
+                      @click="getContent(key)">
+                      <div 
+                        :class="[selected==key? 'titleSelected':'']"
+                        class="width-events"
+                        style="">{{ ele.single.eventTitle }}
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div 
-        class="uk-flex uk-flex-column uk-flex-between width-col-2"
-        style="">
-      
         <div 
-          class="title uk-padding-large"
+          class="uk-flex uk-flex-column uk-flex-between width-col-2"
           style="">
-          <h2 
-            v-if="events.events"
-            style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
-        </div>
-
-        <div class="uk-width-1-1 uk-padding-small uk-padding-remove-left">
-          <div >
-            <div 
+        
+          <div 
+            class="title uk-padding-large"
+            style="">
+            <h2 
               v-if="events.events"
-              uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
-              <ul 
-                class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
-                <li 
-                  v-for="(ele, key) in events.events[selected].single.eventImages"
-                  :key="key"
-                  class="padding">
-                  <img 
-                    :src="ele.singleEvent.singleEventImage"
-                    :class="[selected2==key? 'imgBorder':'']"
-                    style="border-radius: 20px; width: 250px;" 
-                    alt="..."
-                    @click="getImg(key,ele)">
-                </li>
-              </ul>
+              style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+          </div>
+
+          <div 
+            class="uk-width-1-1 uk-padding-small uk-padding-remove-left"
+            style="width:90%">
+            <div >
+              <div 
+                v-if="events.events"
+                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
+                <ul 
+                  class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
+                  <li 
+                    v-for="(ele, key) in events.events[selected].single.eventImages"
+                    :key="key"
+                    class="padding">
+                    <img 
+                      :src="ele.singleEvent.singleEventImage"
+                      :class="[selected2==key? 'imgBorder':'']"
+                      style="border-radius: 20px; width: 250px;" 
+                      alt="..."
+                      @click="getImg(key,ele)">
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -81,7 +87,8 @@
     </div>
 
     <div 
-      class="uk-hidden@m uk-height-viewport"
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      class="uk-hidden@m"
       style="display:flex; flex-direction:column">
       <div 
         class="uk-height-1-1"
@@ -186,8 +193,9 @@ export default {
       selected:0,
       selected2:0,
       selected3:'',
-      imgSelected:'foto1.png',
-      select:''
+      imgSelected:'',
+      select:'',
+      device:''
     }
   },
   mouted(){
@@ -195,52 +203,40 @@ export default {
   },
   methods:{
     getContent(e){
-      console.log(e)
-      console.log(this.selected3)
       this.selected = e
-      this.imgSelected = this.events.events[e].single.eventImages[0].singleEvent.singleEventImage
-       this.selected2 = 0
-      console.log(this.selected);
+      this.selected2 = 0
+      console.log("selected: " + this.selected);
     },
     getImg(e,img){
-      console.log(img.singleEvent.singleEventImage)
+      console.log("key selected2:" + e)
       this.selected2 = e
-      this.imgSelected = img.singleEvent.singleEventImage
     },
     loading(){
       this.imgSelected = this.events.events[0].single.eventImages[0].singleEvent.singleEventImage
       this.selected3 = this.events.events[0].single.eventTitle
-      console.log(this.imgSelected)
+      // console.log(this.imgSelected)
     }
   }
 }
 </script>
 
 <style scoped>
-  @-webkit-keyframes fadeBackground { 
-    0% { opacity: 0; }
-    20% { opacity: 0; }
-    40% { opacity: 0.3; }
-    60% { opacity: 0.5; }
-    80% { opacity: 0.9; }
-    100% { opacity: 1; }
-}
-@keyframes fadeBackground { 
-    0% { opacity: 0; }
-    20% { opacity: 0; }
-    40% { opacity: 0.3; }
-    60% { opacity: 0.5; }
-    80% { opacity: 0.9; }
-    100% { opacity: 1; }
-}
-
-  .background-effect{
-     display: block;
-    -webkit-animation-name: fadeBackground;
-    -webkit-animation-duration: 3s;
-    animation-name: fadeIn;
-    animation-duration: 3s;
+    .container-devices {
+         height: 737px;
+    }
+  .opacity-0{
+    opacity: 0;
   }
+  .opacity-1{
+    opacity: 1;
+  }
+  .transition-images{
+    position:absolute;
+    -webkit-transition: opacity  1.5s ease-in-out;
+    -moz-transition: opacity 1.5s ease-in-out;
+    -o-transition: opacity  1.5s ease-in-out;
+    transition: opacity 1.5s ease-in-out;
+}
 
 
  .select-style{

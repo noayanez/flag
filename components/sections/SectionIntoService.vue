@@ -24,7 +24,6 @@
             src="boton-flecha.png" 
             alt="...">
         </a>
-        <!-- view web -->
         <div 
           class="uk-flex uk-flex-column uk-visible@s"
           style="padding-top: 20px;">
@@ -49,7 +48,7 @@
             >{{ service.singleServiceButton }}</a>
           </div>
         </div>
-        <!-- responsive view   -->
+  
         <div
           class="uk-hidden@s" 
           style="padding-bottom: 30px;">
@@ -168,6 +167,6 @@ function wait(n) {
   }
   .button-service{
       padding: 35px 103px 38px 54px;
-}
+  }
 }
 </style>

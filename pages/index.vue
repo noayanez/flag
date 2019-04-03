@@ -17,9 +17,6 @@
       :contact-form="contactForm"
       :contact="contact"
     />
-    <!-- <Footer
-      :footer="footer"
-    />  -->
   </div>
 </template>
 
@@ -124,7 +121,7 @@ export default {
      this.services = this.content.content.services
      this.pilars =  this.content.content.pilars
     console.log( this.portrait )
-    
+    var intFrameHeight = window.innerHeight;
   },
   methods: {
   }

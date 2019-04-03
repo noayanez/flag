@@ -79,107 +79,45 @@
       </div>
     </div>
     <div
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
       style="background-image: url(foto-footer.png);"
       class="uk-width-1-2@s uk-height-1-1 uk-padding  containerImgeContact">
-      <div 
+      <div
+        uk-flex
+        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div ; delay: 250; repeat: true" 
         class="uk-width-1-1"
         style="">
         <div
+          v-for="(el, key) in footer"
+          :key="key"
           class="container-footer-contact" 
           style="padding-bottom: 60px;">
+          <h2
+            v-if="key==0"
+            class="uk-text-uppercase"
+            style="color: white;">CONTÁCTANOS</h2>
+          <h2 
+            v-else
+            class="uk-text-uppercase"
+            style="color:white">SÍGUENOS</h2>
           <div 
-            class="padding-bottom">
-            <h2 
-              data-aos="fade-down"
-              class="uk-text-uppercase"
-              style="color: white;">CONTÁCTANOS</h2>
-            <div 
-              data-aos="fade-down">
-              <a 
-                href=""
-                class="padding-right">
-                <img 
-                  width="10%"
-                  src="/ubicación.png" 
-                  alt="...">
-              </a>
-              <span style="color:#faeb05">Alcanfores 495 of 608 Miraflores</span>
-            </div>
-          </div>
-          <div 
-            data-aos="fade-down"
+            v-for="(e, i) in el.items"
+            :key="i"
             class="padding-bottom">
             <a 
-              href=""
+              :href="e.imgUrl"
               class="padding-right">
               <img 
-                width="10%"
-                src="/correo.png" 
+                :src="e.src"
+                width="10%" 
                 alt="...">
             </a>
-            <span style="color:#faeb05">marketing@flagsgroup.net</span>
-          </div>
-          <div 
-            data-aos="fade-down"
-            class="padding-bottom">
-            <a 
-              href=""
-              class="padding-right">
-              <img 
-                width="10%"
-                src="/teléfono.png" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05">488 7910</span>
+            <span style="color:#faeb05">{{ e.title }}</span>
           </div>
         </div>
         <div
-          data-aos="fade-down"
-          class="container-footer-contact" 
-          style="">
-          <h2 style="color:white">SÍGUENOS</h2>
-          <div 
-            data-aos="fade-down"
-            class="padding-bottom">
-            <a 
-              href=""
-              class="padding-right" >
-              <img 
-                width="10%"
-                src="/facebook.png" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05"> THE FLAGS GROUP</span>
-          </div>
-          <div 
-            data-aos="fade-down"
-            class="padding-bottom">
-            <a 
-              href=""
-              class="padding-right" >
-              <img 
-                width="10%"
-                src="/INSTAGRAM.png" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05"> THE FLAGS GROUP</span>
-          </div>
-          <div 
-            data-aos="fade-down"
-            class="padding-bottom">
-            <a 
-              href=""
-              class="padding-right">
-              <img 
-                width="10%"
-                src="/linkedin.png" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05">THE FLAGS GROUP</span>
-          </div>
-        </div>
-        <div
-          data-aos="fade-down"
+          uk-flex
+          uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 450; repeat: true" 
           class="uk-padding-large copy-right" 
           style="">
           <h5
@@ -210,18 +148,61 @@ export default {
       title: '¡CONTÁCTANOS!',
       footer:[
         {
-          imgUrl:"",
-          src:"",
-          title:""
+          items:[
+            {
+              imgUrl:"",
+              src:"/ubicación.png",
+              title:"Alcanfores 495 of 608 Miraflores"
+            },
+            {
+              imgUrl:"",
+              src:"/correo.png",
+              title:"marketing@flagsgroup.net"
+            },
+            {
+              imgUrl:"",
+              src:"/teléfono.png",
+              title:"488 7910"
+            }
+          ]
+        },
+        {
+          items:[
+            {
+              imgUrl:"",
+              src:"/facebook.png",
+              title:"THE FLAGS GROUP"
+            },
+            {
+              imgUrl:"",
+              src:"/INSTAGRAM.png",
+              title:"THE FLAGS GROUP"
+            },
+            {
+              imgUrl:"",
+              src:"/linkedin.png",
+              title:"THE FLAGS GROUP"
+            }
+          ]
         }
       ],
-      form:{}
+      form:{},
+      device:''
+    }
+  },
+  mounted(){
+     var userAgent = navigator.userAgent || navigator.vendor || window.opera
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      this.device = true
     }
   }
 }
 </script>
 
  <style lang="scss" scoped>
+ .container-devices {
+    height: 737px;
+}
 .description-contact{
    width: 78%;
    margin:auto;
@@ -272,7 +253,6 @@ textarea{
     min-width: 300px;
     background-size:cover; 
     background-position:50% 50%; 
-    height:100vh;
     width: 50%;
     display: flex; 
     justify-content: center; 

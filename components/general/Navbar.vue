@@ -2,11 +2,11 @@
   <div>
     <!-- Navbar for desktop -->
     <div
-      uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-position-absolute uk-width-1-1; top: 80vh;"
+      uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky bkg-color; cls-inactive: uk-navbar-transparent uk-position-absolute uk-width-1-1; top: 80vh;"
       style="background-color: transparent;">
       <nav
         class=" uk-navbar-container uk-position-absolute uk-width-1-1  uk-navbar-center navStyle"
-        style="z-index: 1000; height:120px"
+        style="z-index: 1000; height:80px"
         uk-navbar>
         <div class="uk-navbar-center uk-visible@l">
           <div 
@@ -22,7 +22,7 @@
                 <img
                   :src="section.src"
                   width="150px"
-                  style="max-width: 200px; height: 200px !important; padding-top: 50px;"
+                  style="max-width: 200px; height: 200px !important; padding-top: 63px;"
                   alt="Logo"></a>
             </div>
             <div
@@ -133,8 +133,11 @@ export default {
 
 <style>
   .navStyle {
-    /* background: rgba(0,0,0,0.5) !important; */
+    
     background-color: transparent !important;
+  }
+  .bkg-color{
+    background: rgba(0,0,0,0.5) !important;
   }
 
   .navBarStyle > span::after {
