@@ -3,77 +3,79 @@
     id="Contact"
     class="uk-flex uk-flex-wrap uk-height-1-1"
     style="background-image: url(/manchas.png);background-color: black;opacity:0.9;">
-    <div
-      class="uk-flex uk-flex uk-width-1-2@s uk-width-1-1 container-section-contact"
-      style="">
-      <div 
-        class="background-contact"
-        style="padding-top:30px;padding-bottom: 40px;">
-        <h2
-          class="uk-text-uppercase title-contact-style"
-          style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
+    <div>
+      <div
+        class="uk-flex uk-flex-center uk-flex-middle"
+        style="">
+        <div 
+          class="background-contact"
+          style="padding-top:30px;padding-bottom: 40px;">
+          <h2
+            class="uk-text-uppercase title-contact-style"
+            style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
 
-        <h4 
-          class="description-contact" 
-          style="text-align:left;color:white;">Completa el formulario y comencemos a crear nuevas experiencias</h4>
-        <div class="uk-width-1-1">
+          <h4 
+            class="description-contact" 
+            style="text-align:left;color:white;">Completa el formulario y comencemos a crear nuevas experiencias</h4>
           <div class="uk-width-1-1">
-            <form 
-              class="uk-grid uk-margin-remove container-form uk-width-1-1"
-              @submit.prevent="send">
-              <div class="uk-padding-remove container-form-left container-form-right uk-width-1-1">
-                <div class="container-input">
-                  <input 
-                    v-model="form.name"
-                    class="uk-input input-style" 
-                    type="text"
-                    pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
-                    placeholder="Nombres">
+            <div class="uk-width-1-1">
+              <form 
+                class="uk-grid uk-margin-remove container-form uk-width-1-1"
+                @submit.prevent="send">
+                <div class="uk-padding-remove container-form-left container-form-right uk-width-1-1">
+                  <div class="container-input">
+                    <input 
+                      v-model="form.name"
+                      class="uk-input input-style" 
+                      type="text"
+                      pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
+                      placeholder="Nombres">
+                  </div>
+                  <div class="container-input">
+                    <input 
+                      v-model="form.phone"
+                      class="uk-input input-style" 
+                      type="text"
+                      pattern="^(0|[0-9][0-9]*)$"
+                      placeholder="Celular:">
+                  </div>
+                  <div class="container-input">
+                    <input
+                      v-model="form.email"
+                      class="uk-input input-style" 
+                      type="text"
+                      pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+                      placeholder="Correo:">
+                  </div>
+                  <div class="container-input">
+                    <textarea
+                      v-model="form.message"
+                      class="uk-textarea text-area-style"
+                      placeholder="Mensaje:"/>
+                    <textarea
+                      v-model="form.message2"
+                      class="uk-textarea text-area-style"/>
+                  </div> 
+                  <div 
+                    class="width-container"
+                    style="padding-top: 10px;padding-bottom: 48px;">
+                    <input
+                      v-model="form.proteccion"  
+                      type="checkbox"
+                      name="proteccion" 
+                      value="proteccion"
+                      style="border:2px solid #faeb05"><span style="color:#faeb05">Protección de datos personales</span>
+                  </div>
                 </div>
-                <div class="container-input">
-                  <input 
-                    v-model="form.phone"
-                    class="uk-input input-style" 
-                    type="text"
-                    pattern="^(0|[0-9][0-9]*)$"
-                    placeholder="Celular:">
-                </div>
-                <div class="container-input">
-                  <input
-                    v-model="form.email"
-                    class="uk-input input-style" 
-                    type="text"
-                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
-                    placeholder="Correo:">
-                </div>
-                <div class="container-input">
-                  <textarea
-                    v-model="form.message"
-                    class="uk-textarea text-area-style"
-                    placeholder="Mensaje:"/>
-                  <textarea
-                    v-model="form.message2"
-                    class="uk-textarea text-area-style"/>
-                </div> 
-                <div 
-                  class="width-container"
-                  style="padding-top: 10px;padding-bottom: 48px;">
-                  <input
-                    v-model="form.proteccion"  
-                    type="checkbox"
-                    name="proteccion" 
-                    value="proteccion"
-                    style="border:2px solid #faeb05"><span style="color:#faeb05">Protección de datos personales</span>
-                </div>
-              </div>
-              <a
-                class="uk-padding-remove-left"
-                style="text-decoration: none;color:#303e48; margin:auto">
-                <div 
-                  class="button-portrait uk-text-uppercase"
-                  style="">
-                  CONTACTAR </div></a> 
-            </form>
+                <a
+                  class="uk-padding-remove-left"
+                  style="text-decoration: none;color:#303e48; margin:auto">
+                  <div 
+                    class="button-portrait uk-text-uppercase"
+                    style="">
+                    CONTACTAR </div></a> 
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -501,9 +503,6 @@ textarea{
     .text-area-style {
       height: 84px !important;
       font-size: 18px;
-    }
-    .container-section-contact{
-      padding-left: 100px;
     }
     
   }

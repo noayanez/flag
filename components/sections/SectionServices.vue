@@ -1,18 +1,21 @@
 <template>
   <div 
     id="Services"
-    class="uk-height-1-1 bkg-animate container-height uk-position-relative"
+    :class="device ? 'container-devices' : 'uk-height-viewport'"
+    class="uk-height-1-1 bkg-animate uk-position-relative uk-flex uk-flex-center uk-flex-middle"
     style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
-    <div class="padding-top">
-      <div v-if="content == ''">
-        <div
-          class="uk-padding@s titleServices" 
-          style="text-align:center;">
-          <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
-        </div>
+    <div 
+      v-if="content == ''"
+      class="">
+      <div
+        class="uk-padding@s titleServices uk-height-1-1" 
+        style="text-align:center;">
+        <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
+      </div>
+      <div class="">
         <div 
           v-if="services.service"
-          class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1 container-services">
+          class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
           <div
             v-for="(ele, key) in services.service"
             :key="key"
@@ -61,11 +64,12 @@
           </div>
         </div>
       </div>
-      <div v-else>
-        <IntoService 
-          :service="intoService"/>
-      </div>
     </div>
+    <div v-else>
+      <IntoService 
+        :service="intoService"/>
+    </div>
+    
 
   </div>
 </template>
@@ -75,6 +79,7 @@
 import { mapGetters} from 'vuex'
 
 import IntoService from '~/components/sections/SectionIntoService.vue'
+
 export default {
     components:{
       IntoService
@@ -89,13 +94,20 @@ export default {
     },
     data(){
       return{
-        intoService:''
+        intoService:'',
+        device:''
       }
     },
     computed: {
     ...mapGetters({
         content: 'getIntoService'
     })},
+    mounted(){
+     var userAgent = navigator.userAgent || navigator.vendor || window.opera
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      this.device = true
+    }
+  },
     async mounted() {
     // HERE IS WHERE THE FETCHED INFORMATION IS DISTRIBUTED
       await wait(1000)
@@ -135,12 +147,9 @@ function wait(n) {
 </script>
 
 <style>
-.container-height{
-   height:100vh;
-   max-height:100vh;
-   min-height:50vh;
+.container-devices {
+  height: 737px;
 }
-
 .img-services{
     border-radius: 20px;
 }
@@ -154,7 +163,7 @@ function wait(n) {
 .button-services{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 36px 68px 20px 65px;
+  padding: 30px 68px 20px 65px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
@@ -198,24 +207,13 @@ function wait(n) {
     from { background-position: 0 0; }
     to { background-position: -400px 0; }
   }
-.container-services{
-    width: 60%; 
-    margin:auto;
-}
 @media (max-width: 1024px){
   .containerImage{
     min-width: 350px;
     height:35vh;
 }
-.container-services{
-    width: 90%; 
-    margin:auto;
-}
 .container-height{
    height:80vh;
-}
-.button-services{
-  padding: 25px 67px 16px 59px;
 }
 }
 @media (max-width: 769px){
@@ -236,9 +234,6 @@ function wait(n) {
 @media (max-width: 420px){
   .containerImage{
     min-width: 250px;
- }
-  .container-services{
-    width: 100%;
  }
  .titleServices{
      padding-bottom: 10px !important;
@@ -301,9 +296,6 @@ function wait(n) {
     padding:0px !important;
   }
 }
-
-
-
 
 .uk-dotnav > .uk-active > * {
   background-color: #faeb00 !important;

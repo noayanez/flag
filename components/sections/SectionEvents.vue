@@ -254,8 +254,6 @@ export default {
   text-align:center;
   font-size:20px;
 }
-
-
   .text-style{
     font-size: 16px;
   }
@@ -270,12 +268,10 @@ export default {
     padding-bottom:40px;
   }
 .titleSelected{
-  background: url('/boton-1.png') no-repeat;
-  z-index: -1;
-  background-size:cover;
-  text-align: center;
-  padding: 26px 5px 30px 2px;
-  font-weight: bold;
+  background: url('/boton-1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 95%;
+  padding: 8px 0;
   color: #303e48 !important;
 }
 .imgBorder{

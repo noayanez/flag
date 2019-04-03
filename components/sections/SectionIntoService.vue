@@ -15,37 +15,41 @@
       <h2 
         class="uk-hidden@s uk-padding-small"
         style="color:white;width: 50%;margin: auto;font-weight: bold;padding-top:20px;">{{ service.singleServiceName }}</h2>
-      <div class="uk-width-1-2@m uk-width-1-1 uk-padding-large container2">
-        <a 
-          class="uk-visible@s"
-          style="padding-bottom: 20px;"
-          @click="remove">
-          <img 
-            src="boton-flecha.png" 
-            alt="...">
-        </a>
-        <div 
-          class="uk-flex uk-flex-column uk-visible@s"
-          style="padding-top: 20px;">
-          <div class="uk-visible@s">
-            <h2 
-              style="color:white;font-weight: bold;"
-              class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h2>
-          </div>
-          <div>
-            <ul 
-              v-for="(el,key) in service.singleServiceItems"
-              :key="key"> 
-              <li class="color"><span>{{ el.singleServiceItem }}</span></li>
-            </ul>
+      <div >
+        <div class=" uk-width-1-1 uk-padding-large container2">
+          <a 
+            class="uk-visible@s"
+            style="padding-bottom: 20px;"
+            @click="remove">
+            <img 
+              src="boton-flecha.png" 
+              alt="...">
+          </a>
+          <div 
+            class="uk-flex uk-flex-column uk-visible@s"
+            style="padding-top: 20px;">
+            <div class="uk-visible@s">
+              <h2 
+                style="color:white;font-weight: bold;"
+                class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h2>
+            </div>
+            <div>
+              <ul 
+                v-for="(el,key) in service.singleServiceItems"
+                :key="key"> 
+                <li class="color"><span>{{ el.singleServiceItem }}</span></li>
+              </ul>
+            </div>
           </div>
           <div
             style="padding-top: 30px;">
             <a
-              class="button-service uk-text-uppercase"
-              style="text-decoration: none;color:#303e48" 
-              @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)"
-            >{{ service.singleServiceButton }}</a>
+              style="text-decoration: none;color:#303e48"
+              @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
+              <div 
+                class="button-service2"
+                style="">
+                {{ service.singleServiceButton }} </div></a>
           </div>
         </div>
   
@@ -66,7 +70,7 @@
           <a
             style="text-decoration:none; color:#314049;"
             @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
-            <div class="button-service">
+            <div class="button-service2">
               {{ service.singleServiceButton }}
             </div>
           </a>
@@ -132,8 +136,8 @@ function wait(n) {
     min-width: 400px;
     background-size:cover; 
     background-position:50% 50%; 
-    height:65vh;
-    width: 60%;
+    height:auto;
+    width: 60vw;
     border-radius: 30px;
 }
 .title-into-service{
@@ -148,7 +152,7 @@ function wait(n) {
     color: white;
 }
 .button-service{
- background: url('/boton-1.png') no-repeat;
+  background: url('/boton-1.png') no-repeat;
   background-size: cover;
   padding: 35px 93px 22px 65px;
   text-decoration: none;
@@ -157,8 +161,18 @@ function wait(n) {
   width:20%; 
   margin:auto
 }
+.button-service2{
+    background: url(/boton-1.png) no-repeat;
+    background-size: 100%;
+    padding: 35px 110px 39px 54px;
+    text-decoration: none;
+    color: #303e48;
+    font-weight: bold;
+    width: 13%;
+    font-size: 18px;
+}
 .container2{
-  width: 40%;
+  width: 40vw;
 }
 @media (max-width: 420px){
   .container2{
