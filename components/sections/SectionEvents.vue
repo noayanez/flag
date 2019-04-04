@@ -12,7 +12,7 @@
         :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
         :class="(key)===selected2?'opacity-1':'opacity-0'"
         class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image"/>
-      <div class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image">
+      <div class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image gradient">
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
@@ -231,6 +231,14 @@ export default {
 </script>
 
 <style>
+  .gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  }
+
   .container-devices {
      height: 737px;
   }
