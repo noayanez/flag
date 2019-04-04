@@ -60,22 +60,24 @@
           </div>
 
           <div 
-            class="uk-flex  uk-width-1-1 uk-padding-small"
+            class="uk-flex uk-width-1-1 uk-padding-small"
             style="width:90%">
             <div >
               <div 
                 v-if="events.events"
-                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000; min-height: 350px;">
+                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000; min-height: 450px;">
                 <ul 
-                  class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
+                  style=""
+                  class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-4@l uk-grid">
                   <li 
                     v-for="(ele, key) in events.events[selected].single.eventImages"
                     :key="key"
-                    class="">
+                    class=""
+                    style="">
                     <img 
                       :src="ele.singleEvent.singleEventImage"
                       :class="[selected2==key? 'imgBorder':'']"
-                      style="border-radius: 20px; width: 250px;" 
+                      style="border-radius: 20px; width: 400px;" 
                       alt="..."
                       @click="getImg(key,ele)">
                   </li>
@@ -283,7 +285,7 @@ export default {
   color: #303e48 !important;
 }
 .imgBorder{
-  border: #faeb05 4px solid;
+  border: #faeb05 4.5px solid;
 }
 .description{
   color: white; 

@@ -27,11 +27,12 @@
             </div>
             <div
               v-else
-              class="uk-navbar-item navItemStyle ">
+              class="uk-navbar-item navItemStyle "
+              style="">
               <a
                 class="textElementsNav navBarStyle uk-position-relative"
                 style="text-decoration:none"
-                @click="goTo(`${section.url}`, `${section.name}`)"><span>{{ section.name }}</span></a>
+                @click="goTo(`${section.url}`, `${section.name}`)"><span style="">{{ section.name }}</span></a>
             </div>
 
           </div>
@@ -88,14 +89,6 @@ if (process.browser) {
 }
 
 export default {
-  // props:{
-  //   logo:{
-  //     type:String,
-  //     default: function(){
-  //       return{message:"hola hola logo"}
-  //     }
-  //   }
-  // },
   data(){
     return{
       sections:[
@@ -157,13 +150,15 @@ export default {
     width: 100%;
 }
   .navItemStyle {
-    margin-right: 1em;
+    margin-right: 2em;
+    white-space: normal !important;
   }
 
   .textElementsNav {
     font-weight: bolder;
     color: white !important;
-    font-size: 17.5px;
+    font-size: 18px;
+    width: 50%;
   }
   .navOffCanvasElementStyle {
     padding: 1em;
