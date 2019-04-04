@@ -1,76 +1,78 @@
 <template>
-  <div 
-    id="Services"
-    :class="device ? 'container-devices' : 'uk-height-viewport'"
-    class="uk-height-1-1 bkg-animate uk-position-relative uk-flex uk-flex-center uk-flex-middle"
-    style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
+  <div>
     <div 
-      v-if="content == ''"
-      class="">
-      <div
-        class="uk-padding@s titleServices uk-height-1-1" 
-        style="text-align:center;">
-        <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
-      </div>
-      <div class="">
-        <div 
-          v-if="services.service"
-          class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
-          <div
-            v-for="(ele, key) in services.service"
-            :key="key"
-            class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
-            style="text-align:center; padding-bottom: 40px;">
-            <div
-              :style="`background-image: url(${ele.singleService.singleServiceImage};`"
-              class="uk-height-1-1 uk-padding uk-align-center containerImage"/>
-            <a
-              style="text-decoration: none;color:#303e48"
-              @click="getContent(ele.singleService.singleServiceName)">
-              <div 
-                class="button-services"
-                style="">
-                {{ ele.singleService.singleServiceName }} </div></a>
-          </div>
+      id="Services"
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      class="uk-height-1-1 bkg-animate uk-position-relative uk-flex uk-flex-center uk-flex-middle"
+      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
+      <div 
+        v-if="content == ''"
+        class="">
+        <div
+          class="uk-padding@s titleServices uk-height-1-1" 
+          style="text-align:center;">
+          <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
         </div>
-        <div class="uk-hidden@s uk-height-viewport">
+        <div class="">
           <div 
-            uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
-            class="height">
+            v-if="services.service"
+            class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
+            <div
+              v-for="(ele, key) in services.service"
+              :key="key"
+              class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
+              style="text-align:center; padding-bottom: 40px;">
+              <div
+                :style="`background-image: url(${ele.singleService.singleServiceImage};`"
+                class="uk-height-1-1 uk-padding uk-align-center containerImage"/>
+              <a
+                style="text-decoration: none;color:#303e48"
+                @click="getContent(ele.singleService.singleServiceName)">
+                <div 
+                  class="button-services"
+                  style="">
+                  {{ ele.singleService.singleServiceName }} </div></a>
+            </div>
+          </div>
+          <div class="uk-hidden@s uk-height-viewport">
             <div 
-              class="uk-position-relative uk-visible-toggle">
-              <ul 
-                class="uk-slideshow-items slideshow-height">
-                <li 
-                  v-for="(ele, key) in services.service"
-                  :key="key">
-                  <div 
-                    :style="`background-image: url(${ele.singleService.singleServiceImage});`"
-                    style=""
-                    class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
-                  <a
-                    style="text-decoration: none;color:#303e48"
-                    @click="getContent(ele.singleService.singleServiceName)">
+              uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
+              class="height">
+              <div 
+                class="uk-position-relative uk-visible-toggle">
+                <ul 
+                  class="uk-slideshow-items slideshow-height">
+                  <li 
+                    v-for="(ele, key) in services.service"
+                    :key="key">
                     <div 
-                      class="button-slider"
-                      style="">
-                      {{ ele.singleService.singleServiceName }} </div></a>
-                </li>
-              </ul>
-              <ul 
-                class="uk-slideshow-nav uk-dotnav uk-flex-center"
-                style="padding-bottom: 40px;"/>
+                      :style="`background-image: url(${ele.singleService.singleServiceImage});`"
+                      style=""
+                      class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
+                    <a
+                      style="text-decoration: none;color:#303e48"
+                      @click="getContent(ele.singleService.singleServiceName)">
+                      <div 
+                        class="button-slider"
+                        style="">
+                        {{ ele.singleService.singleServiceName }} </div></a>
+                  </li>
+                </ul>
+                <ul 
+                  class="uk-slideshow-nav uk-dotnav uk-flex-center"
+                  style="padding-bottom: 40px;"/>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div v-else>
-      <IntoService 
-        :service="intoService"/>
-    </div>
+      <div v-else>
+        <IntoService 
+          :service="intoService"/>
+      </div>
     
 
+    </div>
   </div>
 </template>
 
@@ -181,7 +183,7 @@ function wait(n) {
   margin:auto
 }
 .containerImage{
-    min-width: 400px;
+    min-width: 420px;
     background-size:cover; 
     background-position:50% 50%; 
     height:48vh;

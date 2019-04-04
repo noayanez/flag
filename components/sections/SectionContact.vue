@@ -114,7 +114,7 @@
                 width="10%" 
                 alt="...">
             </a>
-            <span style="color:#faeb05">{{ e.title }}</span>
+            <span style="color:#faeb05; font-size:1.2rem;">{{ e.title }}</span>
           </div>
         </div>
         <div
@@ -224,6 +224,7 @@ textarea{
   width: 85%;
   margin: auto;
   padding-bottom: 35px;
+  font-size: 2.4rem;
 }
 
 .container-footer-contact{
@@ -260,12 +261,13 @@ textarea{
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 41px 103px 26px 73px;
+  padding: 40px 128px 44px 67px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
   width:20%; 
-  margin:auto
+  margin:auto;
+  font-size: 20px;
 }
 
 .title-style {
@@ -340,6 +342,7 @@ textarea{
     .title-contact-style{
       width: 100%;
       padding-left: 13px;
+      font-size: 2rem;
     }
     .description-contact{
       width: 90%;

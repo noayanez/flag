@@ -4,13 +4,15 @@
     :class="device ? 'container-devices' : 'uk-height-viewport'"
     class="uk-position-relative">
     <div 
-      v-if="events.events">
-      <div 
+      v-if="events.events"
+      class="uk-position-relative">
+      <div
         v-for="(ele, key) in events.events[selected].single.eventImages"
         :key="key + key"
         :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
         :class="(key)===selected2?'opacity-1':'opacity-0'"
-        class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1">
+        class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image"/>
+      <div class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image">
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
@@ -30,7 +32,8 @@
                   <li 
                     v-for="(ele, key) in events.events"
                     :key="key"
-                    style="padding: 25px 0px 25px 7px;">
+                    class="padding-li"
+                    style="">
                     <a
                       class="text-style"
                       style="color:#faeb05;font-weight: bold;text-decoration: none;display: inline-block"
@@ -50,7 +53,7 @@
         <div 
           class="uk-flex uk-flex-column uk-flex-between width-col-2"
           style="">
-        
+          
           <div 
             class="title uk-padding-large"
             style="">
@@ -244,8 +247,20 @@ export default {
     -o-transition: opacity  1.5s ease-in-out;
     transition: opacity 1.5s ease-in-out;
 }
+.background-image::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0);
+  z-index:-1;
+}
 
-
+  .padding-li{
+    padding: 25px 0px 25px 7px;
+  }
  .select-style{
     display: block;
     font-size: 18px;
@@ -305,7 +320,7 @@ export default {
 
 
 
-@media (min-width: 769px) and (max-width: 1365px){
+@media (min-width: 769px) and (max-width: 1366px){
   .titleSelected{
     padding: 25px 7px 24px 23px;
 }
@@ -326,11 +341,13 @@ export default {
   }
   .description{
     width: 90%;
-}
+  }
   .text-style{
     font-size: 17px;
   }
-  
+  .padding-li{
+    padding: 15px 0px 15px 7px;
+  }
 }
 @media (min-width: 469px) and (max-width: 768px){
   .description{ 

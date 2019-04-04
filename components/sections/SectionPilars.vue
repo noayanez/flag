@@ -6,12 +6,12 @@
 
     <div class="uk-padding-small">
       <div
-        class="uk-h2 uk-margin-remove uk-text-bold uk-text-center uk-padding-small uk-text-uppercase"
+        class="uk-h2 uk-margin-remove uk-text-bold uk-text-center  uk-text-uppercase"
         style="color:white">
         {{ pilars.pilarsSectionTitle }}
       </div>
       <div
-        class="uk-h3 uk-margin-remove uk-text-bold uk-text-center uk-padding-small"
+        class="uk-h3 uk-margin-remove uk-text-bold uk-text-center"
         style="color:white">
         {{ pilars.pilarsSectionSubtitle }}
       </div>
@@ -26,7 +26,7 @@
       <div
         v-for="(section, key) in pilars.pilarsGroup"
         :key="key"
-        class="uk-width-1-3@l uk-width-1-2@m uk-witdth-1-1 uk-padding-small">
+        class="uk-width-1-3@l uk-width-1-2@m uk-witdth-1-1">
         <div
           class="uk-padding-small"
           style="border-radius: 20px; color: black;">
@@ -120,8 +120,8 @@ export default {
   }
   .imageContainer{
     background-position:50% 50%;
-    height: 160px;
-    width: 160px;
+    height: 150px;
+    width: 150px;
     border:4px solid #e41c43;
     background-color:#e41c43;
     background-size:75%;

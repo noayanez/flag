@@ -157,8 +157,8 @@ export default {
   .textElementsNav {
     font-weight: bolder;
     color: white !important;
-    font-size: 18px;
-    width: 50%;
+    font-size: 16px;
+    width: 70%;
   }
   .navOffCanvasElementStyle {
     padding: 1em;
