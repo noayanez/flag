@@ -506,6 +506,16 @@ textarea{
       height: 84px !important;
       font-size: 18px;
     }
-    
+  }
+
+  @media (min-width: 1025px) and (max-width: 1366px){
+    .title-contact-style{
+      font-size: 2rem;
+      padding-bottom: 15px;
+    }
+    .container-input{
+      padding-bottom: 0px;
+      padding-top: 5px;
+    }
   }
  </style>

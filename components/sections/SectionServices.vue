@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div  
+    id="Services"
+    :class="device ? 'container-devices' : 'uk-height-viewport'"
+    class="uk-position-relative">
     <div 
-      id="Services"
       :class="device ? 'container-devices' : 'uk-height-viewport'"
-      class="uk-height-1-1 bkg-animate uk-position-relative uk-flex uk-flex-center uk-flex-middle"
-      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
+      class="uk-height-1-1 bkg-animate"
+      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;"/>
+    <div class="uk-flex uk-flex-center uk-flex-middle">
       <div 
         v-if="content == ''"
         class="">
@@ -70,8 +73,6 @@
         <IntoService 
           :service="intoService"/>
       </div>
-    
-
     </div>
   </div>
 </template>

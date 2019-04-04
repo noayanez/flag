@@ -12,7 +12,7 @@
         :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
         :class="(key)===selected2?'opacity-1':'opacity-0'"
         class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image"/>
-      <div class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image gradient">
+      <div class="uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image gradient">
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
