@@ -59,15 +59,18 @@
           uk-toggle="target: #offcanvas-nav-primary"
           style="color:white !important; justify-content:flex-end !important;"/>
         <ul class="uk-nav uk-nav-primary uk-nav-center">
-          <li
+          <div 
             v-for="(section, key) in sections"
-            :key="key"
-            style="justify-content:end !important;"
-            class="uk-navbar-item navOffCanvasElementStyle">
-            <a
-              class="textElementsNav navOffCanvasTextStyle"
-              @click="goTo(`${section.url}`, `${section.name}`)">{{ section.name }}</a>
-          </li>
+            :key="key">
+            <li
+              v-if="section.name!=='logo'"
+              style="justify-content:end !important;border-bottom: 1px solid white"
+              class="uk-navbar-item navOffCanvasElementStyle">
+              <a
+                class="textElementsNav navOffCanvasTextStyle"
+                @click="goTo(`${section.url}`, `${section.name}`)">{{ section.name }}</a>
+            </li>
+          </div>
         </ul>
       </div>
     </div>

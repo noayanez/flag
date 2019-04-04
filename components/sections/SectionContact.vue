@@ -3,10 +3,10 @@
     id="Contact"
     class="uk-flex uk-flex-wrap uk-height-1-1"
     style="background-image: url(/manchas.png);background-color: black;opacity:0.9;">
-    <div>
+    <div class="container-1">
       <div
-        class="uk-flex uk-flex-center uk-flex-middle"
-        style="">
+        class="uk-flex uk-flex-center uk-flex-middle container-form-left container-form-right"
+        style="padding-top:30px">
         <div 
           class="background-contact"
           style="padding-top:30px;padding-bottom: 40px;">
@@ -82,8 +82,8 @@
     </div>
     <div
       :class="device ? 'container-devices' : 'uk-height-viewport'"
-      style="background-image: url(foto-footer.png);"
-      class="uk-width-1-2@s uk-height-1-1 uk-padding  containerImgeContact">
+      style="background-image: url(foto-footer.png)"
+      class="uk-height-1-1 uk-padding  containerImgeContact">
       <div
         uk-flex
         uk-scrollspy="cls: uk-animation-scale-down; target: > div > div ; delay: 250; repeat: true" 
@@ -206,7 +206,7 @@ export default {
     height: 737px;
 }
 .description-contact{
-   width: 78%;
+   width: 85%;
    margin:auto;
    padding-bottom:20px;
 }
@@ -221,7 +221,7 @@ textarea{
   top:100px;
 }
 .title-contact-style{
-  width: 80%;
+  width: 85%;
   margin: auto;
   padding-bottom: 35px;
 }
@@ -231,18 +231,12 @@ textarea{
   width: 50%; 
   margin:auto;
 }
-.container-section-contact{
-  padding-left:100px;
-  padding-top: 65px;
-  padding-bottom: 65px; 
-  height: 100%;
-}
 .background-contact{
     background-color: #414141;
     opacity: 0.9;
     filter:  alpha(opacity=40);
     border-radius: 10px;
-    width: 60%;
+    width: 70%;
 }
 .padding-right{
   padding-right: 10px;
@@ -255,10 +249,13 @@ textarea{
     min-width: 300px;
     background-size:cover; 
     background-position:50% 50%; 
-    width: 50%;
+    width: 55%;
     display: flex; 
     justify-content: center; 
     align-items:center;
+}
+.container-1{
+  width: 45%;
 }
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
@@ -322,6 +319,16 @@ textarea{
     .copy-right{
       top:220px;
   }
+  .container-1{
+    width: 100%;
+  }
+  .container-form-left {
+      padding-right: 3% !important;
+    }
+
+    .container-form-right {
+      padding-left: 3% !important;
+    } 
   }
   @media (max-width: 640px) {
     .title-style {
@@ -375,12 +382,12 @@ textarea{
     } 
     .background-contact{
       width: 100%;
-    }    
-    .container-section-contact{
-      padding-left: 30px;
-      padding-right: 30px;
-    }  
+      padding: 0px 21px;
+    }     
     .containerImgeContact{
+      width: 100%;
+    }
+    .container-1{
       width: 100%;
     }
   }
@@ -429,11 +436,7 @@ textarea{
 
     .container-form-right {
       padding-left: 3% !important;
-    }  
-    .container-section-contact{
-      padding-left:30px; 
-      padding-right: 20px;
-    }  
+    }   
     .background-contact{
       width: 100%;
     }
@@ -441,10 +444,6 @@ textarea{
   @media (min-width: 960px) and (max-width: 1025px){
     .background-contact{
       width: 93%;
-    }
-    .container-section-contact{
-      padding-left:30px; 
-      padding-right: 20px;
     }
     .container-input{
       width: 85%;

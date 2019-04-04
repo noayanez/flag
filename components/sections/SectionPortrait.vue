@@ -150,19 +150,22 @@ export default {
 }
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
-  background-size: cover;
-  padding: 38px 70px 44px 65px;
+  background-size: 100%;
+  padding: 45px 79px 44px 77px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
+  font-size: 18px;
 }
 .button-portrait:hover{
   background: url('/boton-2.png') no-repeat;
-  background-size: cover;
-  padding: 38px 70px 44px 65px;
-  text-decoration: none;
+  background-size: 100%;
+  padding: 45px 79px 44px 77px;
   color: #faeb05;
-  font-weight: bold;
+}
+.title-portrait{
+  width: 70%;
+  padding-left: 20px;
 }
 @media (max-width: 960px) {
   .title-portrait{
@@ -178,6 +181,10 @@ export default {
 @media (max-width: 420px){
   .button-portrait{
     margin-top: 10px;
+}
+.title-portrait{
+  width: 90%;
+  padding-left: 0px;
 }
 .button-portrait{
     padding: 40px 65px;

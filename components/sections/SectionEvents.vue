@@ -1,7 +1,8 @@
 <template>
   <div 
     id="Events"
-    class="uk-position-relative uk-height-viewport">
+    :class="device ? 'container-devices' : 'uk-height-viewport'"
+    class="uk-position-relative">
     <div 
       v-if="events.events">
       <div 
@@ -9,12 +10,12 @@
         :key="key + key"
         :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
         :class="(key)===selected2?'opacity-1':'opacity-0'"
-        class="uk-background-cover uk-flex uk-visible@m padding-events uk-height-viewport transition-images">
+        class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1">
         <div 
-          class="uk-flex uk-flex-left uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
+          class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
           <div 
-            class="uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
+            class="uk-flex uk-flex-column uk-flex-center uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
             <div class="container-into-col-1">
               <p 
                 class="text-style description"
@@ -29,10 +30,10 @@
                   <li 
                     v-for="(ele, key) in events.events"
                     :key="key"
-                    style="padding: 20px 0px;">
+                    style="padding: 25px 0px 25px 7px;">
                     <a
                       class="text-style"
-                      style="color:#faeb05;font-weight: bold;text-decoration: none; padding-left: 20px;"
+                      style="color:#faeb05;font-weight: bold;text-decoration: none;display: inline-block"
                       @click="getContent(key)">
                       <div 
                         :class="[selected==key? 'titleSelected':'']"
@@ -59,18 +60,18 @@
           </div>
 
           <div 
-            class="uk-width-1-1 uk-padding-small uk-padding-remove-left"
+            class="uk-flex  uk-width-1-1 uk-padding-small"
             style="width:90%">
             <div >
               <div 
                 v-if="events.events"
-                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000">
+                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000; min-height: 350px;">
                 <ul 
                   class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@l">
                   <li 
                     v-for="(ele, key) in events.events[selected].single.eventImages"
                     :key="key"
-                    class="padding">
+                    class="">
                     <img 
                       :src="ele.singleEvent.singleEventImage"
                       :class="[selected2==key? 'imgBorder':'']"
@@ -200,6 +201,10 @@ export default {
   },
   mouted(){
     this.loading()
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        this.device = true
+    }
   },
   methods:{
     getContent(e){
@@ -220,10 +225,10 @@ export default {
 }
 </script>
 
-<style scoped>
-    .container-devices {
-         height: 737px;
-    }
+<style>
+  .container-devices {
+     height: 737px;
+  }
   .opacity-0{
     opacity: 0;
   }
@@ -254,15 +259,17 @@ export default {
   text-align:center;
   font-size:20px;
 }
+
+
   .text-style{
-    font-size: 16px;
+    font-size: 24px;
   }
   .container-into-col-1{
     border-right: 3px solid #faeb05;
     width:60%;
   }
   .width-events{
-    width:50%;
+    width:100%;
   }
   .padding-events{
     padding-bottom:40px;
@@ -271,7 +278,8 @@ export default {
   background: url('/boton-1.png');
   background-repeat: no-repeat;
   background-size: 100% 95%;
-  padding: 8px 0;
+  background-position: 50% 50%;
+  padding: 25px 7px 24px 23px;
   color: #303e48 !important;
 }
 .imgBorder{
@@ -279,7 +287,7 @@ export default {
 }
 .description{
   color: white; 
-  width: 60%;
+  width: 90%;
   display:block
 }
 .container-slider-events{
@@ -295,9 +303,9 @@ export default {
 
 
 
-@media (min-width: 769px) and (max-width: 1025px){
+@media (min-width: 769px) and (max-width: 1365px){
   .titleSelected{
-    padding: 25px 0px 32px 0px;
+    padding: 25px 7px 24px 23px;
 }
   .width-col-1{
     width: 30%;
@@ -305,18 +313,21 @@ export default {
   .width-col-2{
     width: 70%;
 }
-.container-into-col-1{
+  .container-into-col-1{
     width:100%;
   }
   .padding{
     padding: 10px;
   }
   .width-events{
-    width:75%;
+    width:100%;
   }
   .description{
     width: 90%;
 }
+  .text-style{
+    font-size: 17px;
+  }
   
 }
 @media (min-width: 469px) and (max-width: 768px){
@@ -324,7 +335,7 @@ export default {
     width: 100%;
 }
   .width-events{
-    width:95%;
+    width:100%;
   }
   .container-into-col-1{
     width:75%;
@@ -341,6 +352,9 @@ export default {
   .select-style{
     margin: auto;
   }
+  .text-style{
+    font-size: 17px;
+  }
 }
 @media (max-width: 468px){
   .select-style{
@@ -353,6 +367,9 @@ export default {
     font-weight: bold;
     text-align-last: center;
 }
+.text-style{
+    font-size: 17px;
+  }
 
 }
 @media(min-width: 376px) and (max-width:417px){
@@ -377,5 +394,9 @@ export default {
 }
 
 }
+.uk-nav > li > a {
+    padding: 0px 0;
+}
+
 
 </style>
