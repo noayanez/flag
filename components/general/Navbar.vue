@@ -180,7 +180,7 @@ export default {
   }
   @media(max-width: 1366px){
     .textElementsNav {
-      width: 90%;
+      width: 94%;
   }
   }
 </style>
