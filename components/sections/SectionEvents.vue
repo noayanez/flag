@@ -5,13 +5,24 @@
     class="uk-position-relative">
     <div 
       v-if="events.events"
-      class="uk-position-relative">
-      <div
-        v-for="(ele, key) in events.events[selected].single.eventImages"
-        :key="key + key"
-        :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
-        :class="(key)===selected2?'opacity-1':'opacity-0'"
-        class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image"/>
+      class="uk-position-relative ">
+      
+      <div 
+        v-for="(el, key) in events.events"
+        :key="key">
+        <transition name="slide-fade">
+          <div v-if="selected===key">
+            <div 
+              v-for="(ele, i) in events.events[selected].single.eventImages"
+              :key="i">
+              <div
+                :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
+                :class="(i)===selected2?'opacity-1':'opacity-0'"
+                class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image "/>
+            </div>
+          </div>
+        </transition>
+      </div>
       <div 
         :class="device ? 'container-devices' : 'uk-height-viewport'"
         class="uk-flex uk-visible@m  padding-events transition-images uk-width-1-1 background-image gradient">
@@ -200,7 +211,7 @@ export default {
       services:{},
       selected:0,
       selected2:0,
-      selected3:'',
+      selected3:false,
       imgSelected:'',
       select:'',
       device:''
@@ -217,6 +228,7 @@ export default {
     getContent(e){
       this.selected = e
       this.selected2 = 0
+      this.selected3 = true
       console.log("selected: " + this.selected);
     },
     getImg(e,img){
@@ -226,7 +238,6 @@ export default {
     loading(){
       this.imgSelected = this.events.events[0].single.eventImages[0].singleEvent.singleEventImage
       this.selected3 = this.events.events[0].single.eventTitle
-      // console.log(this.imgSelected)
     }
   }
 }
@@ -240,7 +251,18 @@ export default {
     background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
   }
-
+  .slide-fade-enter-active {
+  transition: all 1s ease;
+  }
+  .slide-fade-leave-active {
+  transition: all 1s ease;
+  }
+  .slide-fade-leave, .slide-fade-leave-active {
+  opacity: 1;
+  }
+  .slide-fade-enter, .slide-fade-leave-active {
+  opacity: 0;
+  }
   .container-devices {
      height: 737px;
   }
@@ -250,12 +272,26 @@ export default {
   .opacity-1{
     opacity: 1;
   }
+  @keyframes animal {
+    0%{
+      opacity: 0;
+      transform: scale(0);
+    }
+    100%{
+       opacity: 1;
+      transform: scale(1);
+    }
+    
+  }
   .transition-images{
     position:absolute;
     -webkit-transition: opacity  1.5s ease-in-out;
     -moz-transition: opacity 1.5s ease-in-out;
     -o-transition: opacity  1.5s ease-in-out;
     transition: opacity 1.5s ease-in-out;
+}
+.transition-list{
+    animation: animal ease-in-out 2s forwards;
 }
 .background-image::after {
   content:"";

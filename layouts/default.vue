@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="content != ''">
+    <div v-if="content !== ''">
       <no-ssr>
         <Navbar/>
       </no-ssr>
@@ -9,9 +9,16 @@
         <!-- <Footer /> -->
       </no-ssr>
     </div>
-    <div v-else>
-      <h1 style="text-align:center"> <strong>C A R G A N D O ...</strong> </h1>
-      <div uk-spinner/>
+    <div
+      v-else
+      class="uk-flex uk-flex-column uk-flex-middle uk-flex-center uk-height-viewport"
+      style="background-color:#303e47">
+      <div class="pulse-btn">
+        <img
+          src="logo-principal.png"
+          alt="Logo"> 
+      </div>
+      
     </div>
   </div>
 </template>
@@ -62,4 +69,20 @@ p,span,input,textarea{
   font-family: 'Futura';
   font-weight: 700 !important;
 }
+.pulse-btn {
+    position: relative;
+    margin:100px auto;
+    width: 400px;
+    height: auto;
+    animation: pulse 2000ms infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+     tranform: scale(1);
+  }
+  50% {
+     transform: scale(1.2);
+  }
+}
+
 </style>
