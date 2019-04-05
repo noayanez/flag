@@ -27,13 +27,11 @@
 import { mapState } from 'vuex'
 
 import Navbar from '~/components/general/Navbar'
-import Footer from '~/components/general/Footer'
 
 
 export default {
   components : {
-    Navbar,
-    Footer
+    Navbar
   },
   data(){
     return{

@@ -35,7 +35,6 @@ import SectionEvents from '~/components/sections/SectionEvents.vue'
 import SectionContact from '~/components/sections/SectionContact.vue'
 import SectionServices from '~/components/sections/SectionServices.vue'
 import SectionPilars from '~/components/sections/SectionPilars.vue'
-import Footer from '~/components/general/Footer.vue'
 
 // VALIDATOR FOR THE INPUTS IN THE FORM COMPONENT
 Vue.use(VeeValidate);
@@ -58,8 +57,7 @@ export default {
     SectionEvents,
     SectionContact,
     SectionServices,
-    SectionPilars,
-    Footer
+    SectionPilars
   },
   data() {
     return {
@@ -68,45 +66,7 @@ export default {
       footer: {},
       services:{},
       pilars:{},
-      contact:{},
-      contactForm: [
-        {
-          items: [
-            {
-              name: 'Name',
-              vmodel: '',
-              type: 'input',
-              format: 'text',
-              placeholder: 'Nombre'
-            },
-            {
-              name: 'Phone',
-              vmodel: '',
-              type: 'input',
-              format: 'number',
-              placeholder: 'Celular'
-            },
-            {
-              name: 'Email',
-              vmodel: '',
-              type: 'input',
-              format: 'email',
-              placeholder: 'Correo'
-            }
-          ]
-        },
-        {
-          items: [
-            {
-              name: 'Message',
-              vmodel: '',
-              type: 'text-area',
-              format: 'text',
-              placeholder: 'Mensaje',
-            }
-          ]
-        }
-      ]
+      contact:{}
     }
   },
    computed: {
