@@ -226,7 +226,7 @@ textarea{
   width: 85%;
   margin: auto;
   padding-bottom: 35px;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 .container-footer-contact{
