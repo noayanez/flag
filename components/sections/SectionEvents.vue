@@ -12,7 +12,9 @@
         :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
         :class="(key)===selected2?'opacity-1':'opacity-0'"
         class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image"/>
-      <div class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image gradient">
+      <div 
+        :class="device ? 'container-devices' : 'uk-height-viewport'"
+        class="uk-flex uk-visible@m  padding-events transition-images uk-width-1-1 background-image gradient">
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
@@ -308,7 +310,7 @@ export default {
   color: #303e48 !important;
 }
 .imgBorder{
-  border: #faeb05 4.5px solid;
+  border: #faeb05 3.5px solid;
 }
 .description{
   color: white; 
@@ -326,7 +328,14 @@ export default {
   width: 60%;
 }
 
-
+@media (min-width: 1367px) and (max-width: 1601px){
+  .padding-li{
+    padding: 20px 0px 20px 7px;
+  }
+  .text-style {
+    font-size: 20px;
+} 
+}
 
 @media (min-width: 769px) and (max-width: 1366px){
   .titleSelected{

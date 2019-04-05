@@ -2,14 +2,15 @@
   <div 
     id="Contact"
     class="uk-flex uk-flex-wrap uk-height-1-1"
-    style="background-image: url(/manchas.png);background-color: black;opacity:0.9;">
+    style="background-image: url(/manchas.png);background-color: black;opacity:0.9; filter:brightness(0.9);">
     <div class="container-1">
       <div
         class="uk-flex uk-flex-center uk-flex-middle container-form-left container-form-right"
         style="padding-top:30px">
         <div 
+          :class="device ? 'container-devices' : 'uk-height-viewport'"
           class="background-contact"
-          style="padding-top:30px;padding-bottom: 40px;">
+          style="">
           <h2
             class="uk-text-uppercase title-contact-style"
             style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
@@ -81,10 +82,11 @@
       </div>
     </div>
     <div
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      
       style="background-image: url(foto-footer.png)"
       class="uk-height-1-1 uk-padding  containerImgeContact">
       <div
+        :class="device ? 'container-devices' : 'uk-height-viewport'"
         uk-flex
         uk-scrollspy="cls: uk-animation-scale-down; target: > div > div ; delay: 250; repeat: true" 
         class="uk-width-1-1"
@@ -190,8 +192,7 @@ export default {
       ],
       form:{},
       device:''
-    }
-  },
+    }},
   mounted(){
      var userAgent = navigator.userAgent || navigator.vendor || window.opera
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -202,6 +203,7 @@ export default {
 </script>
 
  <style lang="scss" scoped>
+
  .container-devices {
     height: 737px;
 }
@@ -233,6 +235,8 @@ textarea{
   margin:auto;
 }
 .background-contact{
+    padding-top:30px;
+    padding-bottom: 40px;
     background-color: #414141;
     opacity: 0.9;
     filter:  alpha(opacity=40);
@@ -280,7 +284,7 @@ textarea{
   }
 
   .input-style {
-    font-size: 18px;
+    font-size: 1.25rem;
     color: white !important;
     padding-left: 3% !important;
     padding-right: 3% !important;
@@ -330,6 +334,9 @@ textarea{
 
     .container-form-right {
       padding-left: 3% !important;
+    }
+     .title-contact-style{
+      font-size: 1.5rem;
     } 
   }
   @media (max-width: 640px) {
@@ -342,7 +349,9 @@ textarea{
     .title-contact-style{
       width: 100%;
       padding-left: 13px;
-      font-size: 2rem;
+      padding-bottom: 16px;
+      padding-top: 15px;
+      font-size: 1.7rem;
     }
     .description-contact{
       width: 90%;
@@ -393,11 +402,19 @@ textarea{
     .container-1{
       width: 100%;
     }
+    .button-portrait{
+      padding: 35px 106px 34px 53px;
+    }
+    .container-form{
+      padding-bottom: 20px;
+    }
   }
    @media(max-width: 780px){
     .container-footer-contact{
       width: 90%;
-    
+    }
+    .title-contact-style{
+      font-size: 1.8rem;
     }
   }
 
@@ -442,6 +459,7 @@ textarea{
     }   
     .background-contact{
       width: 100%;
+      padding-bottom: 59px;
     }
   }
   @media (min-width: 960px) and (max-width: 1025px){
@@ -480,6 +498,7 @@ textarea{
     .container-form {
       padding-left: 10%;
       padding-right: 10%;
+      padding-bottom: 30px;
     }
 
     .container-form-left {
@@ -506,6 +525,32 @@ textarea{
       height: 84px !important;
       font-size: 18px;
     }
-    
+  }
+
+  @media (min-width: 1026px) and (max-width: 1367px){
+    .title-contact-style{
+      font-size: 2rem;
+      padding-bottom: 15px;
+    }
+    .container-input{
+      padding-bottom: 0px;
+      padding-top: 5px;
+    }
+    .button-portrait{
+      padding: 37px 120px 34px 62px;
+      font-size: 17px;
+    }
+    .input-style {
+      height: 50px !important;
+    }
+    .text-area-style{
+      height: 68px !important;
+    }
+    .background-contact{
+      padding-bottom: 0px;
+}
+  .description-contact{
+      width: 86%;
+  }
   }
  </style>

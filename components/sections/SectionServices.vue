@@ -1,10 +1,16 @@
 <template>
-  <div>
+  <div  
+    id="Services"
+    :class="device ? 'container-devices' : 'uk-height-viewport'"
+    class="uk-position-relative"
+    style=" ">
     <div 
-      id="Services"
       :class="device ? 'container-devices' : 'uk-height-viewport'"
-      class="uk-height-1-1 bkg-animate uk-position-relative uk-flex uk-flex-center uk-flex-middle"
-      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%; background-color:#303e47;background-blend-mode: overlay;">
+      class="uk-height-1-1 bkg-animate "
+      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%;position:absolute; background-color:#303e47;background-blend-mode: overlay;"/>
+    <div 
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      class="uk-flex uk-flex-center uk-flex-middle uk-width-1-1 uk-position-absolute gradient-services">
       <div 
         v-if="content == ''"
         class="">
@@ -70,8 +76,6 @@
         <IntoService 
           :service="intoService"/>
       </div>
-    
-
     </div>
   </div>
 </template>
@@ -149,6 +153,14 @@ function wait(n) {
 </script>
 
 <style>
+
+.gradient-services {
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b4750+1,000000+100&0.65+0,0+100 */
+background: -moz-linear-gradient(top, rgba(59,71,80,0.65) 0%, rgba(59,71,80,0.64) 1%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a63b4750', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  }
 .container-devices {
   height: 737px;
 }

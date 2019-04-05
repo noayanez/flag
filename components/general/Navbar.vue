@@ -173,4 +173,14 @@ export default {
   .uk-sticky-placeholder{
     height: 0px;
   }
+  @media (min-width: 1367px) and  (max-width: 1601px){
+    .textElementsNav{
+      width: 95% !important;
+    }
+  }
+  @media(max-width: 1366px){
+    .textElementsNav {
+      width: 90%;
+  }
+  }
 </style>

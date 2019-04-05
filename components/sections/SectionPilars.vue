@@ -20,7 +20,7 @@
     <div
       style="background-color:transparent;"
       uk-flex
-      uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 450; repeat: true"
+      uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 400; repeat: true"
       class="uk-flex uk-flex-wrap uk-flex-center uk-margin-remove uk-visible@s">
       <!-- 80px = navbar size -->
       <div
@@ -114,7 +114,13 @@ export default {
 </script>
 
 <style scoped>
-
+  .gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+  }
   .container-devices {
     height: 737px;
   }

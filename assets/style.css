@@ -1,0 +1,27 @@
+
+/* font-family: "Futura-Light"; */
+@font-face {
+	font-family: "FuturaLight";
+    src: url("font/FuturaStd-Light.otf");
+    src: url("font/FuturaStd-Light.otf?#iefix")format("embedded-opentype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* font-family: "Futura-Bold"; */
+@font-face {
+	font-family: "FuturaBold";
+    src: url("font/FuturaStd-Bold.otf");
+    src: url("font/FuturaStd-Bold.otf?#iefix")format("embedded-opentype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* font-family: "Futura-Book"; */
+@font-face {
+	font-family: "FuturaBold";
+    src: url("font/FuturaStd-Book.otf");
+    src: url("font/FuturaStd-Book.otf?#iefix")format("embedded-opentype");
+	font-style: normal;
+	font-weight: normal;
+}
