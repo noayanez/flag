@@ -154,8 +154,9 @@ export default {
   padding: 45px 79px 44px 77px;
   text-decoration: none;
   color: #303e48;
-  font-weight: bold;
   font-size: 18px;
+  font-family: 'Futura';
+  font-weight: 800 !important;
 }
 .button-portrait:hover{
   background: url('/boton-2.png') no-repeat;
@@ -166,6 +167,8 @@ export default {
 .title-portrait{
   width: 70%;
   padding-left: 20px;
+  font-family: 'Futura';
+  font-weight: 800 !important;
 }
 @media (max-width: 960px) {
   .title-portrait{

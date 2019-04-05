@@ -155,7 +155,8 @@ export default {
   }
 
   .textElementsNav {
-    font-weight: bolder;
+    font-family: 'Futura';
+    font-weight: 700 !important;
     color: white !important;
     font-size: 16px;
     width: 70%;

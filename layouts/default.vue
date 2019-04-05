@@ -54,4 +54,12 @@ export default {
 </script>
 
 <style>
+h1,h2,h3,a,div{
+  font-family: 'Futura';
+  font-weight: 800 !important;
+}
+p,span,input,textarea{
+  font-family: 'Futura';
+  font-weight: 700 !important;
+}
 </style>

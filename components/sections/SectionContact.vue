@@ -96,14 +96,14 @@
           :key="key"
           class="container-footer-contact" 
           style="padding-bottom: 60px;">
-          <h2
+          <h3
             v-if="key==0"
             class="uk-text-uppercase"
-            style="color: white;">CONTÁCTANOS</h2>
-          <h2 
+            style="color: white;">CONTÁCTANOS</h3>
+          <h3 
             v-else
             class="uk-text-uppercase"
-            style="color:white">SÍGUENOS</h2>
+            style="color:white">SÍGUENOS</h3>
           <div 
             v-for="(e, i) in el.items"
             :key="i"
@@ -156,7 +156,7 @@ export default {
             {
               imgUrl:"",
               src:"/ubicación.png",
-              title:"Alcanfores 495 of 608 Miraflores"
+              title:"Calle Alcanfores 495 of 608 Miraflores"
             },
             {
               imgUrl:"",
@@ -226,7 +226,7 @@ textarea{
   width: 85%;
   margin: auto;
   padding-bottom: 35px;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
 }
 
 .container-footer-contact{

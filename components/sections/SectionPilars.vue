@@ -13,7 +13,7 @@
       <div
         class="uk-h3 uk-margin-remove uk-text-bold uk-text-center"
         style="color:white">
-        {{ pilars.pilarsSectionSubtitle }}
+        <span>{{ pilars.pilarsSectionSubtitle }}</span>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
                 {{ section.singlePilar.singlePilarTitle }}
               </div>
               <div style="color:white; padding-top: 10px;width: 50%; margin:auto">
-                {{ section.singlePilar.singlePilarDescription }}
+                <span> {{ section.singlePilar.singlePilarDescription }} </span>
               </div>
             </div>
           </div>
