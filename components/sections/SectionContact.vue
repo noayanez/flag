@@ -89,46 +89,48 @@
         :class="device ? 'container-devices' : 'uk-height-viewport'"
         uk-flex
         uk-scrollspy="cls: uk-animation-scale-down; target: > div > div ; delay: 250; repeat: true" 
-        class="uk-width-1-1"
+        class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
         style="">
-        <div
-          v-for="(el, key) in footer"
-          :key="key"
-          class="container-footer-contact" 
-          style="padding-bottom: 60px;">
-          <h3
-            v-if="key==0"
-            class="uk-text-uppercase"
-            style="color: white;">CONTÁCTANOS</h3>
-          <h3 
-            v-else
-            class="uk-text-uppercase"
-            style="color:white">SÍGUENOS</h3>
-          <div 
-            v-for="(e, i) in el.items"
-            :key="i"
-            class="padding-bottom">
-            <a 
-              :href="e.imgUrl"
-              class="padding-right">
-              <img 
-                :src="e.src"
-                width="10%" 
-                alt="...">
-            </a>
-            <span style="color:#faeb05; font-size:1.2rem;">{{ e.title }}</span>
+        <div class="">
+          <div
+            v-for="(el, key) in footer"
+            :key="key"
+            class="container-footer-contact" 
+            style="padding-bottom: 60px;">
+            <h3
+              v-if="key==0"
+              class="uk-text-uppercase"
+              style="color: white;">CONTÁCTANOS</h3>
+            <h3 
+              v-else
+              class="uk-text-uppercase"
+              style="color:white">SÍGUENOS</h3>
+            <div 
+              v-for="(e, i) in el.items"
+              :key="i"
+              class="padding-bottom">
+              <a 
+                :href="e.imgUrl"
+                class="padding-right">
+                <img 
+                  :src="e.src"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ e.title }}</span>
+            </div>
           </div>
-        </div>
-        <div
-          uk-flex
-          uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 450; repeat: true" 
-          class="uk-padding-large copy-right" 
-          style="">
-          <h5
-            style="color:#a09d9c">Powered by <a 
-              href="https://prodequa.com/" 
-              target="_blank"
-              style="text-decoration:none;color:white !important;"> Prodequa &reg;</a> </h5>
+          <div
+            uk-flex
+            uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 450; repeat: true" 
+            class="uk-padding-large copy-right" 
+            style="">
+            <h5
+              style="color:#a09d9c">Powered by <a 
+                href="https://prodequa.com/" 
+                target="_blank"
+                style="text-decoration:none;color:white !important;"> Prodequa &reg;</a> </h5>
+          </div>
         </div>
       </div>
     </div>
