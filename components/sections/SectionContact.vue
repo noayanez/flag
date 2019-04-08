@@ -3,12 +3,13 @@
     id="Contact"
     class="uk-flex uk-flex-wrap uk-height-1-1"
     style="background-image: url(/manchas.png);background-color: black;opacity:0.9; filter:brightness(0.9);">
-    <div class="container-1">
+    <div
+      :class="device ? 'container-devices' : 'uk-height-viewport'" 
+      class="container-1">
       <div
         class="uk-flex uk-flex-center uk-flex-middle container-form-left container-form-right"
         style="padding-top:30px">
         <div 
-          :class="device ? 'container-devices' : 'uk-height-viewport'"
           class="background-contact"
           style="">
           <h2
@@ -82,13 +83,12 @@
       </div>
     </div>
     <div
-      
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
       style="background-image: url(foto-footer.png)"
       class="uk-height-1-1 uk-padding  containerImgeContact">
       <div
-        :class="device ? 'container-devices' : 'uk-height-viewport'"
         uk-flex
-        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div ; delay: 250; repeat: true" 
+        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 250; repeat: true" 
         class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
         style="">
         <div class="">
@@ -140,10 +140,6 @@
 <script>
 export default {
   props: {
-    contactForm: {
-      type: Array,
-      default: null
-    },
     contact: {
       type: Object,
       default: null
@@ -228,7 +224,7 @@ textarea{
   width: 85%;
   margin: auto;
   padding-bottom: 35px;
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 
 .container-footer-contact{
@@ -279,6 +275,7 @@ textarea{
 .title-style {
     font-weight: bold;
     color: #0b496e;
+     font-size: 23px;
   }
 
   .subtitle-style {
@@ -295,11 +292,15 @@ textarea{
     border-right: none;
     border-left: none;
     background-color: transparent;
+    font-size: 18px;
+    height: 70px !important;
   }
 
   .text-area-style {
     padding-left: 3%;
     padding-right: 3%;
+    height: 84px !important;
+    font-size: 18px;
     height: 65px !important;
     border-bottom: 1.5px solid white;
     border-top: none;
@@ -315,18 +316,40 @@ textarea{
     color: white;
     border-radius: 10px;
     border: none;
+    font-size: 15px;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
+    padding-left: 4%;
+    padding-right: 4%;
   }
 
   .container-input {
     padding-top: 15px !important;
   }
+  .container-subtitle {
+    padding-left: 35%;
+    padding-right: 35%;
+    }
+  .container-form {
+      padding-left: 10%;
+      padding-right: 10%;
+      padding-bottom: 5px;
+    }
+
+    .container-form-right {
+      padding-left: 0% !important;
+    }
+     .container-btn-more-information {
+      padding-top:2% !important;
+    }
+
   @media(max-width:320px){
     .containerImgeContact{
       padding-top: 10px;
-  }
+   }
     .copy-right{
       top:220px;
-  }
+   }
   .container-1{
     width: 100%;
   }
@@ -353,7 +376,7 @@ textarea{
       padding-left: 13px;
       padding-bottom: 16px;
       padding-top: 15px;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
     .description-contact{
       width: 90%;
@@ -388,11 +411,11 @@ textarea{
     }
 
     .container-form-left {
-      padding-right: 3% !important;
+      padding-right: 8% !important;
     }
 
     .container-form-right {
-      padding-left: 3% !important;
+      padding-left: 8% !important;
     } 
     .background-contact{
       width: 100%;
@@ -409,6 +432,8 @@ textarea{
     }
     .container-form{
       padding-bottom: 20px;
+      padding-left: 2%;
+      padding-right: 2%;
     }
   }
    @media(max-width: 780px){
@@ -416,7 +441,7 @@ textarea{
       width: 90%;
     }
     .title-contact-style{
-      font-size: 1.8rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -481,58 +506,10 @@ textarea{
         align-items: start;
 }
   }
-  @media (min-width: 1025px) {
-
-    .title-style {
-      font-size: 23px;
-    }
-
-    .input-style {
-      font-size: 18px;
-      height: 70px !important;
-    }
-
-    .container-subtitle {
-      padding-left: 35%;
-      padding-right: 35%;
-    }
-
-    .container-form {
-      padding-left: 10%;
-      padding-right: 10%;
-      padding-bottom: 30px;
-    }
-
-    .container-form-left {
-      padding-right: 5% !important;
-    }
-
-    .container-form-right {
-      padding-left: 0% !important;
-    }
-
-    .btn-more-information{
-      font-size: 15px;
-      padding-top: 1.3%;
-      padding-bottom: 1.3%;
-      padding-left: 4%;
-      padding-right: 4%;
-    }
-
-    .container-btn-more-information {
-      padding-top:2% !important;
-    }
-
-    .text-area-style {
-      height: 84px !important;
-      font-size: 18px;
-    }
-  }
-
   @media (min-width: 1026px) and (max-width: 1367px){
     .title-contact-style{
       font-size: 2rem;
-      padding-bottom: 15px;
+      padding-bottom: 15px !important;
     }
     .container-input{
       padding-bottom: 0px;
@@ -550,9 +527,10 @@ textarea{
     }
     .background-contact{
       padding-bottom: 0px;
-}
-  .description-contact{
+    }
+    .description-contact{
       width: 86%;
-  }
-  }
+      padding-bottom: 12px;
+    }
+}
  </style>

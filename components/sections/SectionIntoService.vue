@@ -180,7 +180,7 @@ function wait(n) {
       margin: auto;
   }
   .button-service2{
-      padding: 36px 115px 37px 50px;
+      padding: 35px 135px 32px 30px;
       margin: auto;
   }
 }

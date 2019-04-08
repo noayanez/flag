@@ -14,7 +14,6 @@
     <SectionPilars
       :pilars="pilars"/>
     <SectionContact
-      :contact-form="contactForm"
       :contact="contact"
     />
   </div>

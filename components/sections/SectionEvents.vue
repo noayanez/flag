@@ -325,11 +325,11 @@ export default {
 
 
   .text-style{
-    font-size: 24px;
+    font-size: 20px;
   }
   .container-into-col-1{
     border-right: 3px solid #faeb05;
-    width:60%;
+    width:83%;
   }
   .width-events{
     width:100%;
@@ -358,10 +358,10 @@ export default {
     background-position:50% 50%;
 }
 .width-col-1{
-  width: 40%;
+  width: 30%;
 }
 .width-col-2{
-  width: 60%;
+  width: 70%;
 }
 
 @media (min-width: 1367px) and (max-width: 1601px){

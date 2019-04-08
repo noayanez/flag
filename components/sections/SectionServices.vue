@@ -176,7 +176,7 @@ function wait(n) {
 .button-services{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 30px 68px 20px 65px;
+  padding: 33px 71px 23px 66px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;

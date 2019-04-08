@@ -109,18 +109,18 @@ export default {
         UIkit.scroll({offset: 80}).scrollTo(section)
       })
 
-      // if (window.outerWidth > 960){
-      //   UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
-      //   //Validate screeen size
-      //     UIkit.scroll({offset: 80}).scrollTo(section)
-      //   })
-      // }
-      // else{
-      //   UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
-      //   //Validate screeen size
-      //     UIkit.scroll({offset: 0}).scrollTo(section)
-      //   })
-      // }
+      if (window.outerWidth > 960){
+        UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
+        //Validate screeen size
+          UIkit.scroll({offset: 0}).scrollTo(section)
+        })
+      }
+      else{
+        UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
+        //Validate screeen size
+          UIkit.scroll({offset: 0}).scrollTo(section)
+        })
+      }
 
     }
   }
@@ -159,7 +159,7 @@ export default {
     font-weight: 700 !important;
     color: white !important;
     font-size: 16px;
-    width: 70%;
+    width: 80%;
   }
   .navOffCanvasElementStyle {
     padding: 1em;
