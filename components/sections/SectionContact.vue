@@ -22,40 +22,51 @@
           <div class="uk-width-1-1">
             <div class="uk-width-1-1">
               <form 
+                name="form1"
                 class="uk-grid uk-margin-remove container-form uk-width-1-1"
                 @submit.prevent="send">
                 <div class="uk-padding-remove container-form-left container-form-right uk-width-1-1">
                   <div class="container-input">
                     <input 
+                      v-validate.imediate="{ required: true }"
                       v-model="form.name"
+                      name="Nombres"
                       class="uk-input input-style" 
                       type="text"
-                      pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
                       placeholder="Nombres">
                   </div>
+                  <span style="color:white;">{{ errors.first('name') }}</span>
                   <div class="container-input">
                     <input 
+                      v-validate.imediate="{numeric: true,required: true }"
                       v-model="form.phone"
+                      name="phone"
                       class="uk-input input-style" 
                       type="text"
                       pattern="^(0|[0-9][0-9]*)$"
                       placeholder="Celular:">
                   </div>
+                  <span style="color:white;">{{ errors.first('phone') }}</span>
                   <div class="container-input">
                     <input
+                      v-validate.imediate="{ required: true, email: true }"
                       v-model="form.email"
+                      name="email"
                       class="uk-input input-style" 
-                      type="text"
+                      type="email"
                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
                       placeholder="Correo:">
                   </div>
+                  <span style="color:white;">{{ errors.first('email') }}</span>
                   <div class="container-input">
                     <textarea
                       v-model="form.message"
+                      name="message"
                       class="uk-textarea text-area-style"
                       placeholder="Mensaje:"/>
                     <textarea
                       v-model="form.message2"
+                      name="message2"
                       class="uk-textarea text-area-style"/>
                   </div> 
                   <div 
@@ -70,12 +81,14 @@
                   </div>
                 </div>
                 <a
-                  class="uk-padding-remove-left"
+                  class="uk-padding-remove-left padding-bottom-button"
                   style="text-decoration: none;color:#303e48; margin:auto">
-                  <div 
+                  <input 
+                    type="submit"
                     class="button-portrait uk-text-uppercase"
-                    style="">
-                    CONTACTAR </div></a> 
+                    style="border:none"
+                    value="CONTACTAR">
+                </a> 
               </form>
             </div>
           </div>
@@ -196,12 +209,31 @@ export default {
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
       this.device = true
     }
+  },
+  methods:{
+  async send(){
+      const formData = {
+        email : this.form.email,
+        message: this.form.message + " " + this.form.message2 || this.form.message2,
+        name: this.form.name,
+        phone: this.form.phone,
+        need: this.form.proteccion || false
+      }
+      console.log(formData);
+      if(this.form!={}){
+        let res =  await this.$axios.post('/site/contact/form', formData)
+        console.log(res);
+      }
+    }
   }
 }
 </script>
 
  <style lang="scss" scoped>
 
+  ::placeholder{
+    color: white;
+  }
  .container-devices {
     height: 737px;
 }
@@ -225,6 +257,9 @@ textarea{
   margin: auto;
   padding-bottom: 35px;
   font-size: 2.3rem;
+}
+.padding-bottom-button{
+  padding-bottom: 28px;
 }
 
 .container-footer-contact{
@@ -263,11 +298,11 @@ textarea{
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 40px 128px 44px 67px;
+  padding: 42px 124px 40px 67px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
-  width:20%; 
+  width: 80%; 
   margin:auto;
   font-size: 20px;
 }
