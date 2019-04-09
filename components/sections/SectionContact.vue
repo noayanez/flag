@@ -77,7 +77,7 @@
                       type="checkbox"
                       name="proteccion" 
                       value="proteccion"
-                      style="border:2px solid #faeb05"><span style="color:#faeb05">Protección de datos personales</span>
+                      style="border:2px solid #faeb05"><span style="color:#faeb05;font-size: 20px;">Protección de datos personales</span>
                   </div>
                 </div>
                 <a
@@ -106,31 +106,91 @@
         style="">
         <div class="">
           <div
-            v-for="(el, key) in footer"
-            :key="key"
             class="container-footer-contact" 
             style="padding-bottom: 60px;">
             <h3
-              v-if="key==0"
+            
               class="uk-text-uppercase"
               style="color: white;">CONTÁCTANOS</h3>
-            <h3 
-              v-else
-              class="uk-text-uppercase"
-              style="color:white">SÍGUENOS</h3>
             <div 
-              v-for="(e, i) in el.items"
-              :key="i"
               class="padding-bottom">
               <a 
-                :href="e.imgUrl"
+                href=""
                 class="padding-right">
                 <img 
-                  :src="e.src"
+                  src="/ubicación.png"
                   width="10%" 
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ e.title }}</span>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.officeAddress }}</span>
+            </div>
+            <div 
+              class="padding-bottom">
+              <a 
+                href=""
+                class="padding-right">
+                <img 
+                  src="/correo.png"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.email }}</span>
+            </div>
+            <div 
+              class="padding-bottom">
+              <a 
+                href=""
+                class="padding-right">
+                <img 
+                  src="/teléfono.png"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.phone }}</span>
+            </div>
+          </div>
+          <div
+            class="container-footer-contact" 
+            style="padding-bottom: 60px;">
+            <h3
+            
+              class="uk-text-uppercase"
+              style="color: white;">síguenos</h3>
+            <div 
+              class="padding-bottom">
+              <a 
+                :href="footer.urlFacebook"
+                class="padding-right">
+                <img 
+                  src="/facebook.png"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.facebook }}</span>
+            </div>
+            <div 
+              class="padding-bottom">
+              <a 
+                :href="footer.urlInstagram"
+                class="padding-right">
+                <img 
+                  src="/INSTAGRAM.png"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.instagram }}</span>
+            </div>
+            <div 
+              class="padding-bottom">
+              <a 
+                :href="footer.urlLinkedin"
+                class="padding-right">
+                <img 
+                  src="/linkedin.png"
+                  width="10%" 
+                  alt="...">
+              </a>
+              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.linkedin }}</span>
             </div>
           </div>
           <div
@@ -153,7 +213,7 @@
 <script>
 export default {
   props: {
-    contact: {
+    footer: {
       type: Object,
       default: null
     }
@@ -161,46 +221,6 @@ export default {
   data() {
     return {
       title: '¡CONTÁCTANOS!',
-      footer:[
-        {
-          items:[
-            {
-              imgUrl:"",
-              src:"/ubicación.png",
-              title:"Calle Alcanfores 495 of 608 Miraflores"
-            },
-            {
-              imgUrl:"",
-              src:"/correo.png",
-              title:"marketing@flagsgroup.net"
-            },
-            {
-              imgUrl:"",
-              src:"/teléfono.png",
-              title:"488 7910"
-            }
-          ]
-        },
-        {
-          items:[
-            {
-              imgUrl:"",
-              src:"/facebook.png",
-              title:"THE FLAGS GROUP"
-            },
-            {
-              imgUrl:"",
-              src:"/INSTAGRAM.png",
-              title:"THE FLAGS GROUP"
-            },
-            {
-              imgUrl:"",
-              src:"/linkedin.png",
-              title:"THE FLAGS GROUP"
-            }
-          ]
-        }
-      ],
       form:{},
       device:''
     }},
@@ -236,9 +256,9 @@ export default {
   }
  .container-devices {
     height: 737px;
-}
+  }
 .description-contact{
-   width: 85%;
+   width: 82%;
    margin:auto;
    padding-bottom:20px;
 }
@@ -253,7 +273,7 @@ textarea{
   top:100px;
 }
 .title-contact-style{
-  width: 85%;
+  width: 82%;
   margin: auto;
   padding-bottom: 35px;
   font-size: 2.3rem;
@@ -305,6 +325,8 @@ textarea{
   width: 80%; 
   margin:auto;
   font-size: 20px;
+  font-family: 'Futura';
+  font-weight: 800 !important;
 }
 
 .title-style {

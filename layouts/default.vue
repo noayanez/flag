@@ -35,21 +35,25 @@ export default {
   },
   data(){
     return{
-      content:''
+      content:'',
+      infoGeneral:''
     }
   },
     async mounted() {
-    this.consumer()
+    this.consumer();
   },
   methods:{
     async consumer(){
       try {
-        this.content= await this.$axios.$get('/site/page')
+        this.content = await this.$axios.$get('/site/page')
+        console.log(this.content)
+        this.infoGeneral = await this.$axios.$get('/site/general-info')
         this.$router.app.$store.commit(
-          'SET_DATA_VIEW',
-          this.content
+          'SET_DATA_VIEW',this.content
         )
-        // console.log(this.$store.state.dataView)
+        this.$router.app.$store.commit(
+          'SET_GENERAL_INFORMATION',this.infoGeneral
+        )
       } catch (error) {
         console.log('error')
       }

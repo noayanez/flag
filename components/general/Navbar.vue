@@ -20,7 +20,7 @@
                 class="uk-navbar-item uk-logo"
                 @click="goTo('#Portrait')">
                 <img
-                  :src="section.src"
+                  :src="filterImage(src)"
                   width="150px"
                   style="max-width: 200px; height: 200px !important; padding-top: 63px;"
                   alt="Logo"></a>
@@ -94,12 +94,17 @@ export default {
       sections:[
         {name:'EXPERIENCIAS MEMORABLES', url:'#Events'},
         {name:'MARKETING Y EVENTOS', url:'#Services'},
-        {name:"logo", src:"/logo-principal.png"},
+        {name:"logo"},
         {name:'¿POR QUÉ ELEGIRNOS?', url:'#Pilars'},
         {name:'CONTÁCTANOS', url:'#Contact'}
       ],
-      logo:'logo-principal.png'
+      src:''
     }
+  },
+  async mounted(){
+    await this.$nextTick()
+    await wait(1000)
+    this.src = this.$store.getters.getInfoGeneral.logo
   }, 
   methods: {
     goTo (section, label) {
@@ -122,8 +127,18 @@ export default {
         })
       }
 
-    }
+    },
+    filterImage (url){
+      return process.env.API_URL + url
+    }    
   }
+}
+function wait(n) {
+   return new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      resolve()
+    }, n)
+  })
 }
 </script>
 
@@ -159,7 +174,7 @@ export default {
     font-weight: 700 !important;
     color: white !important;
     font-size: 16px;
-    width: 80%;
+    width: 78%;
   }
   .navOffCanvasElementStyle {
     padding: 1em;
@@ -181,7 +196,7 @@ export default {
   }
   @media(max-width: 1366px){
     .textElementsNav {
-      width: 94%;
+      width: 95%;
   }
   }
 </style>

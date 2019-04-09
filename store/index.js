@@ -2,7 +2,7 @@
 
 export const state = () => ({
   fromForm: false,
-  generalinformation: {},
+  generalInformation: {},
   dataView:{},
   dataService:'',
   language:'es'
@@ -13,14 +13,13 @@ export const mutations = {
     state.fromForm = value
   },
   SET_GENERAL_INFORMATION(state, data) {
-    state.generalinformation = data
+    state.generalInformation = data
   },
   SET_DATA_VIEW(state,data){
     state.dataView = data
   },
   SET_DATA_SERVICES(state, data){
     state.dataService = data
-    // console.log(state.dataService)
   }
   
 }
@@ -37,6 +36,9 @@ export const getters = {
   },
   getIntoService(state){
     return state.dataService
+  },
+  getInfoGeneral(state){
+    return state.generalInformation
   }
 }
   

@@ -342,7 +342,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 95%;
   background-position: 50% 50%;
-  padding: 25px 7px 24px 23px;
+  padding: 36px 7px 30px 36px;
   color: #303e48 !important;
 }
 .imgBorder{

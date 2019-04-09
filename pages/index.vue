@@ -14,7 +14,7 @@
     <SectionPilars
       :pilars="pilars"/>
     <SectionContact
-      :contact="contact"
+      :footer="footer"
     />
   </div>
 </template>
@@ -70,8 +70,12 @@ export default {
   },
    computed: {
     ...mapGetters({
-        content: 'getView'
-})},
+        content: 'getView'    
+    }),
+    ...mapGetters({
+        content2: 'getInfoGeneral'    
+    })
+},
   async mounted() {
     // HERE IS WHERE THE FETCHED INFORMATION IS DISTRIBUTED
     await wait(1000)
@@ -79,6 +83,7 @@ export default {
      this.events = this.content.content.eventsSection
      this.services = this.content.content.services
      this.pilars =  this.content.content.pilars
+     this.footer =  this.content2
     console.log( this.portrait )
     var intFrameHeight = window.innerHeight;
   },
