@@ -151,17 +151,17 @@ export default {
 .button-portrait{
   background: url('/boton-1.png') no-repeat;
   background-size: 100%;
-  padding: 38px 53px 33px 53px;
+  padding: 35px 46px 28px 45px;
   text-decoration: none;
   color: #303e48;
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Futura';
   font-weight: 800 !important;
 }
 .button-portrait:hover{
   background: url('/boton-2.png') no-repeat;
   background-size: 100%;
-  padding: 38px 53px 33px 53px;
+  padding: 35px 46px 28px 45px;
   color: #faeb05;
 }
 .title-portrait{

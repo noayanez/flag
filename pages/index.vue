@@ -84,7 +84,7 @@ export default {
      this.services = this.content.content.services
      this.pilars =  this.content.content.pilars
      this.footer =  this.content2
-    console.log( this.portrait )
+    console.log( this.footer )
     var intFrameHeight = window.innerHeight;
   },
   methods: {

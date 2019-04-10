@@ -5,6 +5,7 @@
     class="uk-position-relative">
     <div 
       v-if="events.events"
+      :class="device ? 'container-devices' : 'uk-height-viewport'"
       class="uk-position-relative ">
       
       <div 
@@ -18,34 +19,36 @@
               <div
                 :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
                 :class="(i)===selected2?'opacity-1':'opacity-0'"
-                class="uk-background-cover uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image "/>
+                class="uk-background-cover uk-height-1-1 uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image "/>
             </div>
           </div>
         </transition>
       </div>
       <div 
-        :class="device ? 'container-devices' : 'uk-height-viewport'"
-        class="uk-flex uk-visible@m  padding-events transition-images uk-width-1-1 background-image gradient">
+     
+        class="uk-flex uk-visible@m  uk-height-1-1 padding-events transition-images uk-width-1-1  background-image gradient">
         <div 
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
           <div 
-            class="uk-flex uk-flex-column uk-flex-center uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom">
-            <div class="container-into-col-1">
+            class="uk-flex uk-flex-column uk-flex-center uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom uk-height-1-1">
+            <div class="container-into-col-1 uk-height-1-1">
               <p 
-                class="text-style description"
-                style="">
+                class="text-style description uk-margin-remove"
+                style="height:30%">
                 {{ events.mainDescription }}
               </p>
               <div 
-                v-if="events.events">
+                v-if="events.events"
+                uk-height-viewport="expand: true"
+                style="height:70%">
                 <ul 
-                  class="uk-nav"
-                  style="">
+                  class="uk-nav uk-flex uk-flex-column uk-flex-around uk-flex-top"
+                  style="height:100%">
                   <li 
                     v-for="(ele, key) in events.events"
                     :key="key"
-                    class="padding-li"
+                    class=""
                     style="">
                     <a
                       class="text-style"
@@ -217,7 +220,9 @@ export default {
       device:''
     }
   },
-  mouted(){
+  mounted(){
+    // console.log(window.innerHeight)
+    // console.log(window.innerWidth)
     this.loading()
     var userAgent = navigator.userAgent || navigator.vendor || window.opera
       if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -236,8 +241,8 @@ export default {
       this.selected2 = e
     },
     loading(){
-      this.imgSelected = this.events.events[0].single.eventImages[0].singleEvent.singleEventImage
-      this.selected3 = this.events.events[0].single.eventTitle
+      // this.imgSelected = this.events.events[0].single.eventImages[0].singleEvent.singleEventImage
+      // this.selected3 = this.events.events[0].single.eventTitle
     }
   }
 }
@@ -304,18 +309,16 @@ export default {
   z-index:-1;
 }
 
-  .padding-li{
-    padding: 25px 0px 25px 7px;
-  }
- .select-style{
-    display: block;
-    font-size: 18px;
-    padding: 1.5em 2em 1.5em 1.5em;
-    background-color: #faeb05 !important;
-    border-radius: 6px;
-    color: black;
-    font-weight: bold;
-    text-align-last: center;
+  
+.select-style{
+  display: block;
+  font-size: 18px;
+  padding: 1.5em 2em 1.5em 1.5em;
+  background-color: #faeb05 !important;
+  border-radius: 6px;
+  color: black;
+  font-weight: bold;
+  text-align-last: center;
 }
 .description-style{
   color:white; 
@@ -325,11 +328,11 @@ export default {
 
 
   .text-style{
-    font-size: 20px;
+    font-size: 18px;
   }
   .container-into-col-1{
     border-right: 3px solid #faeb05;
-    width:83%;
+    width:90%;
   }
   .width-events{
     width:100%;
@@ -350,7 +353,7 @@ export default {
 }
 .description{
   color: white; 
-  width: 90%;
+  width: 93%;
   display:block
 }
 .container-slider-events{
@@ -364,13 +367,16 @@ export default {
   width: 70%;
 }
 
-@media (min-width: 1367px) and (max-width: 1601px){
-  .padding-li{
-    padding: 20px 0px 20px 7px;
+@media (min-width: 1369px) and (max-width: 1601px){
+  .padding-li {
+    padding: 15px 0px 15px 7px;
   }
   .text-style {
-    font-size: 20px;
-} 
+    font-size: 18px;
+  } 
+}
+.padding-li{
+  padding: 25px 0px 25px 7px;
 }
 
 @media (min-width: 769px) and (max-width: 1366px){
