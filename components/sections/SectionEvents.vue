@@ -33,11 +33,16 @@
           <div 
             class="uk-flex uk-flex-column uk-flex-center uk-padding-large uk-padding-remove-right uk-padding-remove-top uk-padding-remove-bottom uk-height-1-1">
             <div class="container-into-col-1 uk-height-1-1">
-              <p 
-                class="text-style description uk-margin-remove"
-                style="height:30%">
-                {{ events.mainDescription }}
-              </p>
+              <div
+                class="uk-flex uk-flex-column uk-flex-center" 
+                style="height:30%;">
+                <div>
+                  <p 
+                    class="text-style description uk-margin-remove">
+                    {{ events.mainDescription }}
+                  </p>
+                </div>
+              </div>
               <div 
                 v-if="events.events"
                 uk-height-viewport="expand: true"
@@ -71,11 +76,13 @@
           style="">
           
           <div 
-            class="title uk-padding-large"
-            style="">
-            <h2 
-              v-if="events.events"
-              style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+            class="uk-flex uk-flex-column uk-flex-center"
+            style="height:37%">
+            <div>
+              <h2 
+                v-if="events.events"
+                style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+            </div>
           </div>
 
           <div 

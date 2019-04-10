@@ -179,7 +179,7 @@ function wait(n) {
 .button-services{
   background: url('/boton-1.png') no-repeat;
   background-size: cover;
-  padding: 33px 71px 23px 66px;
+  padding: 34px 65px 27px 60px;
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
@@ -224,9 +224,12 @@ function wait(n) {
     to { background-position: -400px 0; }
   }
 
-@media(max-width: 1367px){
+@media(max-width: 1369px){
   .containerImage{
-    height: 59vh;
+    height: 55vh;
+  }
+  .button-services{
+    padding: 23px 58px 16px 46px;
   }
 }
 @media (max-width: 1024px){
