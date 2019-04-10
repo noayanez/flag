@@ -13,7 +13,7 @@
       class="uk-flex uk-flex-center uk-flex-middle uk-width-1-1 uk-position-absolute gradient-services">
       <div 
         v-if="content == ''"
-        class="">
+        class="services-width">
         <div
           class="uk-padding@s titleServices uk-height-1-1" 
           style="text-align:center;">
@@ -163,6 +163,9 @@ function wait(n) {
 .container-devices {
   height: 737px;
 }
+.services-width{
+  width: 65%;
+}
 .img-services{
     border-radius: 20px;
 }
@@ -220,6 +223,12 @@ function wait(n) {
     from { background-position: 0 0; }
     to { background-position: -400px 0; }
   }
+
+@media(max-width: 1367px){
+  .containerImage{
+    height: 59vh;
+  }
+}
 @media (max-width: 1024px){
   .containerImage{
     min-width: 350px;
@@ -227,6 +236,9 @@ function wait(n) {
 }
 .container-height{
    height:80vh;
+}
+.services-width{
+      width: 65%;
 }
 }
 @media (max-width: 769px){
