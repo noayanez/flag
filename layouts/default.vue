@@ -11,10 +11,11 @@
     </div>
     <div
       v-else
-      class="uk-flex uk-flex-column uk-flex-middle uk-flex-center uk-height-viewport"
-      style="background-color:#303e47">
+      class="uk-flex uk-flex-middle uk-flex-center uk-height-viewport uk-height-1-1 uk-width-1-1"
+      style="background-color:#303e47;">
       <div class="pulse-btn">
         <img
+          class="width-img-onload"
           src="logo-principal.png"
           alt="Logo"> 
       </div>
@@ -85,6 +86,10 @@ p,span,input,textarea{
   50% {
      transform: scale(1.2);
   }
+}
+
+.width-img-onload{
+  max-width: 80%;
 }
 
 </style>
