@@ -1,16 +1,18 @@
 <template>
   <div 
     id="Events"
-    :class="device ? 'container-devices' : 'uk-height-viewport'"
-    class="uk-position-relative">
+   
+    class="uk-position-relative"
+    style="height:100vh">
     <div 
       v-if="events.events"
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
-      class="uk-position-relative ">
+      
+      class="uk-position-relative uk-visible@m uk-height-1-1">
       
       <div 
         v-for="(el, key) in events.events"
-        :key="key">
+        :key="key"
+        class="">
         <transition name="slide-fade">
           <div v-if="selected===key">
             <div 
@@ -19,7 +21,7 @@
               <div
                 :style="{'background-image':'url(' +ele.singleEvent.singleEventImage +')'}"
                 :class="(i)===selected2?'opacity-1':'opacity-0'"
-                class="uk-background-cover uk-height-1-1 uk-flex uk-visible@m uk-height-viewport padding-events transition-images uk-width-1-1 background-image "/>
+                class="uk-background-cover uk-height-1-1 uk-flex uk-height-viewport padding-events transition-images uk-width-1-1 background-image "/>
             </div>
           </div>
         </transition>
@@ -116,18 +118,18 @@
     </div>
 
     <div 
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      
       class="uk-hidden@m"
-      style="display:flex; flex-direction:column">
+      style="display:flex; flex-direction:column; height:100%">
       <div 
         class="uk-height-1-1"
         style="">
         <div 
-          class="uk-padding height-component"
-          style="background-color:#101010">
+          class="uk-flex uk-flex-column uk-flex-center uk-flex-middle height-col-1"
+          style="background-color:#101010;">
           <div 
             v-if="events.events"
-            class="padding-select-left" 
+            class="" 
             style="text-align:center">
             <select
               v-model="selected"
@@ -146,10 +148,10 @@
         </div>
         <div 
           v-if="events.events"
-          class="uk-height-1-1"
+          class="uk-height-1-1 height-col-2"
           uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 350; max-height: 600">
           <div 
-            class="uk-position-relative uk-visible-toggle uk-light" 
+            class="uk-position-relative uk-visible-toggle uk-light uk-height-1-1" 
             tabindex="-1">
             <ul class="uk-slideshow-items uk-height-1-1 ul-height">
               <li 
@@ -160,7 +162,7 @@
                   :style="`background-image: url(${ele.singleEvent.singleEventImage});`"
                   style="background-size:cover; background-position: 50% 50%"
                   class="uk-height-1-1 uk-padding uk-align-center container-slider-events ">
-                  <div style="text-align:center"><h3>{{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }}</h3></div>
+                  <div style="text-align:center; padding:0px"><h3>{{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }}</h3></div>
                 </div>
               </li>
             </ul>
@@ -275,8 +277,8 @@ export default {
   .slide-fade-enter, .slide-fade-leave-active {
   opacity: 0;
   }
-  .container-devices {
-     height: 737px;
+  .container-devices-services {
+     height: 800px;
   }
   .opacity-0{
     opacity: 0;
@@ -315,7 +317,12 @@ export default {
   background:rgba(0,0,0,0);
   z-index:-1;
 }
-
+.height-col-1{
+  height: 25%;
+}
+.height-col-2{
+  height: 75%;
+}
   
 .select-style{
   display: block;
@@ -361,7 +368,8 @@ export default {
 .description{
   color: white; 
   width: 93%;
-  display:block
+  display:block;
+  font-size: 20px;
 }
 .container-slider-events{
     background-size:cover; 
@@ -380,7 +388,10 @@ export default {
   }
   .text-style {
     font-size: 18px;
-  } 
+  }
+  .description{
+    font-size: 24px;
+  }
 }
 .padding-li{
   padding: 25px 0px 25px 7px;
@@ -455,6 +466,15 @@ export default {
 .text-style{
     font-size: 17px;
   }
+  .height-col-1{
+  height: 45%;
+}
+.height-col-2{
+  height: 55%;
+}
+.description-style{
+  padding-top: 10px;
+}
 
 }
 @media(min-width: 376px) and (max-width:417px){
@@ -465,7 +485,7 @@ export default {
     min-height: 440px !important;
   }
 }
-@media(min-width: 321px) and (width: 375px){
+@media(min-width: 321px) and (max-width: 375px){
   .padding-select-left{
     padding-left: 26px;
   }

@@ -1,81 +1,88 @@
 <template>
   <div  
     id="Services"
-    :class="device ? 'container-devices' : 'uk-height-viewport'"
+    
     class="uk-position-relative"
-    style=" ">
+    style="height:100vh ">
     <div 
       :class="device ? 'container-devices' : 'uk-height-viewport'"
       class="uk-height-1-1 bkg-animate "
       style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%;position:absolute; background-color:#303e47;background-blend-mode: overlay;"/>
     <div 
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
-      class="uk-flex uk-flex-center uk-flex-middle uk-width-1-1 uk-position-absolute gradient-services">
-      <div 
-        v-if="content == ''"
-        class="services-width">
-        <div
-          class="uk-padding@s titleServices uk-height-1-1" 
-          style="text-align:center;">
-          <h2 class="title-services"> {{ services.serviceSectionTitle }} </h2>
-        </div>
-        <div class="">
-          <div 
-            v-if="services.service"
-            class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
-            <div
-              v-for="(ele, key) in services.service"
-              :key="key"
-              class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
-              style="text-align:center; padding-bottom: 40px;">
-              <div
-                :style="`background-image: url(${ele.singleService.singleServiceImage};`"
-                class="uk-height-1-1 uk-padding uk-align-center containerImage"/>
-              <a
-                style="text-decoration: none;color:#303e48"
-                @click="getContent(ele.singleService.singleServiceName)">
-                <div 
-                  class="button-services"
-                  style="">
-                  {{ ele.singleService.singleServiceName }} </div></a>
-            </div>
+      
+      class="uk-flex uk-flex-center flex-bottom uk-width-1-1 uk-position-absolute gradient-services uk-height-1-1">
+      <transition 
+        name="slide-fade">
+        <div 
+          v-if="content == '' && flag"
+          class="services-width">
+          <div
+            class="titleServices uk-flex uk-flex-center uk-flex-middle" 
+            style="">
+            <h2 class="title-services uk-margin-remove"> {{ services.serviceSectionTitle }} </h2>
           </div>
-          <div class="uk-hidden@s uk-height-viewport">
+          <div class="">
             <div 
-              uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
-              class="height">
+              v-if="services.service"
+              class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
+              <div
+                v-for="(ele, key) in services.service"
+                :key="key"
+                class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
+                style="text-align:center; padding-bottom: 40px;">
+                <div
+                  :style="`background-image: url(${ele.singleService.singleServiceImage};`"
+                  class="uk-height-1-1 uk-padding uk-align-center containerImage"
+                  style="cursor:pointer;"
+                  @click="getContent(ele.singleService.singleServiceName)"/>
+                <a
+                  style="text-decoration: none;color:#303e48"
+                  @click="getContent(ele.singleService.singleServiceName)">
+                  <div 
+                    class="button-services"
+                    style="">
+                    {{ ele.singleService.singleServiceName }} </div></a>
+              </div>
+            </div>
+            <div class="uk-hidden@s uk-height-viewport">
               <div 
-                class="uk-position-relative uk-visible-toggle">
-                <ul 
-                  class="uk-slideshow-items slideshow-height">
-                  <li 
-                    v-for="(ele, key) in services.service"
-                    :key="key">
-                    <div 
-                      :style="`background-image: url(${ele.singleService.singleServiceImage});`"
-                      style=""
-                      class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
-                    <a
-                      style="text-decoration: none;color:#303e48"
-                      @click="getContent(ele.singleService.singleServiceName)">
+                uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
+                class="height">
+                <div 
+                  class="uk-position-relative uk-visible-toggle">
+                  <ul 
+                    class="uk-slideshow-items slideshow-height">
+                    <li 
+                      v-for="(ele, key) in services.service"
+                      :key="key">
                       <div 
-                        class="button-slider"
-                        style="">
-                        {{ ele.singleService.singleServiceName }} </div></a>
-                  </li>
-                </ul>
-                <ul 
-                  class="uk-slideshow-nav uk-dotnav uk-flex-center"
-                  style="padding-bottom: 40px;"/>
+                        :style="`background-image: url(${ele.singleService.singleServiceImage});`"
+                        style=""
+                        class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
+                      <a
+                        style="text-decoration: none;color:#303e48"
+                        @click="getContent(ele.singleService.singleServiceName)">
+                        <div 
+                          class="button-slider"
+                          style="">
+                          {{ ele.singleService.singleServiceName }} </div></a>
+                    </li>
+                  </ul>
+                  <ul 
+                    class="uk-slideshow-nav uk-dotnav uk-flex-center"
+                    style="padding-bottom: 40px;"/>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-else>
+      </transition>
+      <transition name="slide-fade"> 
         <IntoService 
-          :service="intoService"/>
-      </div>
+          v-if="content!=='' && flag2"
+          :service="intoService"
+          @clicked="hidde"/>
+      </transition>
     </div>
   </div>
 </template>
@@ -102,7 +109,8 @@ export default {
       return{
         intoService:'',
         device:'',
-        flag:false
+        flag:true,
+        flag2:false
       }
     },
     computed: {
@@ -138,7 +146,26 @@ export default {
             }
         });
         this.intoService = this.content
+        this.show()
        //  console.log(this.$store.state.dataService)
+      },
+      async show(){
+        console.log('################');
+        console.log(this.flag +" "+ this.flag2);
+        this.flag = !this.flag
+        await wait(500)
+        this.flag2 = !this.flag2
+        console.log("funcion show");
+        console.log(this.flag +" "+ this.flag2);
+      },
+      async hidde(){
+        console.log('################');
+        console.log(this.flag +" "+ this.flag2);
+        this.flag2 = !this.flag2
+        await wait(500)
+        this.flag = !this.flag
+        console.log("funcion show");
+        console.log(this.flag +" "+ this.flag2);
       }
     }
 }
@@ -152,6 +179,7 @@ function wait(n) {
 </script>
 
 <style>
+@import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css);
 
 .gradient-services {
    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b4750+1,000000+100&0.65+0,0+100 */
@@ -160,6 +188,23 @@ function wait(n) {
     background: linear-gradient(to bottom, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a63b4750', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
   }
+  .flex-bottom{
+    align-items: center;
+  }
+
+  .slide-fade-enter-active {
+    transition: all 0.5s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all 0.5s ease;
+  }
+  .slide-fade-leave, .slide-fade-leave-active {
+    opacity: 1;
+  }
+  .slide-fade-enter, .slide-fade-leave-active {
+    opacity: 0;
+  }
+
 .container-devices {
   height: 737px;
 }
@@ -226,10 +271,16 @@ function wait(n) {
 
 @media(max-width: 1369px){
   .containerImage{
-    height: 55vh;
+    height: 50vh;
   }
   .button-services{
     padding: 23px 58px 16px 46px;
+  }
+  .services-width{
+    width: 75%;
+  }
+  .flex-bottom{
+    align-items: flex-end;
   }
 }
 @media (max-width: 1024px){
@@ -241,8 +292,11 @@ function wait(n) {
    height:80vh;
 }
 .services-width{
-      width: 65%;
+      width: 85%;
 }
+.flex-bottom{
+    align-items: center;
+  }
 }
 @media (max-width: 769px){
    .container-height{
@@ -264,7 +318,11 @@ function wait(n) {
     min-width: 250px;
  }
  .titleServices{
-     padding-bottom: 10px !important;
+     height:20%;
+     text-align: center;
+     padding-top: 17px;
+    padding-bottom: 12px;
+    align-items: flex-end;
  }
  .uk-dotnav > * > * {
     width: 15px;
@@ -279,7 +337,10 @@ function wait(n) {
 .padding-top{
   padding-top:20px;
 }
-
+.services-width{
+  width: 100%;
+  height: 100%;
+}
 }
 @media(min-width: 376px) and (max-width: 414px){
   .slideshow-height{
@@ -301,6 +362,7 @@ function wait(n) {
     height: 50vh;
     width: 84%;
   }
+  
   .titleServices{
      padding-bottom: 15px !important;
      padding-bottom: 20px !important;
@@ -309,9 +371,6 @@ function wait(n) {
  }
 }
 @media (max-width: 360px){
-  .title-services{
-    padding: 14px
-  }
   .slideshow-height{
       min-height:417px !important;
 }

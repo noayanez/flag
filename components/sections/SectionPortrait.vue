@@ -2,7 +2,7 @@
   <div 
     id="Portrait"
     class="uk-position-relative"
-    style="">
+    style="min-height:100vh">
     <div
       :style="`background-image: url(${portrait.img};`"
       :class="device ? 'container-devices' : 'uk-height-viewport'"
@@ -152,6 +152,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
 }
 .button-portrait{
     padding: 40px 65px;
+}
+.button-portrait:hover{
+  padding: 40px 65px;
 }
 .buttons-conatiner{
   justify-content: center;

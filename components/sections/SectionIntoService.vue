@@ -1,14 +1,5 @@
 <template>
   <div>
-    <a
-      class="uk-hidden@s"
-      style="position: relative;top: 0px;width:15%;"
-      @click="remove">
-      <img 
-        src="boton-flecha.png" 
-        alt="..."
-        class="uk-hidden@s button-back">
-    </a>
     <div 
       class="uk-flex uk-flex-wrap-stretch uk-flex-center uk-padding-large@s uk-pading-remove-right uk-pading-remove-left uk-pading-remove-bottom"
       style="">
@@ -27,21 +18,22 @@
               class="uk-visible@s"
               style="padding-top: 20px;">
               <div class="uk-visible@s">
-                <h2 
+                <h3 
                   style="color:white;font-weight: bold;"
-                  class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h2>
+                  class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h3>
               </div>
               <div>
                 <ul 
                   v-for="(el,key) in service.singleServiceItems"
-                  :key="key"> 
+                  :key="key"
+                  class="uk-margin-remove"> 
                   <li class="color"><span>{{ el.singleServiceItem }}</span></li>
                 </ul>
               </div>
             </div>
             <div
               class="uk-visible@s"
-              style="padding-top: 30px;">
+              style="">
               <a
                 style="text-decoration: none;color:#303e48"
                 @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
@@ -110,14 +102,16 @@ export default {
     })},
     async mounted() {
     // HERE IS WHERE THE FETCHED INFORMATION IS DISTRIBUTED
-      await wait(1000)
+      // await wait(1000)
       //console.log(this.content)
       this.service = this.content
     },
     methods:{
       remove(){
         this.$router.app.$store.commit('SET_DATA_SERVICES','')
-        console.log(this.content)
+        console.log("clicked");
+        this.$emit('clicked')
+        // console.log(this.content)
       },
     goTo (section, label) {
       UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
@@ -169,6 +163,11 @@ function wait(n) {
 }
 .container2{
   width: 40vw;
+}
+@media(max-width: 769px){
+  .button-service2{
+    padding: 33px 130px 37px 27px;
+  }
 }
 @media (max-width: 420px){
   .container2{

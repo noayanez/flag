@@ -6,7 +6,7 @@
       style="background-color: transparent;">
       <nav
         class=" uk-navbar-container uk-position-absolute uk-width-1-1  uk-navbar-center navStyle"
-        style="z-index: 1000; height:80px"
+        style="z-index: 1000; height:70px"
         uk-navbar>
         <div class="uk-navbar-center uk-visible@l">
           <div 
@@ -14,16 +14,15 @@
             :key="key">
             <div 
               v-if="section.name=='logo'"
-              class="uk-navbar-item navItemStyle"
+              class="uk-navbar-item navItemStyle" 
               style="width: 120px; height:90px;">
               <a
                 class="uk-navbar-item uk-logo"
                 @click="goTo('#Portrait')">
                 <img
                   :src="filterImage(src)"
-                  width="150px"
-                  style="max-width: 200px; height: 200px !important; padding-top: 63px;"
-                  alt="Logo"></a>
+                  width="130px"
+                  style="max-width: 200px;height: 169px !important;padding-top: 50px;"></a>
             </div>
             <div
               v-else
@@ -111,7 +110,7 @@ export default {
 
       UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
         //Validate screeen size
-        UIkit.scroll({offset: 80}).scrollTo(section)
+        UIkit.scroll({offset: 0}).scrollTo(section)
       })
 
       if (window.outerWidth > 960){

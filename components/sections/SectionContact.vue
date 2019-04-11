@@ -1,20 +1,20 @@
 <template>
   <div 
     id="Contact"
+    :class="device ? 'container-devices' : 'uk-height-viewport'"
     class="uk-flex uk-flex-wrap uk-height-1-1"
-    style="background-image: url(/manchas.png);background-color: black;opacity:0.9; filter:brightness(0.9);">
-    <div
-      :class="device ? 'container-devices' : 'uk-height-viewport'" 
-      class="container-1">
+    style="background-image: url(/manchas.png);background-color: black;opacity:0.9;height:100vh">
+    <div 
+      class="container-1 uk-flex uk-flex-middle">
       <div
-        class="uk-flex uk-flex-center uk-flex-middle container-form-left container-form-right"
+        class="uk-flex uk-flex-column uk-flex-center uk-flex-middle container-form-left container-form-right"
         style="padding-top:30px">
         <div 
           class="background-contact"
           style="">
-          <h2
+          <h3
             class="uk-text-uppercase title-contact-style"
-            style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h2>
+            style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h3>
 
           <h4 
             class="description-contact" 
@@ -71,7 +71,7 @@
                   </div> 
                   <div 
                     class="width-container"
-                    style="padding-top: 10px;padding-bottom: 48px;">
+                    style="padding-top: 10px;padding-bottom: 20px;">
                     <input
                       v-model="form.proteccion"  
                       type="checkbox"
@@ -82,7 +82,7 @@
                 </div>
                 <a
                   class="uk-padding-remove-left padding-bottom-button"
-                  style="text-decoration: none;color:#303e48; margin:auto">
+                  style="text-decoration: none;color:#303e48; margin:auto;text-align: center;">
                   <input 
                     type="submit"
                     class="button-portrait uk-text-uppercase"
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
+      
       style="background-image: url(foto-footer.png)"
       class="uk-height-1-1 uk-padding  containerImgeContact">
       <div
@@ -196,7 +196,7 @@
           <div
             uk-flex
             uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 450; repeat: true" 
-            class="uk-padding-large copy-right" 
+            class="uk-padding-large copy-right uk-padding-remove" 
             style="">
             <h5
               style="color:#a09d9c">Powered by <a 
@@ -260,7 +260,6 @@ export default {
 .description-contact{
    width: 82%;
    margin:auto;
-   padding-bottom:20px;
 }
 textarea{
   resize: none;
@@ -275,8 +274,8 @@ textarea{
 .title-contact-style{
   width: 82%;
   margin: auto;
-  padding-bottom: 35px;
-  font-size: 2.3rem;
+  padding: 15px 0px;
+  font-size: 2rem;
 }
 .padding-bottom-button{
   padding-bottom: 28px;
@@ -288,9 +287,8 @@ textarea{
   margin:auto;
 }
 .background-contact{
-    padding-top:30px;
-    padding-bottom: 40px;
     background-color: #414141;
+    padding: 20px;
     opacity: 0.9;
     filter:  alpha(opacity=40);
     border-radius: 10px;
@@ -344,13 +342,13 @@ textarea{
     color: white !important;
     padding-left: 3% !important;
     padding-right: 3% !important;
-    border-bottom: 1.5px solid white;
+    border-bottom: 1px solid white;
     border-top: none;
     border-right: none;
     border-left: none;
     background-color: transparent;
     font-size: 18px;
-    height: 70px !important;
+    height: 50px !important;
   }
 
   .text-area-style {
@@ -379,10 +377,6 @@ textarea{
     padding-left: 4%;
     padding-right: 4%;
   }
-
-  .container-input {
-    padding-top: 15px !important;
-  }
   .container-subtitle {
     padding-left: 35%;
     padding-right: 35%;
@@ -390,7 +384,6 @@ textarea{
   .container-form {
       padding-left: 10%;
       padding-right: 10%;
-      padding-bottom: 5px;
     }
 
     .container-form-right {
@@ -398,6 +391,9 @@ textarea{
     }
      .container-btn-more-information {
       padding-top:2% !important;
+    }
+    .container-input{
+      padding: 4px 0px;
     }
 
   @media(max-width:320px){
@@ -431,13 +427,10 @@ textarea{
     .title-contact-style{
       width: 100%;
       padding-left: 13px;
-      padding-bottom: 16px;
-      padding-top: 15px;
       font-size: 1.5rem;
     }
     .description-contact{
       width: 90%;
-      padding-left: 13px;
     }
 
     .container-subtitle{
@@ -447,7 +440,7 @@ textarea{
 
     .input-style {
       font-size: 13px;
-      height: 40px !important;
+      height: 30px !important;
     }
 
     .text-area-style {
@@ -468,15 +461,18 @@ textarea{
     }
 
     .container-form-left {
-      padding-right: 8% !important;
+      padding-right: 6% !important;
     }
 
     .container-form-right {
-      padding-left: 8% !important;
+      padding-left: 6% !important;
     } 
     .background-contact{
       width: 100%;
-      padding: 0px 21px;
+      padding-top: 15px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
     }     
     .containerImgeContact{
       width: 100%;
@@ -488,9 +484,11 @@ textarea{
       padding: 35px 106px 34px 53px;
     }
     .container-form{
-      padding-bottom: 20px;
       padding-left: 2%;
       padding-right: 2%;
+    }
+    .padding-bottom-button{
+      padding-bottom: 10px;
     }
   }
    @media(max-width: 780px){
@@ -514,7 +512,7 @@ textarea{
 
     .input-style {
       font-size: 13px;
-      height: 50px !important;
+      height: 30px !important;
     }
 
     .text-area-style {
@@ -543,7 +541,6 @@ textarea{
     }   
     .background-contact{
       width: 100%;
-      padding-bottom: 59px;
     }
   }
   @media (min-width: 960px) and (max-width: 1025px){
@@ -563,31 +560,30 @@ textarea{
         align-items: start;
 }
   }
-  @media (min-width: 1026px) and (max-width: 1367px){
+  @media (min-width: 1026px) and (max-width: 1369px){
     .title-contact-style{
-      font-size: 2rem;
-      padding-bottom: 15px !important;
+      font-size: 1.7rem;
+      padding: 15px 0px;
     }
     .container-input{
-      padding-bottom: 0px;
-      padding-top: 5px;
+      padding-bottom: 4px;
+      padding-top: 4px;
     }
     .button-portrait{
-      padding: 37px 120px 34px 62px;
+      padding: 34px 90px 29px 42px;
       font-size: 17px;
     }
     .input-style {
-      height: 50px !important;
+      height: 30px !important;
     }
     .text-area-style{
-      height: 68px !important;
+      height: 48px !important;
     }
     .background-contact{
       padding-bottom: 0px;
     }
     .description-contact{
-      width: 86%;
-      padding-bottom: 12px;
+      width: 80%;
     }
 }
  </style>

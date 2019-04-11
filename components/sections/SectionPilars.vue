@@ -1,22 +1,20 @@
 <template >
   <section
     id="Pilars"
-    class="uk-flex uk-flex-column uk-padding"
+    class="uk-flex uk-flex-column uk-flex-center uk-padding height-pilars"
     style="background-color:black;">
-
     <div class="uk-padding-small">
       <div
         class="uk-h2 uk-margin-remove uk-text-bold uk-text-center  uk-text-uppercase"
         style="color:white">
-        {{ pilars.pilarsSectionTitle }}
+        <span class="size-title">{{ pilars.pilarsSectionTitle }}</span>
       </div>
       <div
         class="uk-h3 uk-margin-remove uk-text-bold uk-text-center"
         style="color:white">
-        <span>{{ pilars.pilarsSectionSubtitle }}</span>
+        <span class="size-subtitle">{{ pilars.pilarsSectionSubtitle }}</span>
       </div>
     </div>
-
     <div
       style="background-color:transparent;"
       uk-flex
@@ -39,21 +37,19 @@
             <div   
               class="uk-width-4-5 uk-text-center">
               <div style="color:white">
-                {{ section.singlePilar.singlePilarTitle }}
+                <span class="size-pilar">{{ section.singlePilar.singlePilarTitle }}</span>
               </div>
               <div style="color:white; padding-top: 10px;width: 50%; margin:auto">
-                <span> {{ section.singlePilar.singlePilarDescription }} </span>
+                <span class="size-description"> {{ section.singlePilar.singlePilarDescription }} </span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- View responsive -->
     <div 
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
-      class="uk-hidden@s"
-      style="">
+      class="uk-hidden@s uk-height-1-1"
+      style="height:80vh">
       <div uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000; min-height: 450; max-height: 600">
         <div 
           class="uk-position-relative uk-visible-toggle">
@@ -124,6 +120,9 @@ export default {
   .container-devices {
     height: 737px;
   }
+  .height-pilars{
+    height: 92vh;
+  }
   .imageContainer{
     background-position:50% 50%;
     height: 150px;
@@ -154,16 +153,36 @@ export default {
     width: 50%; 
     margin:auto
 }
-@media (max-width: 420px){
-    .description{
-        width: 100%; 
-        margin:auto
+@media(min-width: 1600px){
+  .height-pilars{
+    height: 65vh;
+  }
+  .size-title{
+    font-size: 2.3rem;
+  }
+  .size-subtitle{
+    font-size: 2rem;
+  }
+  .size-pilar{
+    font-size: 1.5rem;
+  }
+  .size-description{
+    font-size: 1.4rem;
+  }
 }
- .container-slider{
+@media (max-width: 420px){
+  .description{
+    width: 100%; 
+     margin:auto
+ }
+  .container-slider{
      width: 100%;
 }
-.container-description{
+ .container-description{
     margin:auto;
+}
+.height-pilars{
+  height: 100%;
 }
 }
 
