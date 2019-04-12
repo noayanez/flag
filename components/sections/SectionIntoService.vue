@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="uk-height-1-1">
     <div 
-      class="uk-flex uk-flex-wrap-stretch uk-flex-center uk-padding-large@s uk-pading-remove-right uk-pading-remove-left uk-pading-remove-bottom"
-      style="">
-      <div class="">
-        <div class="uk-flex uk-flex-column uk-flex-middle uk-width-1-1 uk-padding-large container2">
+      class="uk-flex uk-flex-middle uk-flex-center uk-padding-large@s uk-pading-remove-right uk-pading-remove-left uk-pading-remove-bottom"
+      style="height:100%">
+      <div class="uk-height-1-1 uk-flex uk-flex-center uk-flex-middle">
+        <div class="uk-flex uk-flex-column uk-flex-middle uk-padding-large container2 uk-visible@s">
           <div>
             <a 
-              class="uk-visible@s"
+              class=""
               style="padding-bottom: 20px;"
               @click="remove">
               <img 
@@ -15,9 +15,9 @@
                 alt="...">
             </a>
             <div 
-              class="uk-visible@s"
-              style="padding-top: 20px;">
-              <div class="uk-visible@s">
+              class=""
+              style="padding: 20px 0px;">
+              <div class="">
                 <h3 
                   style="color:white;font-weight: bold;"
                   class="title-into-service uk-text-uppercase">{{ service.singleServiceName }}</h3>
@@ -27,12 +27,14 @@
                   v-for="(el,key) in service.singleServiceItems"
                   :key="key"
                   class="uk-margin-remove"> 
-                  <li class="color"><span>{{ el.singleServiceItem }}</span></li>
+                  <li 
+                    class="color"
+                    style="padding: 8px 0px;"><span>{{ el.singleServiceItem }}</span></li>
                 </ul>
               </div>
             </div>
             <div
-              class="uk-visible@s"
+              class=""
               style="">
               <a
                 style="text-decoration: none;color:#303e48"
@@ -44,39 +46,45 @@
             </div>
           </div>
         </div>
-        <div>
+        <div class="uk-hidden@s uk-height-1-1">
           <h2 
-            class="uk-hidden@s uk-padding-small uk-width-1-2"
+            class="uk-padding-small uk-width-1-2"
             style="color:white;width: 50%;margin: auto;font-weight: bold;padding-top:20px;">{{ service.singleServiceName }}</h2>
           <div
-            class="uk-hidden@s uk-width-1-1" 
+            class="uk-width-1-1" 
             style="padding-bottom: 30px;">
             <div
               :style="`background-image: url(${service.serviceIntoImage};`"
               class="uk-width-1-1"
-              style="background-position: 50% 50%;background-size: cover; padding: 15px 0px"> 
-              <div style="padding-left: 15px">
+              style="background-position: 50% 50%;background-size: cover; padding: 15px 0px; margin-bottom: 10px;position:relative"> 
+              <div 
+                class="gradient"
+                style="height:100%;width:100%; position:absolute;top:0;z-index:-1"/>
+              <div style="padding-left: 15px; z-index:100;">
                 <ul 
                   v-for="(el,key) in service.singleServiceItems"
                   :key="key"> 
-                  <li class="color"><span>{{ el.singleServiceItem }}</span></li>
+                  <li 
+                    class="color"><span>{{ el.singleServiceItem }}</span></li>
                 </ul>
               </div>
             </div>
-            <a
-              style="text-decoration:none; color:#314049;"
-              @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
-              <div class="button-service2">
-                {{ service.singleServiceButton }}
-              </div>
-            </a>
+            <div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
+              <a
+                style="text-decoration: none;color:#303e48"
+                @click="goTo(`${service.singleServiceRedirect}`, `${service.singleServiceButton }`)">
+                <div 
+                  class="button-services uk-flex uk-flex-center uk-flex-middle"
+                  style="width: 200px; height: 90px;">
+                  {{ service.singleServiceButton }}</div></a>
+            </div>
           </div>
 
         </div>
       </div>
       <div
         :style="`background-image: url(${service.serviceIntoImage};`"
-        class="uk-width-1-2@m uk-height-1-1 uk-padding uk-align-center containerImageInto uk-visible@s"/>
+        class="uk-width-1-2@m uk-height-1-1 uk-align-center containerImageInto uk-visible@s"/>
     </div>
   </div>
 </template>
@@ -131,14 +139,20 @@ function wait(n) {
 </script>
 
 <style scope>
+.gradient {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0.71+100;Neutral+Density */
+background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.71) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.71) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.71) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#b5000000',GradientType=0 ); /* IE6-9 */
+  }
 .containerImageInto{
-    padding-top: 60px;
     min-width: 400px;
     background-size:cover; 
     background-position:50% 50%; 
-    height:auto;
+    height:80%;
     width: 60vw;
-    border-radius: 30px;
+    border-radius: 30px 0px 0px 30px;
 }
 .title-into-service{
     width: 40%;
@@ -154,7 +168,7 @@ function wait(n) {
 .button-service2{
     background: url(/boton-1.png) no-repeat;
     background-size: 100%;
-   padding: 35px 122px 37px 40px;
+    padding: 35px 122px 37px 30px;
     text-decoration: none;
     color: #303e48;
     font-weight: bold;

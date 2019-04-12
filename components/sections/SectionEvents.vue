@@ -2,8 +2,7 @@
   <div 
     id="Events"
    
-    class="uk-position-relative"
-    style="height:100vh">
+    class="uk-position-relative height-responsive">
     <div 
       v-if="events.events"
       
@@ -58,6 +57,7 @@
                     class=""
                     style="">
                     <a
+                      :style="selected===key?'margin-left:-30px':''"
                       class="text-style"
                       style="color:#faeb05;font-weight: bold;text-decoration: none;display: inline-block"
                       @click="getContent(key)">
@@ -75,7 +75,7 @@
         </div>
         <div 
           class="uk-flex uk-flex-column uk-flex-between width-col-2"
-          style="">
+          style="padding-left:0.5rem;">
           
           <div 
             class="uk-flex uk-flex-column uk-flex-center"
@@ -126,42 +126,43 @@
         style="">
         <div 
           class="uk-flex uk-flex-column uk-flex-center uk-flex-middle height-col-1"
-          style="background-color:#101010;">
+          style="background-color:#101010;padding-top:39px">
           <div 
             v-if="events.events"
-            class="" 
-            style="text-align:center">
+            class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle" 
+            style="">
             <select
               v-model="selected"
-              class="select-style">
+              class="select-style uk-width-4-5 uk-width-2-3@s">
               <option 
                 v-for="(ele, key) in events.events"
                 :key="key"
-                :value="key">{{ ele.single.eventTitle }}</option>
+                :value="key"
+                style="font-size:14px;font-family:Futura;font-weight: 700;">{{ ele.single.eventTitle }}</option>
             </select>
           </div>
           <p 
-            class="description-style"
-            style="">
+            class="description-style uk-margin-remove"
+            style="padding:18px 20px 0px 20px">
             {{ events.mainDescription }}
           </p>
         </div>
         <div 
           v-if="events.events"
-          class="uk-height-1-1 height-col-2"
+          class="height-col-2"
           uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 3000; min-height: 350; max-height: 600">
           <div 
             class="uk-position-relative uk-visible-toggle uk-light uk-height-1-1" 
             tabindex="-1">
-            <ul class="uk-slideshow-items uk-height-1-1 ul-height">
+            <ul class="uk-slideshow-items uk-height-1-1">
               <li 
                 v-for="(ele, key) in events.events[selected].single.eventImages"
                 :key="key"
-                style="uk-height-1-1">
+                class="uk-height-1-1">
                 <div 
                   :style="`background-image: url(${ele.singleEvent.singleEventImage});`"
-                  style="background-size:cover; background-position: 50% 50%"
-                  class="uk-height-1-1 uk-padding uk-align-center container-slider-events ">
+                  style="background-size:cover;background-repeat:no-repeat; background-position: 50% 50%"
+                  class="uk-height-1-1 uk-padding container-slider-events ">
                   <div style="text-align:center; padding:0px"><h3>{{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }}</h3></div>
                 </div>
               </li>
@@ -257,7 +258,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .gradient {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
     background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
@@ -323,16 +324,24 @@ export default {
 .height-col-2{
   height: 75%;
 }
-  
+.height-responsive{
+  height:100vh
+}
+@media(min-height: 1000px){
+  .height-responsive{
+    height:700px;
+  }
+}
 .select-style{
-  display: block;
-  font-size: 18px;
-  padding: 1.5em 2em 1.5em 1.5em;
-  background-color: #faeb05 !important;
-  border-radius: 6px;
-  color: black;
-  font-weight: bold;
-  text-align-last: center;
+    display: block;
+    font-size: 28px;
+    padding: 0.7em 0em 0.7em 0em;
+    background-color: #fef314 !important;
+    border-radius: 6px;
+    color: black;
+    font-weight: 800 !important;
+    text-align-last: center;
+    font-family: Futura;
 }
 .description-style{
   color:white; 
@@ -382,6 +391,8 @@ export default {
   width: 70%;
 }
 
+
+
 @media (min-width: 1369px) and (max-width: 1601px){
   .padding-li {
     padding: 15px 0px 15px 7px;
@@ -399,7 +410,7 @@ export default {
 
 @media (min-width: 769px) and (max-width: 1366px){
   .titleSelected{
-    padding: 25px 7px 24px 23px;
+    padding: 25px 7px 24px 30px;
 }
   .width-col-1{
     width: 30%;
@@ -455,14 +466,15 @@ export default {
 @media (max-width: 468px){
   .select-style{
     display: block;
-    font-size: 18px;
-    padding: 1.5em 2em 1.5em 1.5em;
-    background-color: #faeb05 !important;
+    font-size: 28px;
+    padding: 0.7em 0em 0.7em 0em;
+    background-color: #fef314 !important;
     border-radius: 6px;
     color: black;
-    font-weight: bold;
+    font-weight: 800 !important;
     text-align-last: center;
-}
+    font-family: Futura;
+  }
 .text-style{
     font-size: 17px;
   }
@@ -493,15 +505,10 @@ export default {
     min-height: 530px !important;
   }
 }
-@media (max-width: 320px){
-  .select-style{
-       padding: 1.5em 0em 1.5em 1.5em;
-}
-
-}
+</style>
+<style>
 .uk-nav > li > a {
     padding: 0px 0;
 }
-
-
 </style>
+

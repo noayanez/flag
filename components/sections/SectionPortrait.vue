@@ -1,11 +1,9 @@
 <template>
   <div 
     id="Portrait"
-    class="uk-position-relative"
-    style="min-height:100vh">
+    class="uk-position-relative height-portrait">
     <div
       :style="`background-image: url(${portrait.img};`"
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
       style="background-size:cover;background-position:50% 50%; width:100%;"
       class="uk-height-1-1 uk-hidden@s uk-position-absolute"/>
     <div class="uk-visible@s uk-height-1-1">
@@ -21,7 +19,9 @@
         Your browser does not support the video tag.
       </video>
     </div> 
-
+    <div
+      class="gradient uk-width-1-1"
+      style="position: absolute; height: 100%;top:0;"/>
     <div
       class="uk-position-center-left uk-text-left uk-padding-large uk-position-1-1 uk-width-1-1"
       style="color:#d5ecec;"> 
@@ -140,6 +140,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
     position: absolute;
     top: 0;
     left: 76px;
+  }
+}
+@media(max-width: 640px){
+  .height-portrait{
+    min-height:100vh;
   }
 }
 @media (max-width: 420px){

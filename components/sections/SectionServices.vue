@@ -2,10 +2,8 @@
   <div  
     id="Services"
     
-    class="uk-position-relative"
-    style="height:100vh ">
+    class="uk-position-relative height-responsive">
     <div 
-      :class="device ? 'container-devices' : 'uk-height-viewport'"
       class="uk-height-1-1 bkg-animate "
       style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%;position:absolute; background-color:#303e47;background-blend-mode: overlay;"/>
     <div 
@@ -24,7 +22,7 @@
           <div class="">
             <div 
               v-if="services.service"
-              class="uk-flex uk-flex-wrap uk-flex-center uk-height-1-1">
+              class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
               <div
                 v-for="(ele, key) in services.service"
                 :key="key"
@@ -32,45 +30,58 @@
                 style="text-align:center; padding-bottom: 40px;">
                 <div
                   :style="`background-image: url(${ele.singleService.singleServiceImage};`"
-                  class="uk-height-1-1 uk-padding uk-align-center containerImage"
-                  style="cursor:pointer;"
+                  class="uk-height-1-1 uk-align-center containerImage"
+                  style="cursor:pointer;margin-bottom:20px !important"
                   @click="getContent(ele.singleService.singleServiceName)"/>
-                <a
-                  style="text-decoration: none;color:#303e48"
-                  @click="getContent(ele.singleService.singleServiceName)">
-                  <div 
-                    class="button-services"
-                    style="">
-                    {{ ele.singleService.singleServiceName }} </div></a>
+                <div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
+                  <a
+                    style="text-decoration: none;color:#303e48"
+                    @click="getContent(ele.singleService.singleServiceName)">
+                    <div 
+                      class="button-services uk-flex uk-flex-center uk-flex-middle"
+                      style="width: 200px; height: 90px;">
+                      {{ ele.singleService.singleServiceName }} </div></a>
+                </div>
               </div>
             </div>
-            <div class="uk-hidden@s uk-height-viewport">
+            <div class="uk-hidden@s uk-flex uk-flex-center uk-flex-middle">
               <div 
                 uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
-                class="height">
+                class="uk-width-1-1">
                 <div 
                   class="uk-position-relative uk-visible-toggle">
                   <ul 
-                    class="uk-slideshow-items slideshow-height">
+                    class="uk-slideshow-items"
+                    style="height: calc(50vh + 130px)">
                     <li 
                       v-for="(ele, key) in services.service"
-                      :key="key">
+                      :key="key"
+                      style="height: calc(50vh + 130px)">
                       <div 
                         :style="`background-image: url(${ele.singleService.singleServiceImage});`"
-                        style=""
-                        class="uk-height-1-1 uk-padding uk-align-center container-slider"/>
-                      <a
+                        style="height: 50vh;margin-bottom:20px !important"
+                        class="uk-align-center container-slider"/>
+                      <div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
+                        <a
+                          style="text-decoration: none;color:#303e48"
+                          @click="getContent(ele.singleService.singleServiceName)">
+                          <div 
+                            class="button-services uk-flex uk-flex-center uk-flex-middle"
+                            style="width: 200px; height: 90px;">
+                            {{ ele.singleService.singleServiceName }} </div></a>
+                      </div>
+                      <!-- <a
                         style="text-decoration: none;color:#303e48"
                         @click="getContent(ele.singleService.singleServiceName)">
                         <div 
                           class="button-slider"
                           style="">
-                          {{ ele.singleService.singleServiceName }} </div></a>
+                          {{ ele.singleService.singleServiceName }} </div></a> -->
                     </li>
                   </ul>
                   <ul 
                     class="uk-slideshow-nav uk-dotnav uk-flex-center"
-                    style="padding-bottom: 40px;"/>
+                    style="padding: 0px !important"/>
                 </div>
               </div>
             </div>
@@ -205,6 +216,15 @@ function wait(n) {
     opacity: 0;
   }
 
+.height-responsive{
+  min-height:100vh
+}
+@media(min-height: 1000px){
+  .height-responsive{
+    height:800px;
+  }
+}
+
 .container-devices {
   height: 737px;
 }
@@ -223,13 +243,11 @@ function wait(n) {
 }
 .button-services{
   background: url('/boton-1.png') no-repeat;
-  background-size: cover;
-  padding: 34px 65px 27px 60px;
+  background-size: 100%;
   text-decoration: none;
   color: #303e48;
+  text-align: center;
   font-weight: bold;
-  width:20%; 
-  margin:auto
 }
 .button-slider{
   background: url('/boton-1.png') no-repeat;
@@ -242,19 +260,18 @@ function wait(n) {
   margin:auto
 }
 .containerImage{
-    min-width: 420px;
-    background-size:cover; 
-    background-position:50% 50%; 
-    height:48vh;
-    width: 50%;
-    border-radius: 30px;
+  width: 100%;
+  background-size:cover; 
+  background-position:50% 50%; 
+  height:50vh;
+  border-radius: 30px;
 }
 .container-slider{
-    background-size:cover; 
-    background-position:50% 50%; 
-    height: 45vh;
-    width: 70%;
-    border-radius: 30px;
+  background-size:cover; 
+  background-position:50% 50%; 
+  height: 45vh;
+  width: 70%;
+  border-radius: 30px;
 }
 .bkg-animate{
   -webkit-animation: slide 20s linear infinite;
@@ -274,7 +291,6 @@ function wait(n) {
     height: 50vh;
   }
   .button-services{
-    padding: 23px 58px 16px 46px;
   }
   .services-width{
     width: 75%;
@@ -285,7 +301,6 @@ function wait(n) {
 }
 @media (max-width: 1024px){
   .containerImage{
-    min-width: 350px;
     height:35vh;
 }
 .container-height{
@@ -295,7 +310,7 @@ function wait(n) {
       width: 85%;
 }
 .flex-bottom{
-    align-items: center;
+    align-items: flex-end;
   }
 }
 @media (max-width: 769px){
@@ -306,17 +321,12 @@ function wait(n) {
         padding-top: 171px;
     }
     .containerImage {
-      min-width: 327px;
       height: 41vh;
     }
     .button-services{
-      padding: 25px 67px 16px 59px;
     }
 }
 @media (max-width: 420px){
-  .containerImage{
-    min-width: 250px;
- }
  .titleServices{
      height:20%;
      text-align: center;
