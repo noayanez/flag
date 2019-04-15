@@ -1,210 +1,228 @@
 <template>
-  <div 
+  <div
     id="Contact"
-    :class="device ? 'container-devices' : 'uk-height-viewport'"
-    class="uk-flex uk-flex-wrap uk-height-1-1"
-    style="background-image: url(/manchas.png);background-color: black;opacity:0.9;height:100vh">
-    <div 
-      class="container-1 uk-flex uk-flex-middle">
+    class="uk-flex uk-flex-wrap uk-flex-center uk-flex-middle"
+    style="height: 100vh;">
+    <div
+      class="uk-width-1-2@m uk-width-1-1"
+      style=" background: #000000e5; height: 100vh;">
       <div
-        class="uk-flex uk-flex-column uk-flex-center uk-flex-middle container-form-left container-form-right"
-        style="padding-top:30px">
-        <div 
-          class="background-contact"
-          style="">
-          <h3
-            class="uk-text-uppercase title-contact-style"
-            style="text-align:left; color:white; font-weight: bold">¿Quieres conectar<br> con tus clientes?</h3>
-
-          <h4 
-            class="description-contact" 
-            style="text-align:left;color:white;">Completa el formulario y comencemos a crear nuevas experiencias</h4>
-          <div class="uk-width-1-1">
-            <div class="uk-width-1-1">
-              <form 
-                name="form1"
-                class="uk-grid uk-margin-remove container-form uk-width-1-1"
-                @submit.prevent="send">
-                <div class="uk-padding-remove container-form-left container-form-right uk-width-1-1">
-                  <div class="container-input">
-                    <input 
-                      v-validate.imediate="{ required: true }"
-                      v-model="form.name"
-                      name="Nombres"
-                      class="uk-input input-style" 
-                      type="text"
-                      placeholder="Nombres">
-                  </div>
-                  <span style="color:white;">{{ errors.first('name') }}</span>
-                  <div class="container-input">
-                    <input 
-                      v-validate.imediate="{numeric: true,required: true }"
-                      v-model="form.phone"
-                      name="phone"
-                      class="uk-input input-style" 
-                      type="text"
-                      pattern="^(0|[0-9][0-9]*)$"
-                      placeholder="Celular:">
-                  </div>
-                  <span style="color:white;">{{ errors.first('phone') }}</span>
-                  <div class="container-input">
-                    <input
-                      v-validate.imediate="{ required: true, email: true }"
-                      v-model="form.email"
-                      name="email"
-                      class="uk-input input-style" 
-                      type="email"
-                      pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
-                      placeholder="Correo:">
-                  </div>
-                  <span style="color:white;">{{ errors.first('email') }}</span>
-                  <div class="container-input">
-                    <textarea
-                      v-model="form.message"
-                      name="message"
-                      class="uk-textarea text-area-style"
-                      placeholder="Mensaje:"/>
-                    <textarea
-                      v-model="form.message2"
-                      name="message2"
-                      class="uk-textarea text-area-style"/>
-                  </div> 
-                  <div 
-                    class="width-container"
-                    style="padding-top: 10px;padding-bottom: 20px;">
-                    <input
-                      v-model="form.proteccion"  
-                      type="checkbox"
-                      name="proteccion" 
-                      value="proteccion"
-                      style="border:2px solid #faeb05"><span style="color:#faeb05;font-size: 20px;">Protección de datos personales</span>
+        class="uk-width-1-1 uk-height-1-1 uk-flex uk-flex-center uk-flex-middle"
+        style="background-image: url('/manchas.png'); background-position: center; background-size: cover;">
+        <div
+          class="uk-width-1-1 uk-height-1-1 uk-flex uk-flex-center uk-flex-bottom"
+          style="background: #000000cc; padding-bottom: 2rem;">
+          <div
+            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle padder-1"
+            style="width: 65%; height: 85%; border-radius: 8px; background: #ffffff44; ">
+            <div class="uk-width-1-1 uk-flex uk-flex-left@s uk-flex-center uk-flex-middle">
+              <div
+                class="uk-width-1-1 uk-text-uppercase text-title"
+                style="color:white; font-weight: 800 !important; font-family: futura !important;  margin-bottom: 10px;">
+                ¿Quieres conectar <br> con tus clientes?
+              </div>
+            </div>
+            <div
+              class="uk-width-1-1 text-subtitle"
+              style="text-align:left; color:white; font-weight: 700 !important; font-family: futura !important; margin: 0 0 10px 0 !important;">
+              Completa el formulario y comencemos a crear nuevas experiencias:
+            </div>
+            <form
+              name="form1"
+              class="uk-margin-remove uk-width-1-1"
+              @submit.prevent="send">
+              <div class="uk-padding-remove uk-width-1-1">
+                <div class="container-input">
+                  <input
+                    v-validate.imediate="{ required: true }"
+                    v-model="form.name"
+                    name="Nombres"
+                    class="uk-input input-styled"
+                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white;"
+                    type="text"
+                    placeholder="Nombres">
+                </div>
+                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('name') }}</span>
+                <div class="container-input">
+                  <input
+                    v-validate.imediate="{numeric: true,required: true }"
+                    v-model="form.phone"
+                    name="phone"
+                    class="uk-input input-styled"
+                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white;"
+                    type="text"
+                    pattern="^(0|[0-9][0-9]*)$"
+                    placeholder="Celular:">
+                </div>
+                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('phone') }}</span>
+                <div class="container-input">
+                  <input
+                    v-validate.imediate="{ required: true, email: true }"
+                    v-model="form.email"
+                    name="email"
+                    class="uk-input input-styled"
+                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white;"
+                    type="email"
+                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+                    placeholder="Correo:">
+                </div>
+                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('email') }}</span>
+                <div class="container-input">
+                  <textarea
+                    v-model="form.message"
+                    name="message"
+                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white;"
+                    class="uk-textarea input-styled"
+                    rows="3"
+                    placeholder="Mensaje:"/>
+                </div>
+                <div
+                  class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
+                  style="margin-top: 10px; margin-bottom: 10px;">
+                  <label
+                    class="container uk-height-1-1">
+                    <input type="checkbox">
+                    <span class="checkmark"/>
+                  </label>
+                  <div
+                    style="font-family: futura; color: yellow; font-weight: 600 !important; font-size: 16px; margin-left: 15px;">
+                    Proteccion de datos personales
                   </div>
                 </div>
-                <a
-                  class="uk-padding-remove-left padding-bottom-button"
-                  style="text-decoration: none;color:#303e48; margin:auto;text-align: center;">
-                  <input 
-                    type="submit"
-                    class="button-portrait uk-text-uppercase"
-                    style="border:none"
-                    value="CONTACTAR">
-                </a> 
-              </form>
-            </div>
+              </div>
+              <div class="uk-width-auto@s uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
+                <div
+                  type="submit"
+                  class="uk-text-center uk-flex uk-flex-center uk-flex-middle"
+                  style="font-family: futura; font-weight: 800; color: #000000cc; font-size: 0.95rem; background-image: url('/boton-1.png'); background-repeat: no-repeat; background-size: cover; border:none; height: 81px; width: 180px; cursor: pointer;">
+                  CONTACTAR
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
     <div
-      
-      style="background-image: url(foto-footer.png)"
-      class="uk-height-1-1 uk-padding  containerImgeContact">
+      class="uk-position-relative uk-width-1-2@m uk-width-1-1 uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+      style="background-image: url('foto-footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;">
       <div
         uk-flex
-        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 250; repeat: true" 
+        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 250; repeat: true"
         class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
         style="">
         <div class="">
           <div
-            class="container-footer-contact" 
-            style="padding-bottom: 60px;">
+            class="container-footer-contact"
+            style="margin-bottom: 30px;">
             <h3
-            
-              class="uk-text-uppercase"
+              class="uk-text-uppercase uk-width-1-1"
               style="color: white;">CONTÁCTANOS</h3>
-            <div 
-              class="padding-bottom">
-              <a 
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
                 href=""
-                class="padding-right">
-                <img 
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/ubicación.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.officeAddress }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.officeAddress }}</span>
             </div>
-            <div 
-              class="padding-bottom">
-              <a 
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
                 href=""
-                class="padding-right">
-                <img 
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/correo.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.email }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.email }}</span>
             </div>
-            <div 
-              class="padding-bottom">
-              <a 
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
                 href=""
-                class="padding-right">
-                <img 
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/teléfono.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.phone }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.phone }}</span>
             </div>
           </div>
           <div
-            class="container-footer-contact" 
-            style="padding-bottom: 60px;">
+            class="container-footer-contact"
+            style="margin-bottom: 30px;">
             <h3
-            
-              class="uk-text-uppercase"
-              style="color: white;">síguenos</h3>
-            <div 
-              class="padding-bottom">
-              <a 
-                :href="footer.urlFacebook"
-                class="padding-right">
-                <img 
+              class="uk-text-uppercase uk-width-1-1"
+              style="color: white;">SÍGUENOS</h3>
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
+                href=""
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/facebook.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.facebook }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.facebook }}</span>
             </div>
-            <div 
-              class="padding-bottom">
-              <a 
-                :href="footer.urlInstagram"
-                class="padding-right">
-                <img 
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
+                href=""
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/INSTAGRAM.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.instagram }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.instagram }}</span>
             </div>
-            <div 
-              class="padding-bottom">
-              <a 
-                :href="footer.urlLinkedin"
-                class="padding-right">
-                <img 
+            <div
+              class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
+              style="margin-bottom:15px;">
+              <a
+                href=""
+                style="width: 30px; margin-right: 10px;"
+                class="">
+                <img
                   src="/linkedin.png"
-                  width="10%" 
+                  width="30px"
                   alt="...">
               </a>
-              <span style="color:#faeb05; font-size:1.2rem;">{{ footer.linkedin }}</span>
+              <span class="uk-width-4-5 letra-footer">{{ footer.linkedin }}</span>
             </div>
-          </div>
-          <div
-            uk-flex
-            uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 450; repeat: true" 
-            class="uk-padding-large copy-right uk-padding-remove" 
-            style="">
-            <h5
-              style="color:#a09d9c">Powered by <a 
-                href="https://prodequa.com/" 
-                target="_blank"
-                style="text-decoration:none;color:white !important;"> Prodequa &reg;</a> </h5>
           </div>
         </div>
+      </div>
+
+      <div
+        uk-flex
+        uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 1700; repeat: true"
+        class="uk-padding-large copy-right uk-padding-remove"
+        style="position: absolute; bottom: 0; top: auto !important;">
+        <h5
+          style="color:#a09d9c">Powered by <a
+            href="https://prodequa.com/"
+            target="_blank"
+            style="text-decoration:none;color:white !important;"> Prodequa &reg;</a> </h5>
       </div>
     </div>
   </div>
@@ -234,7 +252,7 @@ export default {
   async send(){
       const formData = {
         email : this.form.email,
-        message: this.form.message + " " + this.form.message2 || this.form.message2,
+        message: this.form.message,
         name: this.form.name,
         phone: this.form.phone,
         need: this.form.proteccion || false
@@ -249,17 +267,58 @@ export default {
 }
 </script>
 
- <style lang="scss" scoped>
-
-  ::placeholder{
-    color: white;
+<style lang="scss" scoped>
+.text-title {
+  font-size: 2rem;
+}
+.text-subtitle {
+  font-size: 1.5rem;
+}
+.input-styled {
+  font-size: 1rem;
+}
+@media (max-width:1800px) {
+  .text-title {
+    font-size: 1.5rem;
   }
- .container-devices {
-    height: 737px;
+  .text-subtitle {
+    font-size: 1.2rem;
   }
-.description-contact{
-   width: 82%;
-   margin:auto;
+}
+@media (max-width:1400px) {
+  .text-title {
+    font-size: 1.2rem;
+  }
+  .text-subtitle {
+    font-size: 1rem;
+  }
+}
+@media (max-width:960px) {
+  .text-title {
+    font-size: 2rem;
+  }
+  .text-subtitle {
+    font-size: 1.5rem;
+  }
+}
+.letra-footer {
+  color:#faeb05;
+  font-size:1.2rem;
+}
+@media (max-width:1550px) {
+  .letra-footer {
+    color:#faeb05;
+    font-size:1rem;
+  }
+}
+.padder-1 {
+  padding: 2rem 4rem;
+}
+::placeholder{
+  color: white;
+}
+.container-devices {
+  height: 737px;
 }
 textarea{
   resize: none;
@@ -274,7 +333,7 @@ textarea{
 .title-contact-style{
   width: 82%;
   margin: auto;
-  padding: 15px 0px;
+  padding: 15px 0px 15px 0px;
   font-size: 2rem;
 }
 .padding-bottom-button{
@@ -283,7 +342,7 @@ textarea{
 
 .container-footer-contact{
   padding-left:50px;
-  width: 50%; 
+  width: 80%;
   margin:auto;
 }
 .background-contact{
@@ -303,287 +362,275 @@ textarea{
 .containerImgeContact{
     padding-top: 118px;
     min-width: 300px;
-    background-size:cover; 
-    background-position:50% 50%; 
+    background-size:cover;
+    background-position:50% 50%;
     width: 55%;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items:center;
 }
 .container-1{
   width: 45%;
 }
-.button-portrait{
-  background: url('/boton-1.png') no-repeat;
-  background-size: cover;
-  padding: 42px 124px 40px 67px;
-  text-decoration: none;
-  color: #303e48;
-  font-weight: bold;
-  width: 80%; 
-  margin:auto;
-  font-size: 20px;
-  font-family: 'Futura';
-  font-weight: 800 !important;
-}
-
 .title-style {
-    font-weight: bold;
-    color: #0b496e;
-     font-size: 23px;
+  font-weight: bold;
+  color: #0b496e;
+    font-size: 23px;
+}
+.subtitle-style {
+  font-size: 13px;
+}
+.input-style {
+  font-size: 1.5rem;
+  color: white !important;
+  padding-left: 3% !important;
+  padding-right: 3% !important;
+  border-bottom: 1px solid white;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+  font-size: 18px;
+  height: 50px !important;
+}
+.text-area-style {
+  padding-left: 3%;
+  padding-right: 3%;
+  height: 84px !important;
+  font-size: 18px;
+  height: 65px !important;
+  border-bottom: 1.5px solid white;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+  color:white;
+}
+.btn-more-information {
+  background-color: #1f8884;
+  font-weight: bolder;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  padding-top: 1.3%;
+  padding-bottom: 1.3%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.container-subtitle {
+  padding-left: 35%;
+  padding-right: 35%;
+}
+@media(max-width:320px){
+  .containerImgeContact{
+    padding-top: 10px;
   }
-
-  .subtitle-style {
-    font-size: 13px;
+  .copy-right{
+    top:220px;
   }
-
-  .input-style {
-    font-size: 1.25rem;
-    color: white !important;
-    padding-left: 3% !important;
-    padding-right: 3% !important;
-    border-bottom: 1px solid white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    background-color: transparent;
-    font-size: 18px;
-    height: 50px !important;
-  }
-
-  .text-area-style {
-    padding-left: 3%;
-    padding-right: 3%;
-    height: 84px !important;
-    font-size: 18px;
-    height: 65px !important;
-    border-bottom: 1.5px solid white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    background-color: transparent;
-    color:white;
-  }
-
-  .btn-more-information {
-    background-color: #1f8884;
-    font-weight: bolder;
-    color: white;
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    padding-top: 1.3%;
-    padding-bottom: 1.3%;
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-  .container-subtitle {
-    padding-left: 35%;
-    padding-right: 35%;
-    }
-  .container-form {
-      padding-left: 10%;
-      padding-right: 10%;
-    }
-
-    .container-form-right {
-      padding-left: 0% !important;
-    }
-     .container-btn-more-information {
-      padding-top:2% !important;
-    }
-    .container-input{
-      padding: 4px 0px;
-    }
-
-  @media(max-width:320px){
-    .containerImgeContact{
-      padding-top: 10px;
-   }
-    .copy-right{
-      top:220px;
-   }
   .container-1{
     width: 100%;
   }
-  .container-form-left {
-      padding-right: 3% !important;
-    }
-
-    .container-form-right {
-      padding-left: 3% !important;
-    }
-     .title-contact-style{
-      font-size: 1.5rem;
-    } 
+   -left {
+    padding-right: 3% !important;
   }
-  @media (max-width: 640px) {
-    .title-style {
-      font-size: 18px;
-    }
-    .copy-right{
-      top:20px;
-    }
-    .title-contact-style{
-      width: 100%;
-      padding-left: 13px;
-      font-size: 1.5rem;
-    }
-    .description-contact{
-      width: 90%;
-    }
-
-    .container-subtitle{
-      padding-left: 2%;
-      padding-right: 2%;
-    }
-
-    .input-style {
-      font-size: 13px;
-      height: 30px !important;
-    }
-
-    .text-area-style {
-      height: 50px !important;
-      font-size: 18px;
-    }
-    
-    .btn-more-information{
-      font-size: 12px;
-      padding-top: 3%;
-      padding-bottom: 3%;
-      padding-left: 7%;
-      padding-right: 7%;
-    }
-
-    .container-btn-more-information {
-      padding-top:8% !important;
-    }
-
-    .container-form-left {
-      padding-right: 6% !important;
-    }
-
-    .container-form-right {
-      padding-left: 6% !important;
-    } 
-    .background-contact{
-      width: 100%;
-      padding-top: 15px;
-      padding-bottom: 0px;
-      padding-left: 0px;
-      padding-right: 0px;
-    }     
-    .containerImgeContact{
-      width: 100%;
-    }
-    .container-1{
-      width: 100%;
-    }
-    .button-portrait{
-      padding: 35px 106px 34px 53px;
-    }
-    .container-form{
-      padding-left: 2%;
-      padding-right: 2%;
-    }
-    .padding-bottom-button{
-      padding-bottom: 10px;
-    }
+   -right {
+    padding-left: 3% !important;
   }
-   @media(max-width: 780px){
-    .container-footer-contact{
-      width: 90%;
-    }
-    .title-contact-style{
-      font-size: 1.5rem;
-    }
+  .title-contact-style{
+    font-size: 1.5rem;
   }
-
-  @media (min-width: 640px) and (max-width: 959px){
-    .title-style {
-      font-size: 18px;
-    }
-
-    .container-subtitle{
-      padding-left: 2%;
-      padding-right: 2%;
-    }
-
-    .input-style {
-      font-size: 13px;
-      height: 30px !important;
-    }
-
-    .text-area-style {
-      height: 60px !important;
-      font-size: 18px;
-    }
-    
-    .btn-more-information{
-      font-size: 13px;
-      padding-top: 2%;
-      padding-bottom: 2%;
-      padding-left: 4%;
-      padding-right: 4%;
-    }
-
-    .container-btn-more-information {
-      padding-top:8% !important;
-    }
-
-    .container-form-left {
-      padding-right: 3% !important;
-    }
-
-    .container-form-right {
-      padding-left: 3% !important;
-    }   
-    .background-contact{
-      width: 100%;
-    }
-  }
-  @media (min-width: 960px) and (max-width: 1025px){
-    .background-contact{
-      width: 93%;
-    }
-    .container-input{
-      width: 85%;
-      margin:auto;
-    }
-    .width-container{
-      width: 85%;
-      margin: auto;
-    }
-    .containerImgeContact {
-        padding-top: 200px;
-        align-items: start;
 }
+@media (max-width: 640px) {
+  .title-style {
+    font-size: 18px;
   }
-  @media (min-width: 1026px) and (max-width: 1369px){
-    .title-contact-style{
-      font-size: 1.7rem;
-      padding: 15px 0px;
-    }
-    .container-input{
-      padding-bottom: 4px;
-      padding-top: 4px;
-    }
-    .button-portrait{
-      padding: 34px 90px 29px 42px;
-      font-size: 17px;
-    }
-    .input-style {
-      height: 30px !important;
-    }
-    .text-area-style{
-      height: 48px !important;
-    }
-    .background-contact{
-      padding-bottom: 0px;
-    }
-    .description-contact{
-      width: 80%;
-    }
+  .copy-right{
+    top:20px;
+  }
+  .title-contact-style{
+    width: 100%;
+    padding-left: 13px;
+    font-size: 1.5rem;
+  }
+  .container-subtitle{
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .input-style {
+    font-size: 13px;
+    height: 30px !important;
+  }
+  .text-area-style {
+    height: 50px !important;
+    font-size: 13px;
+  }
+  .btn-more-information{
+    font-size: 12px;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+  .container-btn-more-information {
+    padding-top:8% !important;
+  }
+  .background-contact{
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .containerImgeContact{
+    width: 100%;
+  }
+  .container-1{
+    width: 100%;
+  }
+  .padding-bottom-button{
+    padding-bottom: 10px;
+  }
+}
+@media(max-width: 780px){
+  .container-footer-contact{
+    width: 90%;
+  }
+  .title-contact-style{
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 640px) and (max-width: 959px){
+  .title-style {
+    font-size: 18px;
+  }
+  .container-subtitle{
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .input-style {
+    font-size: 13px;
+    height: 30px !important;
+  }
+  .text-area-style {
+    height: 60px !important;
+    font-size: 18px;
+  }
+  .btn-more-information{
+    font-size: 13px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .container-btn-more-information {
+    padding-top:8% !important;
+  }
+  .background-contact{
+    width: 100%;
+  }
+}
+@media (min-width: 960px) and (max-width: 1025px){
+  .background-contact{
+    width: 93%;
+  }
+  .container-input{
+    width: 85%;
+    margin:auto;
+  }
+  .width-container{
+    width: 85%;
+    margin: auto;
+  }
+  .containerImgeContact {
+    padding-top: 200px;
+    align-items: start;
+  }
+}
+@media (min-width: 1026px) and (max-width: 1369px){
+  .title-contact-style{
+    font-size: 1.7rem;
+    padding: 15px 0px;
+  }
+  .container-input{
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+  .text-area-style{
+    height: 48px !important;
+  }
+  .background-contact{
+    padding-bottom: 0px;
+  }
+}
+::placeholder {
+  color: rgb(214, 214, 214);
+}
+
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  // padding-left: 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-color: yellow;
+  border-radius: 8px;
+  border: solid 2px yellow;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 0, 0.25);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid yellow;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
  </style>

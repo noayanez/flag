@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="content !== ''">
+    <div v-if="boolcontent !== ''">
       <no-ssr>
-        <Navbar/>
+        <Navbar style="z-index: 100"/>
       </no-ssr>
       <nuxt />
       <no-ssr>
@@ -10,16 +10,16 @@
       </no-ssr>
     </div>
     <div
-      v-else
+      v-if="bool2"
       class="uk-flex uk-flex-middle uk-flex-center uk-height-viewport uk-height-1-1 uk-width-1-1"
-      style="background-color:#303e47;">
+      style="position: fixed; top:0; background-color:#303e47; z-index: 1000;">
       <div class="pulse-btn">
         <img
           class="width-img-onload"
           src="logo-principal.png"
-          alt="Logo"> 
+          alt="Logo">
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -36,12 +36,16 @@ export default {
   },
   data(){
     return{
-      content:'',
-      infoGeneral:''
+      boolcontent: false,
+      bool2: true,
+      infoGeneral:'',
+      boolcontetnt: false
     }
   },
-    async mounted() {
-    this.consumer();
+  async mounted() {
+    this.consumer()
+    await wait(2000)
+    this.bool2 = false
   },
   methods:{
     async consumer(){
@@ -57,9 +61,18 @@ export default {
         )
       } catch (error) {
         console.log('error')
+      } finally {
+        this.boolcontent = true
       }
     }
   }
+}
+function wait(n) {
+   return new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      resolve()
+    }, n)
+  })
 }
 </script>
 

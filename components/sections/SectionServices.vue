@@ -1,26 +1,25 @@
 <template>
-  <div  
+  <div
     id="Services"
-    
-    class="uk-position-relative height-responsive">
-    <div 
-      class="uk-height-1-1 bkg-animate "
+
+    class="uk-position-relative services-responsive">
+    <div
+      class="uk-height-1-1 bkg-animate"
       style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%;position:absolute; background-color:#303e47;background-blend-mode: overlay;"/>
-    <div 
-      
+    <div
       class="uk-flex uk-flex-center flex-bottom uk-width-1-1 uk-position-absolute gradient-services uk-height-1-1">
-      <transition 
+      <transition
         name="slide-fade">
-        <div 
+        <div
           v-if="content == '' && flag"
-          class="services-width">
+          class="services-width services-height">
           <div
-            class="titleServices uk-flex uk-flex-center uk-flex-middle" 
+            class="titleServices uk-flex uk-flex-center uk-flex-middle"
             style="">
             <h2 class="title-services uk-margin-remove"> {{ services.serviceSectionTitle }} </h2>
           </div>
           <div class="">
-            <div 
+            <div
               v-if="services.service"
               class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
               <div
@@ -37,7 +36,7 @@
                   <a
                     style="text-decoration: none;color:#303e48"
                     @click="getContent(ele.singleService.singleServiceName)">
-                    <div 
+                    <div
                       class="button-services uk-flex uk-flex-center uk-flex-middle"
                       style="width: 200px; height: 90px;">
                       {{ ele.singleService.singleServiceName }} </div></a>
@@ -45,19 +44,19 @@
               </div>
             </div>
             <div class="uk-hidden@s uk-flex uk-flex-center uk-flex-middle">
-              <div 
+              <div
                 uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
                 class="uk-width-1-1">
-                <div 
+                <div
                   class="uk-position-relative uk-visible-toggle">
-                  <ul 
+                  <ul
                     class="uk-slideshow-items"
                     style="height: calc(50vh + 130px)">
-                    <li 
+                    <li
                       v-for="(ele, key) in services.service"
                       :key="key"
                       style="height: calc(50vh + 130px)">
-                      <div 
+                      <div
                         :style="`background-image: url(${ele.singleService.singleServiceImage});`"
                         style="height: 50vh;margin-bottom:20px !important"
                         class="uk-align-center container-slider"/>
@@ -65,7 +64,7 @@
                         <a
                           style="text-decoration: none;color:#303e48"
                           @click="getContent(ele.singleService.singleServiceName)">
-                          <div 
+                          <div
                             class="button-services uk-flex uk-flex-center uk-flex-middle"
                             style="width: 200px; height: 90px;">
                             {{ ele.singleService.singleServiceName }} </div></a>
@@ -73,13 +72,13 @@
                       <!-- <a
                         style="text-decoration: none;color:#303e48"
                         @click="getContent(ele.singleService.singleServiceName)">
-                        <div 
+                        <div
                           class="button-slider"
                           style="">
                           {{ ele.singleService.singleServiceName }} </div></a> -->
                     </li>
                   </ul>
-                  <ul 
+                  <ul
                     class="uk-slideshow-nav uk-dotnav uk-flex-center"
                     style="padding: 0px !important"/>
                 </div>
@@ -88,8 +87,8 @@
           </div>
         </div>
       </transition>
-      <transition name="slide-fade"> 
-        <IntoService 
+      <transition name="slide-fade">
+        <IntoService
           v-if="content!=='' && flag2"
           :service="intoService"
           @clicked="hidde"/>
@@ -193,38 +192,37 @@ function wait(n) {
 @import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css);
 
 .gradient-services {
-   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b4750+1,000000+100&0.65+0,0+100 */
-    background: -moz-linear-gradient(top, rgba(59,71,80,0.65) 0%, rgba(59,71,80,0.64) 1%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a63b4750', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-  }
-  .flex-bottom{
-    align-items: center;
-  }
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b4750+1,000000+100&0.65+0,0+100 */
+  background: -moz-linear-gradient(top, rgba(59,71,80,0.65) 0%, rgba(59,71,80,0.64) 1%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(59,71,80,0.65) 0%,rgba(59,71,80,0.64) 1%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a63b4750', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+.flex-bottom{
+  align-items: center;
+}
 
-  .slide-fade-enter-active {
-    transition: all 0.5s ease;
-  }
-  .slide-fade-leave-active {
-    transition: all 0.5s ease;
-  }
-  .slide-fade-leave, .slide-fade-leave-active {
-    opacity: 1;
-  }
-  .slide-fade-enter, .slide-fade-leave-active {
-    opacity: 0;
-  }
-
-.height-responsive{
-  min-height:100vh
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-leave, .slide-fade-leave-active {
+  opacity: 1;
+}
+.slide-fade-enter, .slide-fade-leave-active {
+  opacity: 0;
+}
+.services-responsive{
+  min-height:100vh;
 }
 @media(min-height: 1000px){
-  .height-responsive{
+  .services-responsive{
+    min-height: 0px;
     height:800px;
   }
 }
-
 .container-devices {
   height: 737px;
 }
@@ -232,11 +230,11 @@ function wait(n) {
   width: 65%;
 }
 .img-services{
-    border-radius: 20px;
+  border-radius: 20px;
 }
 .title-services{
-    font-weight: bold;
-    color: white;
+  font-weight: bold;
+  color: white;
 }
 .padding-top{
   padding-top:170px;
@@ -256,19 +254,19 @@ function wait(n) {
   text-decoration: none;
   color: #303e48;
   font-weight: bold;
-  width:20%; 
+  width:20%;
   margin:auto
 }
 .containerImage{
   width: 100%;
-  background-size:cover; 
-  background-position:50% 50%; 
+  background-size:cover;
+  background-position:50% 50%;
   height:50vh;
   border-radius: 30px;
 }
 .container-slider{
-  background-size:cover; 
-  background-position:50% 50%; 
+  background-size:cover;
+  background-position:50% 50%;
   height: 45vh;
   width: 70%;
   border-radius: 30px;
@@ -278,13 +276,13 @@ function wait(n) {
   animation: slide 20s linear infinite;
 }
 @keyframes slide {
-   from { background-position: 0 0; }
-    to { background-position: -400px 0; }
+  from { background-position: 0 0; }
+  to { background-position: -400px 0; }
 }
  @-webkit-keyframes slide {
-    from { background-position: 0 0; }
-    to { background-position: -400px 0; }
-  }
+  from { background-position: 0 0; }
+  to { background-position: -400px 0; }
+}
 
 @media(max-width: 1369px){
   .containerImage{
@@ -299,6 +297,11 @@ function wait(n) {
     align-items: flex-end;
   }
 }
+@media(max-height: 700px){
+  .flex-bottom{
+    align-items: flex-end;
+  }
+}
 @media (max-width: 1024px){
   .containerImage{
     height:35vh;
@@ -307,61 +310,71 @@ function wait(n) {
    height:80vh;
 }
 .services-width{
-      width: 85%;
+  width: 85%;
 }
 .flex-bottom{
     align-items: flex-end;
   }
 }
-@media (max-width: 769px){
-   .container-height{
-        height:100vh;
-    }
-    .padding-top{
-        padding-top: 171px;
-    }
-    .containerImage {
-      height: 41vh;
-    }
-    .button-services{
-    }
-}
-@media (max-width: 420px){
- .titleServices{
-     height:20%;
-     text-align: center;
-     padding-top: 17px;
-    padding-bottom: 12px;
-    align-items: flex-end;
- }
- .uk-dotnav > * > * {
-    width: 15px;
-    height: 15px;
- }
- .uk-dotnav{
-   padding-top: 31px;
- }
- .slideshow-height{
-    min-height: 450px !important;
-}
-.padding-top{
-  padding-top:20px;
-}
-.services-width{
-  width: 100%;
+.services-height {
   height: 100%;
 }
+@media (max-height: 700px){
+  .services-height {
+    height: 80%;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+}
+@media (max-width: 769px){
+  .container-height{
+    height:100vh;
+  }
+  .padding-top{
+    padding-top: 171px;
+  }
+  .containerImage {
+    height: 41vh;
+  }
+  .button-services{
+  }
+}
+@media (max-width: 420px){
+  .titleServices{
+    height:20%;
+    text-align: center;
+    padding-top: 17px;
+    padding-bottom: 12px;
+    align-items: flex-end;
+  }
+  .uk-dotnav > * > * {
+    width: 15px;
+    height: 15px;
+  }
+  .uk-dotnav{
+    padding-top: 31px;
+  }
+  .slideshow-height{
+    min-height: 450px !important;
+  }
+  .padding-top{
+    padding-top:20px;
+  }
+  .services-width{
+    width: 100%;
+    height: 100%;
+  }
 }
 @media(min-width: 376px) and (max-width: 414px){
   .slideshow-height{
     min-height: 466px !important;
-}
-.titleServices{
-     padding-bottom: 15px !important;
-     padding-top: 20px !important;
-     padding-left: 20px;
-     padding-right: 20px;
- }
+  }
+  .titleServices{
+    padding-bottom: 15px !important;
+    padding-top: 20px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media(min-width: 361px) and (max-width: 375px){
@@ -372,34 +385,34 @@ function wait(n) {
     height: 50vh;
     width: 84%;
   }
-  
+
   .titleServices{
-     padding-bottom: 15px !important;
-     padding-bottom: 20px !important;
-      padding-left: 20px;
-     padding-right: 20px;
- }
+    padding-bottom: 15px !important;
+    padding-bottom: 20px !important;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 @media (max-width: 360px){
   .slideshow-height{
-      min-height:417px !important;
-}
+    min-height:417px !important;
+  }
 }
 @media (max-width:320px){
   .slideshow-height{
-      min-height:380px !important;
-}
-.title-services{
+    min-height:380px !important;
+  }
+  .title-services{
     padding:0px !important;
   }
 }
 
 .uk-dotnav > .uk-active > * {
   background-color: #faeb00 !important;
-  }
-  .uk-dotnav > * > *{
-    width: 15px;
-    height: 15px;
-    border: 1px solid #faeb00 ;
-  }
+}
+.uk-dotnav > * > *{
+  width: 15px;
+  height: 15px;
+  border: 1px solid #faeb00 ;
+}
 </style>

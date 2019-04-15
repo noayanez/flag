@@ -9,18 +9,18 @@
         style="z-index: 1000; height:70px"
         uk-navbar>
         <div class="uk-navbar-center uk-visible@l">
-          <div 
+          <div
             v-for="(section, key) in sections"
             :key="key">
-            <div 
+            <div
               v-if="section.name=='logo'"
-              class="uk-navbar-item navItemStyle" 
+              class="uk-navbar-item navItemStyle"
               style="width: 120px; height:90px;">
               <a
                 class="uk-navbar-item uk-logo"
                 @click="goTo('#Portrait')">
                 <img
-                  :src="filterImage(src)"
+                  id="logoHome"
                   width="130px"
                   style="max-width: 200px;height: 169px !important;padding-top: 50px;"></a>
             </div>
@@ -59,7 +59,7 @@
           uk-toggle="target: #offcanvas-nav-primary"
           style="color:white !important; justify-content:flex-end !important;"/>
         <ul class="uk-nav uk-nav-primary uk-nav-center">
-          <div 
+          <div
             v-for="(section, key) in sections"
             :key="key">
             <li
@@ -104,7 +104,8 @@ export default {
     await this.$nextTick()
     await wait(1000)
     this.src = this.$store.getters.getInfoGeneral.logo
-  }, 
+    LoadImage(this.src)
+  },
   methods: {
     goTo (section, label) {
 
@@ -129,7 +130,7 @@ export default {
     },
     filterImage (url){
       return process.env.API_URL + url
-    }    
+    }
   }
 }
 function wait(n) {
@@ -139,11 +140,21 @@ function wait(n) {
     }, n)
   })
 }
+function LoadImage(url) {
+  var img = new Image()
+  var x = document.getElementById("logoHome")
+
+  img.src = process.env.API_URL + url + "?_=" + (+new Date())
+
+  img.onload = function() {
+      x.src = img.src
+  };
+}
 </script>
 
 <style>
   .navStyle {
-    
+
     background-color: transparent !important;
   }
   .bkg-color{
