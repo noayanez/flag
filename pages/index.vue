@@ -70,10 +70,10 @@ export default {
   },
    computed: {
     ...mapGetters({
-        content: 'getView'    
+        content: 'getView'
     }),
     ...mapGetters({
-        content2: 'getInfoGeneral'    
+        content2: 'getInfoGeneral'
     })
 },
   async mounted() {

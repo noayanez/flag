@@ -7,95 +7,113 @@
       class="uk-width-1-2@m uk-width-1-1"
       style=" background: #000000e5; height: 100vh;">
       <div
-        class="uk-width-1-1 uk-height-1-1 uk-flex uk-flex-center uk-flex-middle"
+        class="uk-width-1-1 uk-height-1-1 uk-flex uk-flex-around uk-flex-middle"
         style="background-image: url('/manchas.png'); background-position: center; background-size: cover;">
         <div
           class="uk-width-1-1 uk-height-1-1 uk-flex uk-flex-center uk-flex-bottom"
-          style="background: #000000cc; padding-bottom: 2rem;">
+          style="background: #000000cc; padding-bottom: 15px; padding-left: 10px; padding-right: 10px; padding-top: 70px;">
           <div
-            class="uk-flex uk-flex-column uk-flex-center uk-flex-middle padder-1"
-            style="width: 65%; height: 85%; border-radius: 8px; background: #ffffff44; ">
-            <div class="uk-width-1-1 uk-flex uk-flex-left@s uk-flex-center uk-flex-middle">
-              <div
-                class="uk-width-1-1 uk-text-uppercase text-title"
-                style="color:white; font-weight: 800 !important; font-family: futura !important;  margin-bottom: 10px;">
-                ¿Quieres conectar <br> con tus clientes?
-              </div>
-            </div>
+            class="uk-width-4-5@m uk-width-1-1 uk-flex uk-flex-column uk-flex-center uk-flex-middle padder-1 heighter-contact"
+            style="border-radius: 8px; background: #ffffff44;">
             <div
-              class="uk-width-1-1 text-subtitle"
-              style="text-align:left; color:white; font-weight: 700 !important; font-family: futura !important; margin: 0 0 10px 0 !important;">
-              Completa el formulario y comencemos a crear nuevas experiencias:
+              class="uk-width-1-1 titleless uk-flex uk-flex-column uk-flex-around uk-flex-middle remove-margin"
+              style="height: 25%;">
+              <div class="uk-width-1-1 uk-flex uk-flex-left@s uk-flex-center uk-flex-middle">
+                <div
+                  class="uk-width-1-1 uk-text-uppercase text-title uk-text-left@m uk-text-center"
+                  style="color: white; font-weight: 800 !important; font-family: futura !important;">
+                  ¿Quieres conectar <br> con tus clientes?
+                </div>
+              </div>
+              <div
+                class="uk-width-1-1 text-subtitle"
+                style="text-align:left; color:white; font-weight: 700 !important; font-family: futura !important;">
+                Completa el formulario y comencemos a crear nuevas experiencias:
+              </div>
             </div>
             <form
               name="form1"
-              class="uk-margin-remove uk-width-1-1"
+              class="uk-margin-remove uk-width-1-1 uk-flex uk-flex-column uk-flex-around uk-flex-middle"
+              style=""
               @submit.prevent="send">
-              <div class="uk-padding-remove uk-width-1-1">
-                <div class="container-input">
-                  <input
-                    v-validate.imediate="{ required: true }"
-                    v-model="form.name"
-                    name="Nombres"
-                    class="uk-input input-styled"
-                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white;"
-                    type="text"
-                    placeholder="Nombres">
-                </div>
-                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('name') }}</span>
-                <div class="container-input">
-                  <input
-                    v-validate.imediate="{numeric: true,required: true }"
-                    v-model="form.phone"
-                    name="phone"
-                    class="uk-input input-styled"
-                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white;"
-                    type="text"
-                    pattern="^(0|[0-9][0-9]*)$"
-                    placeholder="Celular:">
-                </div>
-                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('phone') }}</span>
-                <div class="container-input">
-                  <input
-                    v-validate.imediate="{ required: true, email: true }"
-                    v-model="form.email"
-                    name="email"
-                    class="uk-input input-styled"
-                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white;"
-                    type="email"
-                    pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
-                    placeholder="Correo:">
-                </div>
-                <span style="color:white; padding-left: 15px; margin-top:10px;">{{ errors.first('email') }}</span>
-                <div class="container-input">
-                  <textarea
-                    v-model="form.message"
-                    name="message"
-                    style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white;"
-                    class="uk-textarea input-styled"
-                    rows="3"
-                    placeholder="Mensaje:"/>
-                </div>
+              <div
+                class="uk-width-1-1 container-input remove-margin remove-padding"
+                style="padding-top: 10px; padding-bottom: 10px;">
+                <input
+                  v-validate.imediate="{ required: true }"
+                  v-model="form.name"
+                  name="Nombres"
+                  class="uk-input input-styled"
+                  style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white; height: 30px; padding: 0 !important;"
+                  type="text"
+                  pattern="[A-Za-z ]*"
+                  placeholder="Nombres">
+              </div>
+              <div
+                class="uk-width-1-1 container-input remove-margin remove-padding"
+                style="padding-top: 10px; padding-bottom: 10px;">
+                <input
+                  v-validate.imediate="{numeric: true,required: true }"
+                  v-model="form.phone"
+                  name="phone"
+                  class="uk-input input-styled"
+                  style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white; height: 30px; padding: 0 !important; "
+                  type="text"
+                  pattern="^[1-9][0-9]{8}$"
+                  placeholder="Celular:">
+              </div>
+              <div
+                class="uk-width-1-1 container-input remove-margin remove-padding"
+                style="padding-top: 10px; padding-bottom: 10px;">
+                <input
+                  v-validate.imediate="{ required: true, email: true }"
+                  v-model="form.email"
+                  name="email"
+                  class="uk-input input-styled"
+                  style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px;color: white; height: 30px; padding: 0 !important;"
+                  type="email"
+                  pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$"
+                  placeholder="Correo:">
+              </div>
+              <div
+                class="uk-width-1-1 container-input remove-margin remove-padding"
+                style="padding-top: 10px; padding-bottom: 10px;">
+                <textarea
+                  v-model="form.message"
+                  name="message"
+                  style="background: transparent; border-color: white; border-width: 0px 0px 1px 0px; color: white; padding: 0;"
+                  class="uk-textarea input-styled"
+                  rows="2"
+                  placeholder="Mensaje:"/>
+              </div>
+              <div
+                class="uk-position-relative uk-width-1-1 uk-flex uk-flex-left@m uk-flex-center uk-flex-middle"
+                style="margin-top: 5px; margin-bottom: 5px; height: 25px !important;">
                 <div
-                  class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
-                  style="margin-top: 10px; margin-bottom: 10px;">
+                  class="uk-position-relative uk-width-1-1 uk-flex uk-flex-left@m uk-flex-center uk-flex-middle"
+                  style="margin-top: 10px; margin-bottom: 10px; height: 25px !important;">
                   <label
-                    class="container uk-height-1-1">
+                    class="uk-position-relative container uk-height-1-1">
                     <input type="checkbox">
                     <span class="checkmark"/>
                   </label>
                   <div
-                    style="font-family: futura; color: yellow; font-weight: 600 !important; font-size: 16px; margin-left: 15px;">
+                    class="protect"
+                    style="font-family: futura; color: yellow; font-weight: 600 !important;">
                     Proteccion de datos personales
                   </div>
                 </div>
               </div>
-              <div class="uk-width-auto@s uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
-                <div
-                  type="submit"
-                  class="uk-text-center uk-flex uk-flex-center uk-flex-middle"
-                  style="font-family: futura; font-weight: 800; color: #000000cc; font-size: 0.95rem; background-image: url('/boton-1.png'); background-repeat: no-repeat; background-size: cover; border:none; height: 81px; width: 180px; cursor: pointer;">
-                  CONTACTAR
+              <div
+                class="uk-width-auto@s uk-width-1-1 uk-flex uk-flex-center uk-flex-middle remove-margin"
+                style="margin-top: 15px; margin-bottom: 15px;">
+                <div style="background-image: url('/boton-1.png'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 72px; width: 160px;">
+                  <button
+                    type="submit"
+                    class="uk-text-center uk-flex uk-flex-center uk-flex-middle uk-width-1-1 uk-height-1-1"
+                    style="margin-top: 5px; background: transparent; font-family: futura; font-weight: 800; color: #000000cc; font-size: 0.95rem; border:none; cursor: pointer; outline: none;">
+                    CONTACTAR
+                  </button>
                 </div>
               </div>
             </form>
@@ -105,18 +123,17 @@
     </div>
     <div
       class="uk-position-relative uk-width-1-2@m uk-width-1-1 uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-      style="background-image: url('foto-footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;">
+      style="background-image: url('foto-footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh; padding-top: 3.5%;">
       <div
         uk-flex
-        uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 250; repeat: true"
         class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
         style="">
-        <div class="">
+        <div class="uk-width-1-1 uk-flex uk-flex-column uk-flex-center uk-flex-middle">
           <div
-            class="container-footer-contact"
-            style="margin-bottom: 30px;">
+            class="uk-width-2-5@m uk-width-4-5 "
+            style="margin-left: 50px; margin-bottom: 20px;">
             <h3
-              class="uk-text-uppercase uk-width-1-1"
+              class="uk-text-uppercase uk-width-1-1 uk-text-left"
               style="color: white;">CONTÁCTANOS</h3>
             <div
               class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
@@ -162,10 +179,10 @@
             </div>
           </div>
           <div
-            class="container-footer-contact"
-            style="margin-bottom: 30px;">
+            class="uk-width-2-5@m uk-width-4-5 "
+            style="margin-left: 50px; margin-bottom: 0px;">
             <h3
-              class="uk-text-uppercase uk-width-1-1"
+              class="uk-text-uppercase uk-width-1-1 uk-text-left"
               style="color: white;">SÍGUENOS</h3>
             <div
               class="uk-flex uk-flex-left uk-flex-middle uk-width-1-1"
@@ -214,8 +231,6 @@
       </div>
 
       <div
-        uk-flex
-        uk-scrollspy="cls: uk-animation-scale-down; target: > h5 ; delay: 1700; repeat: true"
         class="uk-padding-large copy-right uk-padding-remove"
         style="position: absolute; bottom: 0; top: auto !important;">
         <h5
@@ -239,7 +254,13 @@ export default {
   data() {
     return {
       title: '¡CONTÁCTANOS!',
-      form:{},
+      form:{
+        name: '',
+        email: '',
+        message: '',
+        phone: '',
+        proteccion: ''
+      },
       device:''
     }},
   mounted(){
@@ -250,6 +271,9 @@ export default {
   },
   methods:{
   async send(){
+      if (this.form.email==='' || this.form.message==='' || this.form.name==='' || this.form.phone==='') {
+        return
+      }
       const formData = {
         email : this.form.email,
         message: this.form.message,
@@ -258,28 +282,75 @@ export default {
         need: this.form.proteccion || false
       }
       console.log(formData);
-      if(this.form!={}){
-        let res =  await this.$axios.post('/site/contact/form', formData)
-        console.log(res);
-      }
+      let res =  await this.$axios.post('/site/contact/form', formData)
+      console.log(res);
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.protect {
+  font-size: 14px;
+  margin-left: 12px !important;
+}
+@media (min-width: 1200px) and (min-height: 600px){
+  .protect {
+    font-size: 18px !important;
+    margin-left: 20px !important;
+  }
+}
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+}
+input[type="number"] {
+  appearance: textfield !important;
+}
+.flexeador {
+  justify-content: center;
+}
+@media (max-height: 600px) {
+  .flexeador {
+    justify-content: flex-end;
+  }
+}
+.heighter-contact {
+  height: 98%;
+}
+@media (max-height: 640px) {
+  .text-title {
+    font-size: 1.2rem !important;
+  }
+  .text-subtitle {
+    font-size: 1rem !important;
+  }
+  .heighter-contact {
+    height: 97%;
+  }
+  .remove-margin {
+    margin: 0 !important;
+  }
+  .remove-padding {
+    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+  }
+}
+.container-input {
+  margin: 5px 0;
+}
 .text-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 .text-subtitle {
   font-size: 1.5rem;
 }
 .input-styled {
   font-size: 1rem;
+  border-radius: 0px;
 }
 @media (max-width:1800px) {
   .text-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .text-subtitle {
     font-size: 1.2rem;
@@ -287,7 +358,7 @@ export default {
 }
 @media (max-width:1400px) {
   .text-title {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
   .text-subtitle {
     font-size: 1rem;
@@ -295,10 +366,14 @@ export default {
 }
 @media (max-width:960px) {
   .text-title {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   .text-subtitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    text-align: center !important;
+  }
+  .input-styled {
+    font-size: 0.8rem;
   }
 }
 .letra-footer {
@@ -311,8 +386,26 @@ export default {
     font-size:1rem;
   }
 }
+.titleless {
+  margin: 10px 0;
+}
+@media (min-width: 800px) {
+  .titleless {
+    margin: 10px 0;
+  }
+}
 .padder-1 {
-  padding: 2rem 4rem;
+  padding: 0rem 3rem;
+}
+@media (max-width: 1200px) {
+  .padder-1 {
+    padding: 10px 28px;
+  }
+}
+@media (max-width: 800px) {
+  .padder-1 {
+    padding: 10px 28px;
+  }
 }
 ::placeholder{
   color: white;
@@ -338,12 +431,6 @@ textarea{
 }
 .padding-bottom-button{
   padding-bottom: 28px;
-}
-
-.container-footer-contact{
-  padding-left:50px;
-  width: 80%;
-  margin:auto;
 }
 .background-contact{
     background-color: #414141;
@@ -494,9 +581,6 @@ textarea{
   }
 }
 @media(max-width: 780px){
-  .container-footer-contact{
-    width: 90%;
-  }
   .title-contact-style{
     font-size: 1.5rem;
   }

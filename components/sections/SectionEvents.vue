@@ -26,8 +26,7 @@
         </transition>
       </div>
       <div
-
-        class="uk-flex uk-visible@m  uk-height-1-1 padding-events transition-images uk-width-1-1  background-image gradient">
+        class="uk-flex uk-visible@m uk-height-1-1 padding-events transition-images uk-width-1-1  background-image gradient">
         <div
           class="uk-padding-large uk-padding-remove-right uk-padding-remove-left uk-padding-remove-bottom width-col-1"
           style="">
@@ -46,29 +45,29 @@
               </div>
               <div
                 v-if="events.events"
-                uk-height-viewport="expand: true"
-                style="height:70%">
+                style="height:70%; padding-bottom: 10px; padding-left: 20px;">
                 <ul
-                  class="uk-nav uk-flex uk-flex-column uk-flex-around uk-flex-top"
-                  style="height:100%">
+                  class="uk-flex uk-flex-column"
+                  style="height:100%; overflow: scroll;">
                   <li
                     v-for="(ele, key) in events.events"
                     :key="key"
-                    class=""
-                    style="">
+                    class="uk-flex uk-flex-left uk-flex-middle"
+                    style="width: 100%;">
                     <a
-                      :style="selected===key?'margin-left:-30px':''"
+                      :style="selected===key?'margin-left: -26px':''"
                       class="text-style"
-                      style="color:#faeb05;font-weight: bold;text-decoration: none;display: inline-block"
+                      style="color:#faeb05; font-weight: bold; text-decoration: none;"
                       @click="getContent(key)">
                       <div
                         :class="selected==key? 'titleSelected':''"
                         :style="selected==key || selected==key-1?'margin-top: 0px !important;':''"
-                        class="width-events uk-flex uk-flex-center uk-flex-middle"
-                        style="margin-top: 31.5px; margin-top: 31.5px; transition: all 0.5 ease;">
+                        class="uk-width-1-1"
+                        style="">
                         <div
-                          class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
-                          style="text-align: center; padding-top: 5px;">
+                          :style="selected===key? 'padding: 2px 40px 0 40px;':'padding: 2px 0px 0 0px;'"
+                          class="uk-flex uk-flex-center uk-flex-middle"
+                          style="height: 63px;">
                           {{ ele.single.eventTitle }}
                         </div>
                       </div>
@@ -80,45 +79,52 @@
           </div>
         </div>
         <div
-          class="uk-flex uk-flex-column uk-flex-between width-col-2"
-          style="padding-left:0.5rem;">
+          class="uk-flex uk-flex-column uk-flex-center width-col-2"
+          style="padding-left:0.5rem; padding-top: 70px;">
 
           <div
-            class="uk-flex uk-flex-column uk-flex-center"
-            style="height:37%">
-            <div>
-              <h2
-                v-if="events.events"
-                style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
-            </div>
-          </div>
-
-          <div
-            class="uk-flex uk-width-1-1 uk-padding-small"
-            style="width:90%">
-            <div >
+            class="uk-flex uk-flex-column uk-flex-center uk-flex-between uk-width-1-1"
+            style="height: 100%;">
+            <div
+              class="uk-flex uk-flex-column uk-flex-center"
+              style="">
               <div
-                v-if="events.events"
-                uk-slider="finite: true; autoplay: true; autoplay-interval: 4000; min-height: 450px;">
-                <ul
-                  style=""
-                  class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-4@l uk-grid">
-                  <li
-                    v-for="(ele, key) in events.events[selected].single.eventImages"
-                    :key="key"
-                    class=""
-                    style="">
-                    <img
-                      :src="ele.singleEvent.singleEventImage"
-                      :style="selected2==key? 'border: #faeb05 3.5px solid;':'border: transparent 3.5px solid;'"
-                      style="border-radius: 20px; width: 400px; cursor: pointer;"
-                      alt="..."
-                      @click="getImg(key,ele)">
-                  </li>
-                </ul>
+                class="uk-width-1-1"
+                style="padding-left: 20px; padding-top: 20px;">
+                <h2
+                  v-if="events.events"
+                  style="color:white;font-weight: bold;"> {{ events.events[selected].single.eventImages[selected2].singleEvent.singleEventTitle }} </h2>
+              </div>
+            </div>
+
+            <div
+              class="uk-flex uk-width-1-1 uk-padding-small"
+              style="width:90%">
+              <div >
+                <div
+                  v-if="events.events"
+                  uk-slider="finite: true; autoplay: true; autoplay-interval: 4000; min-height: 450px;">
+                  <ul
+                    style=""
+                    class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-4@l uk-grid">
+                    <li
+                      v-for="(ele, key) in events.events[selected].single.eventImages"
+                      :key="key"
+                      class=""
+                      style="">
+                      <img
+                        :src="ele.singleEvent.singleEventImage"
+                        :style="selected2==key? 'border: #faeb05 3.5px solid;':'border: transparent 3.5px solid;'"
+                        style="border-radius: 20px; width: 400px; cursor: pointer;"
+                        alt="..."
+                        @click="getImg(key,ele)">
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -139,12 +145,12 @@
             style="">
             <select
               v-model="selected"
-              class="select-style uk-width-4-5 uk-width-2-3@s">
+              class="select-style uk-width-2-3@s uk-width-4-5">
               <option
                 v-for="(ele, key) in events.events"
                 :key="key"
                 :value="key"
-                style="font-size:14px;font-family:Futura;font-weight: 700;">{{ ele.single.eventTitle }}</option>
+                style="font-size: 14px !important; font-family:Futura;font-weight: 700;">{{ ele.single.eventTitle }}</option>
             </select>
           </div>
           <p
@@ -352,7 +358,7 @@ opacity: 0;
 .description-style{
   color:white;
   text-align:center;
-  font-size:20px;
+  font-size:16px;
 }
 .text-style{
   font-size: 18px;
@@ -360,9 +366,6 @@ opacity: 0;
 .container-into-col-1{
   border-right: 3px solid #faeb05;
   width:90%;
-}
-.width-events{
-  width:100%;
 }
 .padding-events{
   padding-bottom:40px;
@@ -373,8 +376,6 @@ opacity: 0;
   background-size: 100% 95%;
   background-position: 50% 50%;
   color: #303e48 !important;
-  height: 81px !important;
-  width: 180px !important;
 }
 .imgBorder{
   border: #faeb05 3.5px solid;
@@ -422,9 +423,6 @@ opacity: 0;
   .padding{
     padding: 10px;
   }
-  .width-events{
-    width:100%;
-  }
   .description{
     width: 90%;
   }
@@ -438,9 +436,6 @@ opacity: 0;
 @media (min-width: 469px) and (max-width: 768px){
   .description{
     width: 100%;
-}
-  .width-events{
-    width:100%;
   }
   .container-into-col-1{
     width:75%;

@@ -5,32 +5,33 @@
     class="uk-position-relative services-responsive">
     <div
       class="uk-height-1-1 bkg-animate"
-      style="background-image: url(/trama.png);background-size:cover;background-position:50% 50%; width:100%;position:absolute; background-color:#303e47;background-blend-mode: overlay;"/>
+      style="background-image: url('/trama.png');background-size:cover;background-position:50% 50%; width: 100%; position: absolute; background-color:#303e47;background-blend-mode: overlay;"/>
     <div
-      class="uk-flex uk-flex-center flex-bottom uk-width-1-1 uk-position-absolute gradient-services uk-height-1-1">
+      class="uk-flex uk-flex-center uk-width-1-1 uk-position-absolute flexeador gradient-services uk-height-1-1">
       <transition
         name="slide-fade">
         <div
-          v-if="content == '' && flag"
-          class="services-width services-height">
+          v-if="content=='' && flag"
+          class="services-width services-height uk-flex uk-flex-column uk-flex-center@m uk-flex-right uk-flex-middle"
+          style="">
           <div
             class="titleServices uk-flex uk-flex-center uk-flex-middle"
             style="">
-            <h2 class="title-services uk-margin-remove"> {{ services.serviceSectionTitle }} </h2>
+            <h2 class="title-services uk-margin-remove">{{ services.serviceSectionTitle }}</h2>
           </div>
-          <div class="">
+          <div class="delimiter container-heighter">
             <div
               v-if="services.service"
-              class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
+              class="uk-visible@s uk-flex uk-flex-center uk-flex-middle uk-height-1-1">
               <div
                 v-for="(ele, key) in services.service"
                 :key="key"
-                class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-visible@s"
-                style="text-align:center; padding-bottom: 40px;">
+                class="uk-width-1-2 uk-padding-small uk-height-1-1 uk-padding-remove-bottom"
+                style="text-align:center;">
                 <div
                   :style="`background-image: url(${ele.singleService.singleServiceImage};`"
                   class="uk-height-1-1 uk-align-center containerImage"
-                  style="cursor:pointer;margin-bottom:20px !important"
+                  style="cursor:pointer;"
                   @click="getContent(ele.singleService.singleServiceName)"/>
                 <div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
                   <a
@@ -43,23 +44,23 @@
                 </div>
               </div>
             </div>
-            <div class="uk-hidden@s uk-flex uk-flex-center uk-flex-middle">
+            <div class="uk-hidden@s uk-flex uk-flex-center uk-flex-middle uk-width-1-1">
               <div
                 uk-slideshow="animation: slide; autoplay: true; autoplay-interval: 4000;"
                 class="uk-width-1-1">
                 <div
                   class="uk-position-relative uk-visible-toggle">
                   <ul
-                    class="uk-slideshow-items"
-                    style="height: calc(50vh + 130px)">
+                    class="uk-slideshow-items imager"
+                    style="">
                     <li
                       v-for="(ele, key) in services.service"
                       :key="key"
-                      style="height: calc(50vh + 130px)">
+                      class="imager">
                       <div
                         :style="`background-image: url(${ele.singleService.singleServiceImage});`"
-                        style="height: 50vh;margin-bottom:20px !important"
-                        class="uk-align-center container-slider"/>
+                        style="margin-bottom: 10px !important"
+                        class="imager2 uk-align-center container-slider"/>
                       <div class="uk-width-1-1 uk-flex uk-flex-center uk-flex-middle">
                         <a
                           style="text-decoration: none;color:#303e48"
@@ -80,7 +81,7 @@
                   </ul>
                   <ul
                     class="uk-slideshow-nav uk-dotnav uk-flex-center"
-                    style="padding: 0px !important"/>
+                    style="padding: 0px !important; margin-bottom: 20px;"/>
                 </div>
               </div>
             </div>
@@ -186,11 +187,54 @@ function wait(n) {
     }, n)
   })
 }
+
 </script>
 
 <style>
 @import url(https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css);
-
+.imager {
+  height: calc(50vh + 130px);
+}
+imager2 {
+  height: 50vh;
+}
+@media (max-width: 400px) {
+  .imager {
+    height: calc(45vh + 130px);
+  }
+  imager2 {
+    height: 40vh;
+  }
+}
+@media (max-width: 359px) {
+  .imager {
+    height: calc(40vh + 130px);
+  }
+  imager2 {
+    height: 40vh;
+  }
+}
+.container-heighter {
+  width: 100%;
+}
+@media (max-height: 600px) and (min-width: 1300px) {
+  .container-heighter {
+    width: 60%;
+  }
+}
+.flexeador {
+  align-items: center;
+}
+@media (max-height: 800px) and (max-width: 500px) {
+  .flexeador {
+    align-items: flex-end;
+  }
+}
+@media (max-height: 800px) {
+  .flexeador {
+    align-items: flex-end;
+  }
+}
 .gradient-services {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b4750+1,000000+100&0.65+0,0+100 */
   background: -moz-linear-gradient(top, rgba(59,71,80,0.65) 0%, rgba(59,71,80,0.64) 1%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
@@ -263,6 +307,12 @@ function wait(n) {
   background-position:50% 50%;
   height:50vh;
   border-radius: 30px;
+  margin-bottom:10px;
+}
+@media (max-width: 600px) {
+  .containerImage {
+    margin: 0 !important
+  }
 }
 .container-slider{
   background-size:cover;
@@ -317,13 +367,12 @@ function wait(n) {
   }
 }
 .services-height {
-  height: 100%;
+  height: 80%;
+  padding-top: 40px;
 }
 @media (max-height: 700px){
   .services-height {
     height: 80%;
-    padding-bottom: 25px;
-    padding-top: 25px;
   }
 }
 @media (max-width: 769px){
@@ -335,8 +384,6 @@ function wait(n) {
   }
   .containerImage {
     height: 41vh;
-  }
-  .button-services{
   }
 }
 @media (max-width: 420px){
@@ -362,7 +409,6 @@ function wait(n) {
   }
   .services-width{
     width: 100%;
-    height: 100%;
   }
 }
 @media(min-width: 376px) and (max-width: 414px){

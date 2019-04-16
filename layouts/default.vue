@@ -11,7 +11,7 @@
     </div>
     <div
       v-if="bool2"
-      class="uk-flex uk-flex-middle uk-flex-center uk-height-viewport uk-height-1-1 uk-width-1-1"
+      class="uk-flex uk-flex-middle uk-flex-center uk-height-1-1 uk-width-1-1"
       style="position: fixed; top:0; background-color:#303e47; z-index: 1000;">
       <div class="pulse-btn">
         <img
@@ -19,7 +19,6 @@
           src="logo-principal.png"
           alt="Logo">
       </div>
-
     </div>
   </div>
 </template>
@@ -44,7 +43,7 @@ export default {
   },
   async mounted() {
     this.consumer()
-    await wait(2000)
+    await wait(1300)
     this.bool2 = false
   },
   methods:{

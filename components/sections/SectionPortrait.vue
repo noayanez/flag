@@ -37,20 +37,22 @@
         style="padding-top: 45px;">
         <div class="uk-width-auto@s uk-width-1-1 uk-flex uk-flex-left@s uk-flex-center uk-flex-middle">
           <a
-            style="text-decoration: none;color:#314049; margin-bottom: 10px;">
+            style="text-decoration: none;color:#314049; margin-bottom: 10px;"
+            @click="goTo('#Events')">
             <div
               class="button-portrait uk-text-uppercase uk-flex uk-flex-center uk-flex-middle uk-text-center"
-              style="">
+              style="outline: none;">
               {{ portrait.buttons[0].btnText }}
             </div>
           </a>
         </div>
         <div class="uk-width-auto@s uk-width-1-1  uk-flex uk-flex-left@s uk-flex-center uk-flex-middle">
           <a
-            style="text-decoration: none;color:#314049; margin-bottom: 10px;">
+            style="text-decoration: none;color:#314049; margin-bottom: 10px;"
+            @click="goTo('#Services')">
             <div
               class="button-portrait uk-text-uppercase uk-flex uk-flex-center uk-flex-middle uk-text-center"
-              style="">
+              style="outline: none;">
               {{ portrait.buttons[1].btnText }}
             </div>
           </a>
@@ -67,6 +69,11 @@
  * arrowSlider  = true para mostrar flechas false para ocultarlos
  * slideNav     = para mostrar para mostrar los botones de navegación
  */
+var UIkit
+
+if (process.browser) {
+  UIkit = require('uikit')
+}
 export default {
   props: {
     portrait: {
@@ -103,6 +110,14 @@ export default {
      var userAgent = navigator.userAgent || navigator.vendor || window.opera
     if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
       this.device = true
+    }
+  },
+  methods: {
+    goTo (section, label) {
+      UIkit.offcanvas('#offcanvas-nav-primary').hide().then(() => {
+        //Validate screeen size
+        UIkit.scroll({offset: 0}).scrollTo(section)
+      })
     }
   }
 }

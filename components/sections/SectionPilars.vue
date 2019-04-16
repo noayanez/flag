@@ -2,7 +2,7 @@
   <section
     id="Pilars"
     class="uk-flex uk-flex-column uk-flex-center uk-padding pilars-responsive"
-    style="background-color:black; padding-top: 70px;">
+    style="background-color:black; padding-top: 90px;">
     <div
       class="uk-width-1-1"
       style="height: 15%;">
@@ -20,7 +20,7 @@
     <div
       style="background-color:transparent;"
       uk-flex
-      uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 400; repeat: true"
+      uk-scrollspy="cls: uk-animation-scale-down; target: > div > div > div; delay: 400; repeat: false"
       class="uk-flex uk-flex-wrap uk-flex-stretch uk-flex-center uk-margin-remove uk-visible@m">
       <!-- 80px = navbar size -->
       <div
@@ -78,7 +78,7 @@
                   {{ section.singlePilar.singlePilarTitle }}
                 </div>
                 <div
-                  class="description"
+                  class="description size-subtitle"
                   style="color:white; padding-top: 10px; z-index: -1;">
                   {{ section.singlePilar.singlePilarDescription }}
                 </div>
@@ -128,11 +128,8 @@ export default {
   background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
 }
-.container-devices {
-  height: 737px;
-}
 .height-pilars{
-  height: 92vh;
+  height: 100vh;
 }
 .imageContainer{
   background-position:50% 50%;
@@ -173,7 +170,7 @@ export default {
 .size-subtitle{
   font-size: 1.2rem;
   font-family: futura !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
 }
 @media(min-width: 1600px){
   .height-pilars{
@@ -207,12 +204,12 @@ export default {
     height: 100%;
   }
 }
-.pilars-responsive{
+.uk-padding-remove bottom {
   min-height:80vh;
   height: -webkit-fill-available;
 }
 @media(min-height: 1000px){
-  .pilars-responsive{
+  .uk-padding-remove bottom {
     min-height: 0px;
     height:800px;
   }
